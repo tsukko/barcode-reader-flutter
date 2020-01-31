@@ -70,7 +70,7 @@ class _TopState extends State<Top> {
                 _nowDate(),
                 _lastDate(),
                 _scan(),
-                _param()
+                _search()
               ],
             ),
           ),
@@ -133,10 +133,10 @@ class _TopState extends State<Top> {
     );
   }
 
-  Widget _param() {
+  Widget _search() {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, '/qrview');
+        Navigator.pushNamed(context, '/select_document');
       },
       child: Card(
         margin: EdgeInsets.all(16.0),

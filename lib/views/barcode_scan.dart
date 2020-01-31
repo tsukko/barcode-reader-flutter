@@ -64,6 +64,7 @@ class _BarcodeScanState extends State<BarcodeScan> {
       "height": availableImage.height,
       "width": availableImage.width
     });
+
     if (!mounted) {
       return;
     }
@@ -73,9 +74,9 @@ class _BarcodeScanState extends State<BarcodeScan> {
         controller.stopImageStream();
         qrText = barcode;
 //        Fluttertoast.showToast(msg: "barcode: $barcode");
-        //TODO
-        final resUrl = await BasicApi().postMultiple("");
-        Navigator.pushNamed(context, '/showpdf', arguments: resUrl);
+
+//        final resUrl = await BasicApi().debugPost(barcode);
+//        Navigator.pushNamed(context, '/showpdf', arguments: resUrl);
       }
     });
   }
@@ -106,7 +107,7 @@ class _BarcodeScanState extends State<BarcodeScan> {
                 borderRadius: 10,
                 borderLength: 30,
                 borderWidth: 10,
-                cutOutSize: MediaQuery.of(context).size.width - 100,
+                cutOutSize: MediaQuery.of(context).size.width * 0.9,
               ),
             ),
             flex: 4,
@@ -206,8 +207,8 @@ class _BarcodeScanState extends State<BarcodeScan> {
           margin: EdgeInsets.all(8.0),
           child: RaisedButton(
             onPressed: () async {
-//              final resUrl = await BasicApi().postSearch("");
-              final resUrl = await BasicApi().postMultiple("");
+              final resUrl = await BasicApi().postSearch("");
+//              final resUrl = await BasicApi().postMultiple("");
               print("QRView url: $resUrl");
               Navigator.pushNamed(context, '/showpdf', arguments: resUrl);
             },

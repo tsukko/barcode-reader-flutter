@@ -3,8 +3,9 @@ class Medicine {
   final String gs1code;
   final String medicineName;
   final String url;
+  bool favorite = false;
 
-  Medicine(this.gs1code, this.medicineName, this.url);
+  Medicine(this.gs1code, this.medicineName, this.url, this.favorite);
 
 //  Medicine({this.gs1code, this.medicineName, this.attachmentUrl});
 //

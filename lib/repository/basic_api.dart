@@ -1,10 +1,14 @@
 import 'dart:async';
 
 import 'package:http/http.dart' as http;
+import 'package:qr_code/models/debug_data.dart';
 import 'package:qr_code/util/const.dart';
 
 class BasicApi {
-  var ress;
+  debugPost(String codeId) async {
+    print("debugPost: codeId: $codeId");
+    return postSearch(getRandomGs1Code());
+  }
 
   postSearch(String codeId) async {
     var url = Const.baseUrl + Const.searchDir;
@@ -14,8 +18,9 @@ class BasicApi {
 
     if (codeId == "") {
       codeId = '(01)14987080100314';
+      return null;
     }
-    print("deb1");
+    print("deb1 codeId: $codeId");
     var bodyParam = Const.getBodyGs1code(codeId);
     var hdr = Const.getHeader();
 

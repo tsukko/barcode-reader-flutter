@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:qr_code/util/const.dart';
-
-import '../models/medicine.dart';
+import 'package:qr_code/models/debug_data.dart';
+import 'package:qr_code/models/medicine.dart';
 
 class SelectDocument extends StatefulWidget {
   @override
@@ -9,54 +8,49 @@ class SelectDocument extends StatefulWidget {
 }
 
 class _SelectDocumentState extends State<SelectDocument> {
-  // 例
-  List<Medicine> sampleData = new List<Medicine>.generate(
-      10,
-      (i) => new Medicine("(01)1498708010031$i", "アルプラゾラム $i",
-          "/PmdaSearch/iyakuDetail/ResultDataSetPDF/780075_1124023F1118_1_04"));
-
-  // Build a DocumentListScaffold to provide the UI for users to
-  // create, edit, and delete documents
   @override
   Widget build(BuildContext context) {
+    final int index = ModalRoute.of(context).settings.arguments;
+    final Medicine item = sampleData[index];
+
     return Scaffold(
       appBar: AppBar(
-        title: Text("検索履歴"),
+        title: Text("文書選択"),
       ),
-      body: ListView.builder(
-        itemCount: sampleData.length,
-        itemBuilder: (context, int index) {
-          final item = sampleData[index];
-          return Dismissible(
-            // Each Dismissible must contain a Key. Keys allow Flutter to
-            // uniquely identify widgets.
-            key: Key(item.gs1code),
-            // Provide a function that tells the app
-            // what to do after an item has been swiped away.
-            onDismissed: (direction) {
-              // Remove the item from the data source.
-              setState(() {
-                sampleData.removeAt(index);
-              });
-
-              // Then show a snackbar.
-              Scaffold.of(context)
-                  .showSnackBar(SnackBar(content: Text("$item dismissed")));
-            },
-            // Show a red background as the item is swiped away.
-            background: Container(color: Colors.red),
-            child: ListTile(
-              leading: const Icon(Icons.attach_file),
-              title: Text(sampleData[index].medicineName),
-              subtitle: Text(sampleData[index].gs1code),
-              onTap: () {
-                Navigator.pushNamed(context, '/showpdf',
-                    arguments: Const.addBaseUrl(sampleData[index].url));
-              },
+      body: Column(
+        children: <Widget>[
+          Align(
+            child: Card(
+              margin: EdgeInsets.all(16.0),
+              child: Container(
+                margin: EdgeInsets.all(16.0),
+                child: Text("医薬品名：${item.medicineName}",
+                    style: TextStyle(fontSize: 18)),
+              ),
             ),
-          );
-        },
+          ),
+          Expanded(
+            child: list(),
+          )
+        ],
       ),
+    );
+  }
+
+  Widget list() {
+    return ListView.builder(
+      itemCount: docData.length,
+      itemBuilder: (context, int index) {
+        final item = docData[index];
+        return ListTile(
+          leading: const Icon(Icons.star),
+          title: Text(item),
+//          subtitle: Text(item),
+          onTap: () {
+//            Navigator.pushNamed(context, '/showpdf');
+          },
+        );
+      },
     );
   }
 }

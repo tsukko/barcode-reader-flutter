@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:qr_code/models/debug_data.dart';
+import 'package:qr_code/models/medicine.dart';
 import 'package:qr_code/util/const.dart';
-
-import '../models/medicine.dart';
 
 class Favorite extends StatefulWidget {
   @override
@@ -9,46 +9,42 @@ class Favorite extends StatefulWidget {
 }
 
 class _FavoriteState extends State<Favorite> {
-  // 例
-  List<Medicine> sampleData = new List<Medicine>.generate(
-      10,
-      (i) => new Medicine("(01)1498708010031$i", "アルプラゾラム $i",
-          "/PmdaSearch/iyakuDetail/ResultDataSetPDF/780075_1124023F1118_1_04"));
+  var fav_flag = false;
 
-  // Build a DocumentListScaffold to provide the UI for users to
-  // create, edit, and delete documents
+  // TODO DBからデータ取得
+  List<Medicine> localData = sampleData;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("検索履歴"),
+        title: Text("お気に入り"),
+        actions: [
+          IconButton(icon: Icon(Icons.refresh), onPressed: () {}),
+        ],
       ),
       body: ListView.builder(
-        itemCount: sampleData.length,
+        itemCount: localData.length,
         itemBuilder: (context, int index) {
-          final item = sampleData[index];
+          final item = localData[index];
+//          fav_flag = item.favorite;
           return Dismissible(
-            // Each Dismissible must contain a Key. Keys allow Flutter to
-            // uniquely identify widgets.
             key: Key(item.gs1code),
-            // Provide a function that tells the app
-            // what to do after an item has been swiped away.
             onDismissed: (direction) {
-              // Remove the item from the data source.
               setState(() {
-                sampleData.removeAt(index);
+                localData.removeAt(index);
               });
-
-              // Then show a snackbar.
               Scaffold.of(context)
                   .showSnackBar(SnackBar(content: Text("$item dismissed")));
             },
             // Show a red background as the item is swiped away.
             background: Container(color: Colors.red),
             child: ListTile(
-              leading: const Icon(Icons.attach_file),
-              title: Text(sampleData[index].medicineName),
-              subtitle: Text(sampleData[index].gs1code),
+              leading: favIcon(item.favorite, index),
+//              leading:Material(child: const Icon(Icons.favorite)),
+              trailing: editIcon(index),
+              title: Text(localData[index].medicineName),
+              subtitle: Text(item.gs1code),
               onTap: () {
                 Navigator.pushNamed(context, '/showpdf',
                     arguments: Const.addBaseUrl(sampleData[index].url));
@@ -56,6 +52,40 @@ class _FavoriteState extends State<Favorite> {
             ),
           );
         },
+      ),
+    );
+  }
+
+  Widget favIcon(fav_f, index) {
+    return Material(
+      child: InkWell(
+        onTap: () {
+          setState(() {
+            localData[index].favorite = !localData[index].favorite;
+            //TODO DB更新
+          });
+        },
+        child: Container(
+          margin: EdgeInsets.all(16.0),
+          child: localData[index].favorite
+              ? const Icon(Icons.favorite)
+              : const Icon(Icons.favorite_border),
+        ),
+      ),
+    );
+  }
+
+  Widget editIcon(int index) {
+    return Material(
+      child: InkWell(
+        onTap: () {
+          //TODO
+          Navigator.pushNamed(context, '/select_document', arguments: index);
+        },
+        child: Container(
+          margin: EdgeInsets.all(16.0),
+          child: const Icon(Icons.mode_edit),
+        ),
       ),
     );
   }
