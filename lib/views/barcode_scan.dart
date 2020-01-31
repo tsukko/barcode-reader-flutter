@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:qr_code/repository/basic_api.dart';
 import 'package:qr_code/util/camera.dart';
 import 'package:qr_code/widget/camera_view.dart';
-import 'package:qr_code/widget/qr_scanner_overlay_shape.dart';
+import 'package:qr_code/widget/camera_view_overlay_shape.dart';
 
 class BarcodeScan extends StatefulWidget {
   const BarcodeScan({
@@ -94,7 +94,7 @@ class _BarcodeScanState extends State<BarcodeScan> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.lime[100],
-      appBar: AppBar(title: Text('Screen Barcode')),
+      appBar: AppBar(title: Text('バーコード読み取り')),
       body: Column(
         children: <Widget>[
           Expanded(
@@ -102,7 +102,7 @@ class _BarcodeScanState extends State<BarcodeScan> {
 //              key: qrKey,
 //              onQRViewCreated: _onQRViewCreated,
               cameraController: controller,
-              overlay: QrScannerOverlayShape(
+              overlay: CameraViewOverlayShape(
                 borderColor: Colors.red,
                 borderRadius: 10,
                 borderLength: 30,

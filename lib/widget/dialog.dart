@@ -5,12 +5,12 @@ enum _DialogActionType {
   ok,
 }
 
-void showBasicDialog(BuildContext context) {
+void showBasicDialog(BuildContext context, String title, String message) {
   showDialog(
     context: context,
     builder: (BuildContext context) => new AlertDialog(
-      title: new Text("タイトル"),
-      content: new Text("本文"),
+      title: new Text(title),
+      content: new Text(message),
       // ボタンの配置
       actions: <Widget>[
         new FlatButton(

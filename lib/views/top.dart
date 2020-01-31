@@ -136,7 +136,7 @@ class _TopState extends State<Top> {
   Widget _search() {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, '/select_document');
+        Navigator.pushNamed(context, '/search_conditional');
       },
       child: Card(
         margin: EdgeInsets.all(16.0),

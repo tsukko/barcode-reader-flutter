@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-class QrScannerOverlayShape extends ShapeBorder {
+class CameraViewOverlayShape extends ShapeBorder {
   final Color borderColor;
   final double borderWidth;
   final Color overlayColor;
@@ -10,7 +10,7 @@ class QrScannerOverlayShape extends ShapeBorder {
   final double borderLength;
   final double cutOutSize;
 
-  QrScannerOverlayShape({
+  CameraViewOverlayShape({
     this.borderColor = Colors.red,
     this.borderWidth = 3.0,
     this.overlayColor = const Color.fromRGBO(0, 0, 0, 80),
@@ -166,7 +166,7 @@ class QrScannerOverlayShape extends ShapeBorder {
 
   @override
   ShapeBorder scale(double t) {
-    return QrScannerOverlayShape(
+    return CameraViewOverlayShape(
       borderColor: borderColor,
       borderWidth: borderWidth,
       overlayColor: overlayColor,

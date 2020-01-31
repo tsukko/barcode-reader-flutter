@@ -20,7 +20,15 @@ class _FavoriteState extends State<Favorite> {
       appBar: AppBar(
         title: Text("お気に入り"),
         actions: [
-          IconButton(icon: Icon(Icons.refresh), onPressed: () {}),
+          Container(
+            padding: EdgeInsets.fromLTRB(0.0, 0.0, 8.0, 0.0),
+            margin: EdgeInsets.all(8.0),
+            child: IconButton(
+                icon: Icon(Icons.refresh),
+                onPressed: () {
+                  //TODO 更新確認処理
+                }),
+          ),
         ],
       ),
       body: ListView.builder(
