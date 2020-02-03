@@ -18,6 +18,7 @@
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
 		A43FD7631D71F16E388B2418 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66E0E6F8F1FC6ABDC304C43F /* Pods_Runner.framework */; };
+		B86650E223E84EB40004FE04 /* CameraSample.m in Sources */ = {isa = PBXBuildFile; fileRef = B86650E123E84EB40004FE04 /* CameraSample.m */; };
 		B8931A7A23E4759300A16281 /* libkxabarcodereader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8931A7923E4759300A16281 /* libkxabarcodereader.a */; };
 		B8931A7C23E475A500A16281 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B8931A7B23E475A500A16281 /* libiconv.tbd */; };
 		B8931A7E23E475BD00A16281 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8931A7D23E475BD00A16281 /* Accelerate.framework */; };
@@ -55,6 +56,8 @@
 		97C146FD1CF9000F007C117D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97C147001CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B86650E123E84EB40004FE04 /* CameraSample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CameraSample.m; path = /Users/tsukko/work/flutter_barcode/ios/Runner/CameraSample.m; sourceTree = "<absolute>"; };
+		B86650E623E8517B0004FE04 /* CameraSample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraSample.h; sourceTree = "<group>"; };
 		B8931A7923E4759300A16281 /* libkxabarcodereader.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libkxabarcodereader.a; path = KXABarcodeReaderLibrary/libkxabarcodereader.a; sourceTree = "<group>"; };
 		B8931A7B23E475A500A16281 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/lib/libiconv.tbd; sourceTree = DEVELOPER_DIR; };
 		B8931A7D23E475BD00A16281 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
@@ -120,6 +123,8 @@
 				97C146FD1CF9000F007C117D /* Assets.xcassets */,
 				97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */,
 				97C147021CF9000F007C117D /* Info.plist */,
+				B86650E123E84EB40004FE04 /* CameraSample.m */,
+				B86650E623E8517B0004FE04 /* CameraSample.h */,
 				B8D4D6A123E477170023B717 /* KXABarcodeReader.h */,
 				1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */,
 				1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */,
@@ -306,6 +311,7 @@
 			files = (
 				74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */,
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
+				B86650E223E84EB40004FE04 /* CameraSample.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
