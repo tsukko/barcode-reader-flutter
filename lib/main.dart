@@ -4,6 +4,7 @@ import 'package:qr_code/views/barcode_scan.dart';
 import 'package:qr_code/views/favorite.dart';
 import 'package:qr_code/views/pdf.dart';
 import 'package:qr_code/views/search_conditional.dart';
+import 'package:qr_code/views/search_conditional_detail.dart';
 import 'package:qr_code/views/search_result.dart';
 import 'package:qr_code/views/select_document.dart';
 import 'package:qr_code/views/top.dart';
@@ -25,6 +26,8 @@ class MyApp extends StatelessWidget {
         '/update_list': (BuildContext context) => new UpdateList(),
         '/search_conditional': (BuildContext context) =>
             new SearchConditional(),
+        '/search_conditional_detail': (BuildContext context) =>
+            new SearchConditionalDetail(),
         '/search_result': (BuildContext context) => new SearchResult(),
         '/showpdf': (BuildContext context) => new Pdf(),
         '/debug_camera': (BuildContext context) => new CameraApp(),

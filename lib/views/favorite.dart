@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:qr_code/models/debug_data.dart';
 import 'package:qr_code/models/medicine.dart';
 import 'package:qr_code/util/const.dart';
+import 'package:qr_code/widget/dialog.dart';
 
 class Favorite extends StatefulWidget {
   @override
@@ -27,40 +28,50 @@ class _FavoriteState extends State<Favorite> {
                 icon: Icon(Icons.refresh),
                 onPressed: () {
                   //TODO 更新確認処理
+                  showBasicDialog(context, "更新確認", "文書の更新確認をしますか");
                 }),
           ),
         ],
       ),
-      body: ListView.builder(
-        itemCount: localData.length,
-        itemBuilder: (context, int index) {
-          final item = localData[index];
+      body: DocList(),
+    );
+  }
+
+  Widget DocList() {
+    return ListView.builder(
+      itemCount: localData.length,
+      itemBuilder: (context, int index) {
+        final item = localData[index];
 //          fav_flag = item.favorite;
-          return Dismissible(
-            key: Key(item.gs1code),
-            onDismissed: (direction) {
-              setState(() {
-                localData.removeAt(index);
-              });
-              Scaffold.of(context)
-                  .showSnackBar(SnackBar(content: Text("$item dismissed")));
-            },
-            // Show a red background as the item is swiped away.
-            background: Container(color: Colors.red),
-            child: ListTile(
-              leading: favIcon(item.favorite, index),
+        return Dismissible(
+          key: Key(item.gs1code),
+          onDismissed: (direction) {
+            setState(() {
+              localData.removeAt(index);
+            });
+            Scaffold.of(context)
+                .showSnackBar(SnackBar(content: Text("$item dismissed")));
+          },
+          // Show a red background as the item is swiped away.
+          background: Container(color: Colors.red[200]),
+          child: new Column(
+            children: <Widget>[
+              ListTile(
+                leading: favIcon(item.favorite, index),
 //              leading:Material(child: const Icon(Icons.favorite)),
-              trailing: editIcon(index),
-              title: Text(localData[index].medicineName),
-              subtitle: Text(item.gs1code),
-              onTap: () {
-                Navigator.pushNamed(context, '/showpdf',
-                    arguments: Const.addBaseUrl(sampleData[index].url));
-              },
-            ),
-          );
-        },
-      ),
+                trailing: editIcon(index),
+                title: Text(localData[index].medicineName),
+                subtitle: Text(item.docType),
+                onTap: () {
+                  Navigator.pushNamed(context, '/showpdf',
+                      arguments: Const.addBaseUrl(item.url));
+                },
+              ),
+              new Divider(),
+            ],
+          ),
+        );
+      },
     );
   }
 

@@ -52,7 +52,7 @@ class _SearchConditionalState extends State<SearchConditional> {
   @override
   void initState() {
     _placeList.add(
-      PlaceItem(false, 'Huntington Beach', 'huntington-beach.jpg'),
+      PlaceItem(false, 'Huntington Beach', 'barcode.jpg'),
     );
     _placeList.add(
       PlaceItem(false, 'The Hat', 'the-hat.jpg'),
