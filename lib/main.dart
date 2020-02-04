@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:qr_code/CameraApp.dart';
+import 'package:qr_code/debug/camera_app.dart';
 import 'package:qr_code/views/barcode_scan.dart';
 import 'package:qr_code/views/favorite.dart';
 import 'package:qr_code/views/pdf.dart';
@@ -11,6 +11,8 @@ import 'package:qr_code/views/top.dart';
 import 'package:qr_code/views/update_list.dart';
 import 'package:splashscreen/splashscreen.dart';
 
+import 'debug/debug_page.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -19,18 +21,19 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: _MyApp(),
       routes: <String, WidgetBuilder>{
-        '/top': (BuildContext context) => new Top(),
-        '/qrview': (BuildContext context) => new BarcodeScan(),
-        '/favorite': (BuildContext context) => new Favorite(),
-        '/select_document': (BuildContext context) => new SelectDocument(),
-        '/update_list': (BuildContext context) => new UpdateList(),
-        '/search_conditional': (BuildContext context) =>
-            new SearchConditional(),
+        '/top': (BuildContext context) => Top(),
+        '/qrview': (BuildContext context) => const BarcodeScan(),
+        '/favorite': (BuildContext context) => Favorite(),
+        '/select_document': (BuildContext context) => SelectDocument(),
+        '/update_list': (BuildContext context) => UpdateList(),
+        '/search_conditional': (BuildContext context) => SearchConditional(),
         '/search_conditional_detail': (BuildContext context) =>
-            new SearchConditionalDetail(),
-        '/search_result': (BuildContext context) => new SearchResult(),
-        '/showpdf': (BuildContext context) => new Pdf(),
-        '/debug_camera': (BuildContext context) => new CameraApp(),
+            SearchConditionalDetail(),
+        '/search_result': (BuildContext context) => SearchResult(),
+        // 以降は、削除予定
+        '/showpdf': (BuildContext context) => Pdf(),
+        '/debug_camera': (BuildContext context) => CameraApp(),
+        '/debug_page': (BuildContext context) => DebugDb(),
 //        '/license': (BuildContext context) => new LicenseScreen(),
       },
     );

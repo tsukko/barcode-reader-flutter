@@ -9,11 +9,11 @@ class SearchConditional extends StatefulWidget {
 class _SearchConditionalState extends State<SearchConditional>
     with SingleTickerProviderStateMixin {
   final List<Tab> tabs = <Tab>[
-    Tab(
+    const Tab(
       text: 'GS1コード検索',
     ),
-    Tab(
-      text: "医薬品名検索",
+    const Tab(
+      text: '医薬品名検索',
     ),
   ];
   TabController _tabController;
@@ -29,25 +29,25 @@ class _SearchConditionalState extends State<SearchConditional>
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("条件検索"),
+          title: const Text('条件検索'),
           actions: [
             Container(
-              margin: EdgeInsets.all(8.0),
+              margin: const EdgeInsets.all(8),
               child: IconButton(
                   icon: Icon(Icons.delete_sweep),
                   onPressed: () {
                     //TODO 検索条件の削除
-                    showBasicDialog(context, "検索条件の削除", "検索条件を削除しますか");
+                    showBasicDialog(context, '検索条件の削除', '検索条件を削除しますか');
                   }),
             ),
             Container(
-              padding: EdgeInsets.fromLTRB(0.0, 0.0, 8.0, 0.0),
-              margin: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.fromLTRB(0, 0, 8, 0),
+              margin: const EdgeInsets.all(8),
               child: IconButton(
                   icon: Icon(Icons.save_alt),
                   onPressed: () {
                     //TODO 検索条件の保存
-                    showBasicDialog(context, "検索条件の保存", "検索条件を保存しますか");
+                    showBasicDialog(context, '検索条件の保存', '検索条件を保存しますか');
                   }),
             ),
           ],
@@ -60,7 +60,7 @@ class _SearchConditionalState extends State<SearchConditional>
             indicatorSize: TabBarIndicatorSize.tab,
             indicatorWeight: 2,
             indicatorPadding:
-                EdgeInsets.symmetric(horizontal: 18.0, vertical: 8),
+                const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
 //            indicator: CustomTabIndicator(),
             labelColor: Colors.black,
           ),
@@ -68,13 +68,11 @@ class _SearchConditionalState extends State<SearchConditional>
         //Todo
         body: TabBarView(
           controller: _tabController,
-          children: tabs.map((tab) {
-            return _createTab(tab);
-          }).toList(),
+          children: tabs.map(_createTab).toList(),
         ));
   }
 
-  List<Item> _data = generateItems(8);
+  final List<Item> _data = generateItems(8);
 
   Widget _buildPanel() {
     return ExpansionPanelList.radio(
@@ -89,7 +87,8 @@ class _SearchConditionalState extends State<SearchConditional>
             },
             body: ListTile(
                 title: Text(item.expandedValue),
-                subtitle: Text('To delete this panel, tap the trash can icon'),
+                subtitle:
+                    const Text('To delete this panel, tap the trash can icon'),
                 trailing: Icon(Icons.delete),
                 onTap: () {
                   setState(() {

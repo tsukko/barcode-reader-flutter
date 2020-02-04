@@ -24,6 +24,8 @@ abstract class DatabaseProvider {
     return _instance;
   }
 
-  /// DBがpathに存在しなかった場合に onCreateメソッドが呼ばれます。（https://iganin.hatenablog.com/entry/2019/01/09/010804 より）
-  createDatabase(Database db, int version);
+  // DBがpathに存在しなかった場合に onCreateメソッドが呼ばれます。
+  // （https://iganin.hatenablog.com/entry/2019/01/09/010804 より）
+  // ignore: type_annotate_public_apis
+  Future<Database> createDatabase(Database db, int version);
 }

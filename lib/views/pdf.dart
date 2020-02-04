@@ -4,7 +4,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 class Pdf extends StatefulWidget {
   @override
-  _PdfState createState() => new _PdfState();
+  _PdfState createState() => _PdfState();
 }
 
 class _PdfState extends State<Pdf> {
@@ -14,7 +14,7 @@ class _PdfState extends State<Pdf> {
 
   @override
   void initState() {
-    print("PdfScreen initState");
+    print('PdfScreen initState');
     super.initState();
   }
 
@@ -39,16 +39,16 @@ class _PdfState extends State<Pdf> {
     final String url =
         Const.createLoadUrl(ModalRoute.of(context).settings.arguments);
     WebViewController _controller;
-    print("PdfScreen build :$url");
+    print('PdfScreen build :$url');
     return Scaffold(
       backgroundColor: Colors.lime[100],
       appBar: AppBar(
-        title: Text('Show PDF'),
+        title: const Text('Show PDF'),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.refresh),
             onPressed: () {
-              print("PdfScreen refresh url: $url");
+              print('PdfScreen refresh url: $url');
               _controller.loadUrl(url);
             },
           ),

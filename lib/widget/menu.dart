@@ -51,6 +51,15 @@ class Menu extends StatelessWidget {
               );
             },
           ),
+          ListTile(
+            selected: true,
+            leading: Icon(Icons.settings),
+            title: Text('debug_page'),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, '/debug_page');
+            },
+          ),
         ],
       ),
     );

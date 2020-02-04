@@ -16,9 +16,9 @@ class BarcodeScan extends StatefulWidget {
 }
 
 class _BarcodeScanState extends State<BarcodeScan> {
-  var qrText = "";
-  var flashState = Camera.flash_on;
-  var cameraState = Camera.front_camera;
+  String qrText = '';
+  String flashState = Camera.flash_on;
+  String cameraState = Camera.front_camera;
 
 //  QRViewController controller;
 //  CameraController controller;
@@ -26,7 +26,7 @@ class _BarcodeScanState extends State<BarcodeScan> {
 //  final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
 
   CameraController controller;
-  static const platform = const MethodChannel('com.tasogarei.test/web');
+  static const platform = MethodChannel('com.tasogarei.test/web');
 
   Future<void> getCameras() async {
     List<CameraDescription> cameras;
@@ -42,13 +42,13 @@ class _BarcodeScanState extends State<BarcodeScan> {
     super.initState();
     getCameras().then((_) {
       controller.initialize().then((_) {
-        print("deb::controller.initialize");
+        print('deb::controller.initialize');
         if (!mounted) {
           return;
         }
 
         controller.startImageStream((CameraImage availableImage) {
-//          print("deb::controller.startImageStream");
+          print('deb::controller.startImageStream');
           _scanText(availableImage);
         });
         setState(() {});
@@ -59,10 +59,10 @@ class _BarcodeScanState extends State<BarcodeScan> {
   void _scanText(CameraImage availableImage) async {
 //    print("deb::_scanText: start. "
 //        "height:${availableImage.height}, width:${availableImage.width}.");
-    String barcode = await platform.invokeMethod('web', {
-      "bytes": availableImage.planes[0].bytes,
-      "height": availableImage.height,
-      "width": availableImage.width
+    final String barcode = await platform.invokeMethod('web', {
+      'bytes': availableImage.planes[0].bytes,
+      'height': availableImage.height,
+      'width': availableImage.width
     });
 
     if (!mounted) {
@@ -94,7 +94,7 @@ class _BarcodeScanState extends State<BarcodeScan> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.lime[100],
-      appBar: AppBar(title: Text('バーコード読み取り')),
+      appBar: AppBar(title: const Text('バーコード読み取り')),
       body: Column(
         children: <Widget>[
           Expanded(
@@ -118,7 +118,7 @@ class _BarcodeScanState extends State<BarcodeScan> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Text("This is the result of scan: $qrText"),
+                  Text('This is the result of scan: $qrText'),
                   _row1(),
                   _row2(),
                 ],
@@ -137,7 +137,7 @@ class _BarcodeScanState extends State<BarcodeScan> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         Container(
-          margin: EdgeInsets.all(8.0),
+          margin: const EdgeInsets.all(8),
           child: RaisedButton(
             onPressed: () {
 //              if (controller != null) {
@@ -153,11 +153,11 @@ class _BarcodeScanState extends State<BarcodeScan> {
 //                }
 //              }
             },
-            child: Text(flashState, style: TextStyle(fontSize: 20)),
+            child: Text(flashState, style: const TextStyle(fontSize: 20)),
           ),
         ),
         Container(
-          margin: EdgeInsets.all(8.0),
+          margin: const EdgeInsets.all(8),
           child: RaisedButton(
             onPressed: () {
 //              if (controller != null) {
@@ -173,7 +173,7 @@ class _BarcodeScanState extends State<BarcodeScan> {
 //                }
 //              }
             },
-            child: Text(cameraState, style: TextStyle(fontSize: 20)),
+            child: Text(cameraState, style: const TextStyle(fontSize: 20)),
           ),
         )
       ],
@@ -186,33 +186,33 @@ class _BarcodeScanState extends State<BarcodeScan> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         Container(
-          margin: EdgeInsets.all(8.0),
+          margin: const EdgeInsets.all(8),
           child: RaisedButton(
             onPressed: () {
 //              controller?.pauseCamera();
             },
-            child: Text('pause', style: TextStyle(fontSize: 20)),
+            child: const Text('pause', style: TextStyle(fontSize: 20)),
           ),
         ),
         Container(
-          margin: EdgeInsets.all(8.0),
+          margin: const EdgeInsets.all(8),
           child: RaisedButton(
             onPressed: () {
 //              controller?.resumeCamera();
             },
-            child: Text('resume', style: TextStyle(fontSize: 20)),
+            child: const Text('resume', style: TextStyle(fontSize: 20)),
           ),
         ),
         Container(
-          margin: EdgeInsets.all(8.0),
+          margin: const EdgeInsets.all(8),
           child: RaisedButton(
             onPressed: () async {
               final resUrl = await BasicApi().postSearch("");
 //              final resUrl = await BasicApi().postMultiple("");
-              print("QRView url: $resUrl");
+              print('QRView url: $resUrl');
               Navigator.pushNamed(context, '/showpdf', arguments: resUrl);
             },
-            child: Text('test', style: TextStyle(fontSize: 20)),
+            child: const Text('test', style: TextStyle(fontSize: 20)),
           ),
         )
       ],

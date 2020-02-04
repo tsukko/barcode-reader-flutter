@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:qr_code/models/debug_data.dart';
+import 'package:qr_code/debug/debug_data.dart';
 import 'package:qr_code/models/medicine.dart';
 
 class SelectDocument extends StatefulWidget {
@@ -15,17 +15,17 @@ class _SelectDocumentState extends State<SelectDocument> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("文書選択"),
+        title: const Text('文書選択'),
       ),
       body: Column(
         children: <Widget>[
           Align(
             child: Card(
-              margin: EdgeInsets.all(16.0),
+              margin: const EdgeInsets.all(16),
               child: Container(
-                margin: EdgeInsets.all(16.0),
-                child: Text("医薬品名：${item.medicineName}",
-                    style: TextStyle(fontSize: 18)),
+                margin: const EdgeInsets.all(16),
+                child: Text('医薬品名：${item.medicineName}',
+                    style: const TextStyle(fontSize: 18)),
               ),
             ),
           ),

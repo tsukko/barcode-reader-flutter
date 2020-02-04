@@ -7,229 +7,167 @@ class SearchConditionalDetail extends StatefulWidget {
 }
 
 class _SearchConditionalDetailState extends State<SearchConditionalDetail> {
-  String _type = '';
   String _type1 = '';
   String _type2 = '';
   bool isCode = true;
+  bool _flag = false;
+  List<bool> typesFlag = new List<bool>.generate(16, (i) => false);
 
-  final TextEditingController _textEditingController =
-      new TextEditingController();
-  String _text = '';
-
-  void _handleRadio(String e) => setState(() {
-        _type = e;
-        isCode = !isCode;
-      });
-
-  IconData _changeIcon(String e) {
-    IconData icon = null;
-    switch (e) {
-      case 'thumb_up':
-        icon = Icons.thumb_up;
-        break;
-      case 'favorite':
-        icon = Icons.favorite;
-        break;
-      default:
-        icon = Icons.thumb_up;
-    }
-    return icon;
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _textEditingController.addListener(_printLatestValue);
-
+  void _handleCheckbox(bool e, int typeIndex) {
     setState(() {
-      _type = "thumb_up";
-      _type1 = "0";
-      _type2 = "0";
+      _flag = e;
+      typesFlag[typeIndex] = e;
     });
-  }
-
-  @override
-  void dispose() {
-    _textEditingController.dispose();
-    super.dispose();
-  }
-
-  void _handleText(String e) {
-    setState(() {
-      _text = e;
-    });
-  }
-
-  void _printLatestValue() {
-    print("入力状況: ${_textEditingController.text}");
   }
 
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.lime[100],
       appBar: AppBar(
-        title: Text('条件検索'),
+        title: Text('文書選択'),
       ),
-      body: Stack(
-        children: <Widget>[
-          Container(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                new RadioListTile(
-                  secondary: new Image.asset("assets/barcode.png", scale: 8.0),
-                  activeColor: Colors.blue,
-                  controlAffinity: ListTileControlAffinity.leading,
-                  title: Text('GS1 codeでの検索'),
-                  value: 'thumb_up',
-                  groupValue: _type,
-                  onChanged: _handleRadio,
-                ),
-                isCode ? cardGs1Code() : Container(),
-                new RadioListTile(
-                  secondary:
-                      new Image.asset("assets/medicine1.png", scale: 8.0),
-                  activeColor: Colors.blue,
-                  controlAffinity: ListTileControlAffinity.leading,
-                  title: Text('医薬品名での検索'),
-                  value: 'favorite',
-                  groupValue: _type,
-                  onChanged: _handleRadio,
-                ),
-                isCode ? Container() : cardName(),
-              ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Card(
+              margin: EdgeInsets.all(8.0),
+              child: Column(
+                children: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      Container(
+                        margin: EdgeInsets.only(left: 8.0, right: 8.0),
+                        child: RaisedButton(
+                          child: Text("全チェック",
+                              style:
+                                  TextStyle(fontSize: 18, color: Colors.white)),
+                          color: Colors.blue,
+                          onPressed: () {
+                            Navigator.pushNamed(
+                                context, '/search_conditional_detail');
+                          },
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 8.0, right: 8.0),
+                        child: RaisedButton(
+                          child: Text("全クリア",
+                              style:
+                                  TextStyle(fontSize: 18, color: Colors.white)),
+                          color: Colors.blue,
+                          onPressed: () {
+                            Navigator.pushNamed(
+                                context, '/search_conditional_detail');
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                  CheckboxListTile(
+                    activeColor: Colors.blue,
+                    title: Text('添付文書'),
+//                  secondary: new Icon(
+//                    Icons.thumb_up,
+//                    color: _flag ? Colors.orange[700] : Colors.grey[500],
+//                  ),
+                    controlAffinity: ListTileControlAffinity.leading,
+                    value: typesFlag[0],
+                    onChanged: (bool value) => _handleCheckbox(value, 0),
+                  ),
+                  CheckboxListTile(
+                    activeColor: Colors.blue,
+                    title: Text('患者向医薬品ガイド／ワクチン接種を受ける人へのガイド'),
+                    controlAffinity: ListTileControlAffinity.leading,
+                    value: typesFlag[1],
+                    onChanged: (bool value) => _handleCheckbox(value, 1),
+                  ),
+                  CheckboxListTile(
+                    activeColor: Colors.blue,
+                    title: Text('患者向医薬品ガイド／ワクチン接種を受ける人へのガイド'),
+                    controlAffinity: ListTileControlAffinity.leading,
+                    value: typesFlag[2],
+                    onChanged: (bool value) => _handleCheckbox(value, 2),
+                  ),
+                  CheckboxListTile(
+                    activeColor: Colors.blue,
+                    title: Text('インタビューフォーム'),
+                    controlAffinity: ListTileControlAffinity.leading,
+                    value: typesFlag[3],
+                    onChanged: (bool value) => _handleCheckbox(value, 3),
+                  ),
+                  CheckboxListTile(
+                    activeColor: Colors.blue,
+                    title: Text('医薬品リスク管理計画（RMP）'),
+                    controlAffinity: ListTileControlAffinity.leading,
+                    value: typesFlag[4],
+                    onChanged: (bool value) => _handleCheckbox(value, 4),
+                  ),
+                  CheckboxListTile(
+                    activeColor: Colors.blue,
+                    title: Text('改訂指示反映履歴および根拠症例'),
+                    controlAffinity: ListTileControlAffinity.leading,
+                    value: typesFlag[5],
+                    onChanged: (bool value) => _handleCheckbox(value, 5),
+                  ),
+                  CheckboxListTile(
+                    activeColor: Colors.blue,
+                    title: Text('審査報告書／再審査報告書／最適使用推進ガイドライン等'),
+                    controlAffinity: ListTileControlAffinity.leading,
+                    value: typesFlag[6],
+                    onChanged: (bool value) => _handleCheckbox(value, 6),
+                  ),
+                  CheckboxListTile(
+                    activeColor: Colors.blue,
+                    title: Text('くすりのしおり'),
+                    controlAffinity: ListTileControlAffinity.leading,
+                    value: typesFlag[7],
+                    onChanged: (bool value) => _handleCheckbox(value, 7),
+                  ),
+                  CheckboxListTile(
+                    activeColor: Colors.blue,
+                    title: Text('緊急安全性情報／安全性速報'),
+                    controlAffinity: ListTileControlAffinity.leading,
+                    value: typesFlag[8],
+                    onChanged: (bool value) => _handleCheckbox(value, 8),
+                  ),
+                  CheckboxListTile(
+                    activeColor: Colors.blue,
+                    title: Text('医薬品の適正使用等に関するお知らせ'),
+                    controlAffinity: ListTileControlAffinity.leading,
+                    value: typesFlag[9],
+                    onChanged: (bool value) => _handleCheckbox(value, 9),
+                  ),
+                  CheckboxListTile(
+                    activeColor: Colors.blue,
+                    title: Text('厚生労働省発表資料（医薬品関連）'),
+                    controlAffinity: ListTileControlAffinity.leading,
+                    value: typesFlag[10],
+                    onChanged: (bool value) => _handleCheckbox(value, 10),
+                  ),
+                ],
+              ),
             ),
-          ),
-          Container(
-            alignment: Alignment.bottomCenter,
-            margin: EdgeInsets.all(16.0),
-            child: SizedBox(
-              width: double.infinity, // match_parent
-              child: RaisedButton(
-                child: Text("検索",
-                    style: TextStyle(fontSize: 18, color: Colors.white)),
-                color: Colors.blue,
+            Container(
+              alignment: Alignment.bottomCenter,
+              margin: EdgeInsets.all(16.0),
+              child: SizedBox(
+                width: double.infinity, // match_parent
+                child: RaisedButton(
+                  child: Text("検索",
+                      style: TextStyle(fontSize: 18, color: Colors.white)),
+                  color: Colors.blue,
 //              shape: RoundedRectangleBorder(
 //                borderRadius: new BorderRadius.circular(10.0),
 //              ),
-                onPressed: () {
-                  Navigator.pushNamed(context, '/search_conditional');
-                },
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget cardGs1Code() {
-    return Card(
-      margin: EdgeInsets.all(8.0),
-      child: Row(
-        children: <Widget>[
-          Expanded(
-            flex: 1,
-            child: Container(
-              margin: EdgeInsets.all(8.0),
-              child: Text("GS Code:", style: TextStyle(fontSize: 16)),
-            ),
-          ),
-          Expanded(
-            flex: 3,
-            child: Container(
-              margin: EdgeInsets.all(8.0),
-              child: TextField(
-                enabled: true,
-                // 入力数
-                maxLength: 14,
-//                maxLengthEnforced: false,
-//                obscureText: false,
-                maxLines: 1,
-                //パスワード
-                onChanged: _handleText,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget cardName() {
-    return Card(
-      margin: EdgeInsets.all(8.0),
-      child: Column(
-        children: <Widget>[
-          Row(
-            children: <Widget>[
-              Expanded(
-                flex: 1,
-                child: Container(
-                  margin: EdgeInsets.all(8.0),
-                  child: Text("医薬品名:", style: TextStyle(fontSize: 16)),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/search_conditional_detail');
+                  },
                 ),
               ),
-              Expanded(
-                flex: 3,
-                child: Container(
-                  margin: EdgeInsets.all(8.0),
-                  child: TextField(
-                    enabled: true,
-//                    maxLengthEnforced: false,
-//                    obscureText: false,
-                    maxLines: 1,
-                    onChanged: _handleText,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Row(
-            children: <Widget>[
-              new Radio(
-                activeColor: Colors.blue,
-                value: '0',
-                groupValue: _type1,
-                onChanged: _handleRadio,
-              ),
-              Text("一般名及び販売名", style: TextStyle(fontSize: 12)),
-              new Radio(
-                activeColor: Colors.blue,
-                value: '1',
-                groupValue: _type1,
-                onChanged: _handleRadio,
-              ),
-              Text("一般名のみ", style: TextStyle(fontSize: 12)),
-              new Radio(
-                activeColor: Colors.blue,
-                value: '2',
-                groupValue: _type1,
-                onChanged: _handleRadio,
-              ),
-              Text("販売名のみ", style: TextStyle(fontSize: 12)),
-            ],
-          ),
-          Row(
-            children: <Widget>[
-              new Radio(
-                activeColor: Colors.blue,
-                value: '0',
-                groupValue: _type2,
-                onChanged: _handleRadio,
-              ),
-              Text("部分一致", style: TextStyle(fontSize: 12)),
-              new Radio(
-                activeColor: Colors.blue,
-                value: '1',
-                groupValue: _type2,
-                onChanged: _handleRadio,
-              ),
-              Text("前方一致", style: TextStyle(fontSize: 12)),
-            ],
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -7,21 +7,19 @@ Widget pendingWidget(String message, double pendingHeight) {
     child: Stack(
       alignment: Alignment.center,
       children: <Widget>[
-        Placeholder(
-//            color: Colors.red,
-            ),
-        Text(message, style: TextStyle(fontSize: 24)),
+        const Placeholder(),
+        Text(message, style: const TextStyle(fontSize: 24)),
       ],
     ),
   );
 }
 
-Widget debugCamera(context) {
+Widget debugCamera(BuildContext context) {
   return RaisedButton(
-    child: Text("debug camera"),
+    child: const Text('debug camera'),
     color: Colors.blue,
     shape: RoundedRectangleBorder(
-      borderRadius: new BorderRadius.circular(10.0),
+      borderRadius: BorderRadius.circular(10),
     ),
     onPressed: () {
       Navigator.pushNamed(context, '/debug_camera');

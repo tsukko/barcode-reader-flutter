@@ -5,7 +5,7 @@ class SearchResult extends StatelessWidget {
   Widget build(BuildContext context) {
     final String args = ModalRoute.of(context).settings.arguments;
     return Scaffold(
-      appBar: AppBar(title: Text('Result Screen')),
+      appBar: AppBar(title: const Text('Result Screen')),
       backgroundColor: Colors.lime[100],
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -13,7 +13,7 @@ class SearchResult extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Container(
-            margin: EdgeInsets.all(8.0),
+            margin: const EdgeInsets.all(8),
             child: RaisedButton(
               child: Text(args),
               onPressed: () {
@@ -22,9 +22,9 @@ class SearchResult extends StatelessWidget {
             ),
           ),
           Container(
-            margin: EdgeInsets.all(8.0),
+            margin: const EdgeInsets.all(8),
             child: RaisedButton(
-              child: Text("back"),
+              child: const Text('back'),
               onPressed: () {
                 Navigator.pop(context);
               },

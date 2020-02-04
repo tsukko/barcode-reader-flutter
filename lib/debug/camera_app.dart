@@ -7,11 +7,6 @@ import 'package:path_provider/path_provider.dart';
 
 List<CameraDescription> cameras;
 
-//Future<void> main() async {
-//  cameras = await availableCameras();
-//  runApp(CameraApp());
-//}
-
 class CameraApp extends StatefulWidget {
   @override
   _CameraAppState createState() => _CameraAppState();
@@ -56,7 +51,7 @@ class _CameraAppState extends State<CameraApp> {
     final String dirPath = '${extDir.path}/Pictures/own_note';
     await Directory(dirPath).create(recursive: true);
     int timestamp = DateTime.now().millisecondsSinceEpoch;
-    final String filePath = '$dirPath/${timestamp}.jpg';
+    final String filePath = '$dirPath/$timestamp.jpg';
 
     if (controller.value.isTakingPicture) {
       // A capture is already pending, do nothing.
@@ -90,7 +85,7 @@ class _CameraAppState extends State<CameraApp> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Text("result : $qrText", style: TextStyle(fontSize: 18)),
+              Text('result : $qrText', style: const TextStyle(fontSize: 18)),
               RaisedButton(
                 child: Icon(
                   Icons.camera,
@@ -107,7 +102,7 @@ class _CameraAppState extends State<CameraApp> {
     }
   }
 
-  static const platform = const MethodChannel('com.tasogarei.test/web');
+  static const platform = MethodChannel('com.tasogarei.test/web');
 
   void _scanText(CameraImage availableImage) async {
 //    print("start _scanText. height:${availableImage.height}, "
@@ -132,9 +127,9 @@ class _CameraAppState extends State<CameraApp> {
     });
     setState(() {
       qrText = dateString;
-      print("qrText: $qrText");
+      print('qrText: $qrText');
       if (dateString.isNotEmpty) {
-        print("qrText: $qrText");
+        print('qrText: $qrText');
         controller.stopImageStream();
       }
     });

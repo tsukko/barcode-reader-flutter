@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:qr_code/models/debug_data.dart';
+import 'package:qr_code/debug/debug_data.dart';
 import 'package:qr_code/util/const.dart';
 
 class UpdateList extends StatefulWidget {
@@ -8,19 +8,11 @@ class UpdateList extends StatefulWidget {
 }
 
 class _UpdateListState extends State<UpdateList> {
-  // 例
-//  List<Medicine> sampleData = new List<Medicine>.generate(
-//      10,
-//      (i) => new Medicine("(01)1498708010031$i", "アルプラゾラム $i",
-//          "/PmdaSearch/iyakuDetail/ResultDataSetPDF/780075_1124023F1118_1_04"));
-
-  // Build a DocumentListScaffold to provide the UI for users to
-  // create, edit, and delete documents
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("検索履歴"),
+        title: Text("更新一覧"),
       ),
       body: ListView.builder(
         itemCount: sampleData.length,

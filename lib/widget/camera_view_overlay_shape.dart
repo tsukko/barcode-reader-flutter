@@ -18,15 +18,12 @@ class CameraViewOverlayShape extends ShapeBorder {
     this.borderLength = 40,
     this.cutOutSize = 250,
   }) : assert(
-            cutOutSize != null
-                ? cutOutSize != null
-                    ? borderLength <= cutOutSize / 2 + borderWidth * 2
-                    : true
-                : true,
+            cutOutSize != null ||
+                borderLength <= cutOutSize / 2 + borderWidth * 2,
             "Border can't be larger than ${cutOutSize / 2 + borderWidth * 2}");
 
   @override
-  EdgeInsetsGeometry get dimensions => const EdgeInsets.all(10.0);
+  EdgeInsetsGeometry get dimensions => const EdgeInsets.all(10);
 
   @override
   Path getInnerPath(Rect rect, {TextDirection textDirection}) {
@@ -63,7 +60,6 @@ class CameraViewOverlayShape extends ShapeBorder {
   void paint(Canvas canvas, Rect rect, {TextDirection textDirection}) {
     final width = rect.width;
     final borderWidthSize = width / 2;
-    final height = rect.height;
     final borderOffset = borderWidth / 2;
     final _borderLength = borderLength > cutOutSize / 2 + borderWidth * 2
         ? borderWidthSize / 2
@@ -89,10 +85,10 @@ class CameraViewOverlayShape extends ShapeBorder {
       ..blendMode = BlendMode.dstOut;
 
     // cameraビューの中心座標
-    var cameraViewCenterHorizon = (rect.right + rect.left) / 2;
-    var cameraViewCenterVertical = (rect.bottom + rect.top) / 2;
-    var cutOutLeft = cameraViewCenterHorizon - _cutOutWidth / 2 + borderOffset;
-    var cutOutTop = cameraViewCenterVertical - _cutOutHeight / 2 + borderOffset;
+    final viewCenterHorizon = (rect.right + rect.left) / 2;
+    final viewCenterVertical = (rect.bottom + rect.top) / 2;
+    final cutOutLeft = viewCenterHorizon - _cutOutWidth / 2 + borderOffset;
+    final cutOutTop = viewCenterVertical - _cutOutHeight / 2 + borderOffset;
     final cutOutRect = Rect.fromLTWH(
       cutOutLeft,
       cutOutTop,
@@ -100,12 +96,11 @@ class CameraViewOverlayShape extends ShapeBorder {
       _cutOutHeight - borderOffset * 2,
     );
 
-    canvas.saveLayer(
-      rect,
-      backgroundPaint,
-    );
-
     canvas
+      ..saveLayer(
+        rect,
+        backgroundPaint,
+      )
       ..drawRect(
         rect,
         backgroundPaint,

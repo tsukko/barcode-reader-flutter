@@ -1,8 +1,49 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 enum _DialogActionType {
   cancel,
   ok,
+}
+
+Widget _buildSignOutDialogAndroid(
+    BuildContext context, String title, String content) {
+  return AlertDialog(
+      title: Text(title),
+      content: Text(content),
+      actions: <Widget>[
+        FlatButton(
+          child: const Text("Cancel"),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        FlatButton(
+          child: const Text("SignOut"),
+          onPressed: () {},
+        )
+      ]);
+}
+
+Widget _buildSignOutDialogiOS(
+    BuildContext context, String title, String message) {
+  return CupertinoAlertDialog(
+      title: const Text('Confirm'),
+      content: const Text('Are you sure you want to Sign out?'),
+      actions: <Widget>[
+        CupertinoDialogAction(
+          child: const Text('Cancel'),
+          isDefaultAction: true,
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        CupertinoDialogAction(
+          child: const Text('SignOut'),
+          isDestructiveAction: true,
+          onPressed: () {},
+        )
+      ]);
 }
 
 void showBasicDialog(BuildContext context, String title, String message) {
