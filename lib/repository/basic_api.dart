@@ -8,9 +8,9 @@ class BasicApi {
 
     final client = http.Client();
 
-    if (codeId == "") {
+    if (codeId == '') {
 //      codeId = '(01)14987080100314';
-      print("error code is empty.");
+      print('error code is empty.');
       return null;
     }
 //    print("deb1 codeId: $codeId");
@@ -28,12 +28,12 @@ class BasicApi {
 //          new RegExp('<a target=\'_blank\' href=.*?</a>').allMatches(resBody);
 //      <a target='_blank' href='/PmdaSearch/iyakuDetail/GeneralList/1124023'>アルプラゾラム</a>
 //      <a target='_blank' href='/PmdaSearch/iyakuDetail/ResultDataSetPDF/780075_1124023F1118_1_04'>PDF(2019年07月22日)</a>
-      Iterable<Match> matches =
+      final Iterable<Match> matches =
           RegExp('/PmdaSearch/iyakuDetail/ResultDataSetPDF/.*?>')
               .allMatches(resBody);
 
       var pdfUrl = Const.baseUrl;
-      for (Match m in matches) {
+      for (var m in matches) {
         pdfUrl = Const.baseUrl + m.group(0).replaceAll("'>", '');
 //        print("pdf url : $pdfUrl");
       }

@@ -61,33 +61,33 @@ class _SearchConditionalState extends State<SearchConditional> {
   }
 
   void _printLatestValue() {
-    print("入力状況: ${_textEditingController.text}");
+    print('入力状況: ${_textEditingController.text}');
   }
 
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.lime[100],
       appBar: AppBar(
-        title: Text('条件検索'),
+        title: const Text('条件検索'),
         actions: [
           Container(
-            margin: EdgeInsets.all(8.0),
+            margin: const EdgeInsets.all(8),
             child: IconButton(
               icon: Icon(Icons.delete_sweep),
               onPressed: () {
                 //TODO 検索条件の削除
-                showBasicDialog(context, "検索条件の削除", "検索条件を削除しますか");
+                showBasicDialog(context, 'D0001');
               },
             ),
           ),
           Container(
-            padding: EdgeInsets.fromLTRB(0.0, 0.0, 8.0, 0.0),
-            margin: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.fromLTRB(0, 0, 8, 0),
+            margin: const EdgeInsets.all(8),
             child: IconButton(
               icon: Icon(Icons.save_alt),
               onPressed: () {
                 //TODO 検索条件の保存
-                showBasicDialog(context, "検索条件の保存", "検索条件を保存しますか");
+                showBasicDialog(context, 'D0002');
               },
             ),
           ),
@@ -96,26 +96,27 @@ class _SearchConditionalState extends State<SearchConditional> {
       body: Stack(
         children: <Widget>[
           Container(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                new RadioListTile(
-                  secondary: new Image.asset("assets/barcode.png", scale: 8.0),
+                RadioListTile(
+                  secondary: Image.asset('assets/barcode.png', scale: 8),
                   activeColor: Colors.blue,
                   controlAffinity: ListTileControlAffinity.leading,
-                  title: Text('GS1 codeでの検索'),
+                  // ignore: prefer_const_constructors
+                  title: const Text('GS1 codeでの検索'),
                   value: 'thumb_up',
                   groupValue: _type,
                   onChanged: _handleRadio,
                 ),
                 isCode ? cardGs1Code() : Container(),
-                new RadioListTile(
-                  secondary:
-                      new Image.asset("assets/medicine1.png", scale: 8.0),
+                RadioListTile(
+                  secondary: Image.asset('assets/medicine1.png', scale: 8),
                   activeColor: Colors.blue,
                   controlAffinity: ListTileControlAffinity.leading,
-                  title: Text('医薬品名での検索'),
+                  // ignore: prefer_const_constructors
+                  title: const Text('医薬品名での検索'),
                   value: 'favorite',
                   groupValue: _type,
                   onChanged: _handleRadio,
@@ -126,11 +127,11 @@ class _SearchConditionalState extends State<SearchConditional> {
           ),
           Container(
             alignment: Alignment.bottomCenter,
-            margin: EdgeInsets.all(16.0),
+            margin: const EdgeInsets.all(16),
             child: SizedBox(
               width: double.infinity, // match_parent
               child: RaisedButton(
-                child: Text("検索",
+                child: const Text('検索',
                     style: TextStyle(fontSize: 18, color: Colors.white)),
                 color: Colors.blue,
 //              shape: RoundedRectangleBorder(
@@ -149,20 +150,20 @@ class _SearchConditionalState extends State<SearchConditional> {
 
   Widget cardGs1Code() {
     return Card(
-      margin: EdgeInsets.all(8.0),
+      margin: const EdgeInsets.all(8),
       child: Row(
         children: <Widget>[
           Expanded(
             flex: 1,
             child: Container(
-              margin: EdgeInsets.all(8.0),
-              child: Text("GS Code:", style: TextStyle(fontSize: 16)),
+              margin: const EdgeInsets.all(8),
+              child: const Text('GS Code:', style: TextStyle(fontSize: 16)),
             ),
           ),
           Expanded(
             flex: 3,
             child: Container(
-              margin: EdgeInsets.all(8.0),
+              margin: const EdgeInsets.all(8),
               child: TextField(
                 enabled: true,
                 // 入力数
@@ -182,7 +183,7 @@ class _SearchConditionalState extends State<SearchConditional> {
 
   Widget cardName() {
     return Card(
-      margin: EdgeInsets.all(8.0),
+      margin: const EdgeInsets.all(8),
       child: Column(
         children: <Widget>[
           Row(
@@ -190,14 +191,14 @@ class _SearchConditionalState extends State<SearchConditional> {
               Expanded(
                 flex: 1,
                 child: Container(
-                  margin: EdgeInsets.all(8.0),
-                  child: Text("医薬品名:", style: TextStyle(fontSize: 16)),
+                  margin: const EdgeInsets.all(8),
+                  child: const Text('医薬品名:', style: TextStyle(fontSize: 16)),
                 ),
               ),
               Expanded(
                 flex: 3,
                 child: Container(
-                  margin: EdgeInsets.all(8.0),
+                  margin: const EdgeInsets.all(8),
                   child: TextField(
                     enabled: true,
 //                    maxLengthEnforced: false,
@@ -211,45 +212,45 @@ class _SearchConditionalState extends State<SearchConditional> {
           ),
           Row(
             children: <Widget>[
-              new Radio(
+              Radio(
                 activeColor: Colors.blue,
                 value: '0',
                 groupValue: _type1,
                 onChanged: _handleRadio,
               ),
-              Text("一般名及び販売名", style: TextStyle(fontSize: 12)),
-              new Radio(
+              const Text('一般名及び販売名', style: TextStyle(fontSize: 12)),
+              Radio(
                 activeColor: Colors.blue,
                 value: '1',
                 groupValue: _type1,
                 onChanged: _handleRadio,
               ),
-              Text("一般名のみ", style: TextStyle(fontSize: 12)),
-              new Radio(
+              const Text('一般名のみ', style: TextStyle(fontSize: 12)),
+              Radio(
                 activeColor: Colors.blue,
                 value: '2',
                 groupValue: _type1,
                 onChanged: _handleRadio,
               ),
-              Text("販売名のみ", style: TextStyle(fontSize: 12)),
+              const Text('販売名のみ', style: TextStyle(fontSize: 12)),
             ],
           ),
           Row(
             children: <Widget>[
-              new Radio(
+              Radio(
                 activeColor: Colors.blue,
                 value: '0',
                 groupValue: _type2,
                 onChanged: _handleRadio,
               ),
-              Text("部分一致", style: TextStyle(fontSize: 12)),
-              new Radio(
+              const Text('部分一致', style: TextStyle(fontSize: 12)),
+              Radio(
                 activeColor: Colors.blue,
                 value: '1',
                 groupValue: _type2,
                 onChanged: _handleRadio,
               ),
-              Text("前方一致", style: TextStyle(fontSize: 12)),
+              const Text('前方一致', style: TextStyle(fontSize: 12)),
             ],
           ),
         ],

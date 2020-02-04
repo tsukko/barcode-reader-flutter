@@ -25,11 +25,12 @@ class _FavoriteState extends State<Favorite> {
             padding: const EdgeInsets.fromLTRB(0, 0, 8, 0),
             margin: const EdgeInsets.all(8),
             child: IconButton(
-                icon: Icon(Icons.refresh),
-                onPressed: () {
-                  //TODO 更新確認処理
-                  showBasicDialog(context, '更新確認', '文書の更新確認をしますか');
-                }),
+              icon: Icon(Icons.refresh),
+              onPressed: () {
+                //TODO 更新確認処理
+                showBasicDialog(context, 'D0000');
+              },
+            ),
           ),
         ],
       ),

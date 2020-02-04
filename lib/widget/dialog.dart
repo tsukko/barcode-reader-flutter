@@ -1,95 +1,58 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:qr_code/debug/debug_data.dart';
 
-enum _DialogActionType {
-  cancel,
-  ok,
-}
-
-Widget _buildSignOutDialogAndroid(
-    BuildContext context, String title, String content) {
+Widget _buildSignOutDialogAndroid(BuildContext context, List<String> data) {
   return AlertDialog(
-      title: Text(title),
-      content: Text(content),
+      title: Text(data[0]),
+      content: Text(data[1]),
       actions: <Widget>[
         FlatButton(
-          child: const Text("Cancel"),
+          child: Text(data[3]),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
         FlatButton(
-          child: const Text("SignOut"),
+          child: Text(data[2]),
           onPressed: () {},
         )
       ]);
 }
 
-Widget _buildSignOutDialogiOS(
-    BuildContext context, String title, String message) {
+Widget _buildSignOutDialogiOS(BuildContext context, List<String> data) {
   return CupertinoAlertDialog(
-      title: const Text('Confirm'),
-      content: const Text('Are you sure you want to Sign out?'),
+      title: Text(data[0]),
+      content: Text(data[1]),
       actions: <Widget>[
         CupertinoDialogAction(
-          child: const Text('Cancel'),
+          child: Text(data[3]),
           isDefaultAction: true,
           onPressed: () {
             Navigator.pop(context);
           },
         ),
         CupertinoDialogAction(
-          child: const Text('SignOut'),
+          child: Text(data[2]),
           isDestructiveAction: true,
           onPressed: () {},
         )
       ]);
 }
 
-void showBasicDialog(BuildContext context, String title, String message) {
+void showBasicDialog(BuildContext context, String dialogKey) {
+  final List<String> data = dialogStr[dialogKey];
+
+//  StatelessWidget dialog;
+  StatelessWidget dialog = (Platform.isIOS
+      ? _buildSignOutDialogiOS(context, data)
+      : _buildSignOutDialogAndroid(context, data)) as StatelessWidget;
+
   showDialog(
-    context: context,
-    builder: (BuildContext context) => new AlertDialog(
-      title: new Text(title),
-      content: new Text(message),
-      // ボタンの配置
-      actions: <Widget>[
-        new FlatButton(
-            child: const Text('キャンセル'),
-            onPressed: () {
-              Navigator.pop(context, _DialogActionType.cancel);
-            }),
-        new FlatButton(
-            child: const Text('OK'),
-            onPressed: () {
-              Navigator.pop(context, _DialogActionType.ok);
-            })
-      ],
-    ),
-  ).then<void>((value) {
-    // ボタンタップ時の処理
-    switch (value) {
-      case _DialogActionType.cancel:
-        print("cancel...");
-        break;
-      case _DialogActionType.ok:
-        print("OK!!");
-        break;
-      default:
-        print("default");
-    }
-  });
-}
-
-Future showMyDialog(BuildContext context, Widget dialog) {
-  return showDialog(
-      context: context, builder: (BuildContext context) => dialog);
-}
-
-FlatButton cancelDialogButton(BuildContext context) {
-  return new FlatButton(
-      child: const Text('キャンセル'),
-      onPressed: () {
-        Navigator.pop(context);
+      context: context,
+      builder: (context) {
+        return dialog;
       });
 }

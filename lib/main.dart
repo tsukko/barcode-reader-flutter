@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: _MyApp(),
       routes: <String, WidgetBuilder>{
-        '/top': (BuildContext context) => Top(),
+        '/top': (context) => Top(),
         '/qrview': (BuildContext context) => const BarcodeScan(),
         '/favorite': (BuildContext context) => Favorite(),
         '/select_document': (BuildContext context) => SelectDocument(),

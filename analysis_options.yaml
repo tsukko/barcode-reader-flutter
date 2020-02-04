@@ -1,6 +1,8 @@
+# 厳しめルール
 # https://pub.dev/packages/pedantic_mono
 #include: package:pedantic_mono/analysis_options.yaml
 
+# 公式で使われているルール
 # https://github.com/flutter/samples/blob/master/animations/analysis_options.yaml
 include: package:pedantic/analysis_options.1.8.0.yaml
 
