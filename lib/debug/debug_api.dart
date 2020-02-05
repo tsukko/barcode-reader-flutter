@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:typed_data';
 
 import 'package:http/http.dart' as http;
 import 'package:qr_code/debug/debug_data.dart';
@@ -109,7 +110,7 @@ class DebugApi {
   }
 
   // 旧サイトに接続
-  testHttpGet() async {
+  void testHttpGet() async {
     var url =
         'https://www.info.pmda.go.jp/psearch/PackinsSearch?dragname=ソラナックス';
     var response = await http.get(url);
@@ -120,7 +121,7 @@ class DebugApi {
     }
   }
 
-  static getPdf(String pdfUrl) async {
+  Future<Uint8List> getPdf(String pdfUrl) async {
     var hdr = {
       "Accept":
           "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",

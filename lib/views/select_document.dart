@@ -10,7 +10,7 @@ class SelectDocument extends StatefulWidget {
 class _SelectDocumentState extends State<SelectDocument> {
   @override
   Widget build(BuildContext context) {
-    final int index = ModalRoute.of(context).settings.arguments;
+    final int index = ModalRoute.of(context).settings.arguments as int;
     final Medicine item = sampleData[index];
 
     return Scaffold(

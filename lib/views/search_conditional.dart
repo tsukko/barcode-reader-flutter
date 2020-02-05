@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qr_code/debug/condition1.dart';
 import 'package:qr_code/widget/dialog.dart';
 
 class SearchConditional extends StatefulWidget {
@@ -253,6 +254,7 @@ class _SearchConditionalState extends State<SearchConditional> {
               const Text('前方一致', style: TextStyle(fontSize: 12)),
             ],
           ),
+          DebugCondition(),
         ],
       ),
     );

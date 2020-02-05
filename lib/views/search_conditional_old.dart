@@ -37,7 +37,7 @@ class _SearchConditionalState extends State<SearchConditional>
                   icon: Icon(Icons.delete_sweep),
                   onPressed: () {
                     //TODO 検索条件の削除
-                    showBasicDialog(context, '検索条件の削除', '検索条件を削除しますか');
+                    showBasicDialog(context, 'D0001');
                   }),
             ),
             Container(
@@ -47,7 +47,7 @@ class _SearchConditionalState extends State<SearchConditional>
                   icon: Icon(Icons.save_alt),
                   onPressed: () {
                     //TODO 検索条件の保存
-                    showBasicDialog(context, '検索条件の保存', '検索条件を保存しますか');
+                    showBasicDialog(context, 'D0002');
                   }),
             ),
           ],
@@ -77,8 +77,9 @@ class _SearchConditionalState extends State<SearchConditional>
   Widget _buildPanel() {
     return ExpansionPanelList.radio(
       initialOpenPanelValue: 2,
-      children: _data.map<ExpansionPanelRadio>((Item item) {
-        return ExpansionPanelRadio(
+      children: _data.map<ExpansionPanelRadio>(
+        (Item item) {
+          return ExpansionPanelRadio(
             value: item.id,
             headerBuilder: (BuildContext context, bool isExpanded) {
               return ListTile(
@@ -86,16 +87,21 @@ class _SearchConditionalState extends State<SearchConditional>
               );
             },
             body: ListTile(
-                title: Text(item.expandedValue),
-                subtitle:
-                    const Text('To delete this panel, tap the trash can icon'),
-                trailing: Icon(Icons.delete),
-                onTap: () {
-                  setState(() {
+              title: Text(item.expandedValue),
+              subtitle:
+                  const Text('To delete this panel, tap the trash can icon'),
+              trailing: Icon(Icons.delete),
+              onTap: () {
+                setState(
+                  () {
                     _data.removeWhere((currentItem) => item == currentItem);
-                  });
-                }));
-      }).toList(),
+                  },
+                );
+              },
+            ),
+          );
+        },
+      ).toList(),
     );
   }
 
