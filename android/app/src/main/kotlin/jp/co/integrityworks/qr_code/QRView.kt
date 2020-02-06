@@ -181,7 +181,7 @@ class QRView(private val registrar: PluginRegistry.Registrar, id: Int) :
 //        broadcastManager = LocalBroadcastManager.getInstance(view.context)
 
         // Set up the intent filter that will receive events from our main activity
-        val filter = IntentFilter().apply { addAction(KEY_EVENT_ACTION) }
+//        val filter = IntentFilter().apply { addAction(KEY_EVENT_ACTION) }
 //        broadcastManager.registerReceiver(volumeDownReceiver, filter)
 
         // Every time the orientation of device changes, recompute layout
@@ -356,8 +356,8 @@ class QRView(private val registrar: PluginRegistry.Registrar, id: Int) :
         }
     }
 
-    private fun setGalleryThumbnail(file: File) {
-        // Reference of the view that holds the gallery thumbnail
+//    private fun setGalleryThumbnail(file: File) {
+//        // Reference of the view that holds the gallery thumbnail
 //        val thumbnail = container.findViewById<ImageButton>(R.id.photo_view_button)
 //
 //        // Run the operations in the view's thread
@@ -372,7 +372,7 @@ class QRView(private val registrar: PluginRegistry.Registrar, id: Int) :
 //                    .apply(RequestOptions.circleCropTransform())
 //                    .into(thumbnail)
 //        }
-    }
+//    }
 
     /** Declare and bind preview, capture and analysis use cases */
     private fun bindCameraUseCases() {
