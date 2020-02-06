@@ -15,11 +15,11 @@ class _TopState extends State<Top> {
   String nowStr;
   String loadStr;
 
-  void _readData() async {
-    initializeDateFormatting('ja_JP');
+  Future<void> _readData() async {
+    await initializeDateFormatting('ja_JP');
     final SharedPreferences pref = await SharedPreferences.getInstance();
     setState(() {
-      final formatter = new DateFormat('yyyy/MM/dd(E) HH:mm', 'ja_JP');
+      final formatter = DateFormat('yyyy/MM/dd(E) HH:mm', 'ja_JP');
       final data = pref.getInt('last_data');
       if (data == null) {
         loadStr = '更新日時なし';
@@ -86,14 +86,14 @@ class _TopState extends State<Top> {
   Widget _nowDate() {
     return Container(
       margin: EdgeInsets.all(8.0),
-      child: Text("アクセス日時：$nowStr"),
+      child: Text('アクセス日時：$nowStr'),
     );
   }
 
   Widget _lastDate() {
     return Container(
       margin: EdgeInsets.all(8.0),
-      child: Text("最終更新日時：$loadStr"),
+      child: Text('最終更新日時：$loadStr'),
     );
   }
 
@@ -124,7 +124,7 @@ class _TopState extends State<Top> {
               child: Container(
                 margin: EdgeInsets.all(8.0),
                 child:
-                    Text("バーコードを読み取り添付文書を検索する", style: TextStyle(fontSize: 18)),
+                    Text('バーコードを読み取り添付文書を検索する', style: TextStyle(fontSize: 18)),
               ),
             ),
           ],
@@ -160,7 +160,7 @@ class _TopState extends State<Top> {
               child: Container(
                 margin: EdgeInsets.all(8.0),
                 child:
-                    Text("検索パラメータを設定して文書を検索する", style: TextStyle(fontSize: 18)),
+                    Text('検索パラメータを設定して文書を検索する', style: TextStyle(fontSize: 18)),
               ),
             ),
           ],

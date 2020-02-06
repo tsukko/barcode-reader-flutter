@@ -44,7 +44,7 @@ class Menu extends StatelessWidget {
                 context: context,
                 applicationName: "applicationName",
                 applicationVersion: "versionName",
-                applicationIcon: new Image.asset("assets/medical_medicine.png",
+                applicationIcon: Image.asset("assets/medical_medicine.png",
                     scale: 3.0, height: 100),
                 applicationLegalese: "applicationLegalese",
                 // useRootNavigator: true,

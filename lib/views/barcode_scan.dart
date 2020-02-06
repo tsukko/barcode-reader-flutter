@@ -47,7 +47,7 @@ class _BarcodeScanState extends State<BarcodeScan> {
           return;
         }
 
-        controller.startImageStream((CameraImage availableImage) {
+        controller.startImageStream((availableImage) {
           print('deb::controller.startImageStream');
           _scanText(availableImage);
         });
@@ -56,7 +56,7 @@ class _BarcodeScanState extends State<BarcodeScan> {
     });
   }
 
-  void _scanText(CameraImage availableImage) async {
+  Future<void> _scanText(CameraImage availableImage) async {
 //    print("deb::_scanText: start. "
 //        "height:${availableImage.height}, width:${availableImage.width}.");
     final String barcode = await platform.invokeMethod('web', {

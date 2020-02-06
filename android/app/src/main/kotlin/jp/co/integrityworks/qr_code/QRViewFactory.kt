@@ -13,5 +13,4 @@ class QRViewFactory(private val registrar: PluginRegistry.Registrar) :
     override fun create(context: Context, id: Int, obj: Any?): PlatformView {
         return QRView(registrar,id)
     }
-
 }

@@ -40,7 +40,7 @@ class _SelectDocumentState extends State<SelectDocument> {
   Widget list() {
     return ListView.builder(
       itemCount: docData.length,
-      itemBuilder: (context, int index) {
+      itemBuilder: (context, index) {
         final item = docData[index];
         return ListTile(
           leading: const Icon(Icons.star),

@@ -48,7 +48,7 @@ class _PdfState extends State<Pdf> {
           IconButton(
             icon: Icon(Icons.refresh),
             onPressed: () {
-              print("PdfScreen refresh url: $url");
+              print('PdfScreen refresh url: $url');
               _controller.loadUrl(url);
             },
           ),

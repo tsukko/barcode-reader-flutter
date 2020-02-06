@@ -12,11 +12,11 @@ class _UpdateListState extends State<UpdateList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("更新一覧"),
+        title: Text('更新一覧'),
       ),
       body: ListView.builder(
         itemCount: sampleData.length,
-        itemBuilder: (context, int index) {
+        itemBuilder: (context, index) {
           final item = sampleData[index];
           return Dismissible(
             // Each Dismissible must contain a Key. Keys allow Flutter to
@@ -32,7 +32,7 @@ class _UpdateListState extends State<UpdateList> {
 
               // Then show a snackbar.
               Scaffold.of(context)
-                  .showSnackBar(SnackBar(content: Text("$item dismissed")));
+                  .showSnackBar(SnackBar(content: Text('$item dismissed')));
             },
             // Show a red background as the item is swiped away.
             background: Container(color: Colors.red),

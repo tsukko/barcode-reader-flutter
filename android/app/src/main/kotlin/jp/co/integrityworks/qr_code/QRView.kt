@@ -20,7 +20,6 @@ import android.view.View
 import androidx.camera.core.*
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LifecycleOwner
-import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.ukixa.barcode.BarcodeReader
 import com.ukixa.barcode.BarcodeType
 import io.flutter.Log
@@ -37,6 +36,8 @@ import kotlin.collections.ArrayList
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 
 /** Helper type alias used for analysis use case callbacks */
 typealias LumaListener = (luma: Double) -> Unit
@@ -58,6 +59,7 @@ class QRView(private val registrar: PluginRegistry.Registrar, id: Int) :
         private const val RATIO_16_9_VALUE = 16.0 / 9.0
     }
 
+
     // バーコードリーダーオブジェクトを取得する。
     private val _reader: BarcodeReader = BarcodeReader.getInstance()
     private var mFormats: List<BarcodeFormat>? = null
@@ -73,7 +75,7 @@ class QRView(private val registrar: PluginRegistry.Registrar, id: Int) :
 
     private lateinit var viewFinder: TextureView
     private lateinit var outputDirectory: File
-    private lateinit var broadcastManager: LocalBroadcastManager
+//    private lateinit var broaddcastManager: LocalBroadcastManager
     private lateinit var mainExecutor: Executor
 
     private var displayId = -1
@@ -84,19 +86,22 @@ class QRView(private val registrar: PluginRegistry.Registrar, id: Int) :
     /** Internal reference of the [DisplayManager] */
     private lateinit var displayManager: DisplayManager
 
+
+    private val progress  = MutableLiveData<Int>()
+
     /** Volume down button receiver used to trigger shutter */
-    private val volumeDownReceiver = object : BroadcastReceiver() {
-        override fun onReceive(context: Context, intent: Intent) {
-            when (intent.getIntExtra(KEY_EVENT_EXTRA, KeyEvent.KEYCODE_UNKNOWN)) {
-                // When the volume down button is pressed, simulate a shutter button click
-                KeyEvent.KEYCODE_VOLUME_DOWN -> {
-//                    val shutter = container
-//                            .findViewById<ImageButton>(R.id.camera_capture_button)
-//                    shutter.simulateClick()
-                }
-            }
-        }
-    }
+//    private val volumeDownReceiver = object : BroadcastReceiver() {
+//        override fun onReceive(context: Context, intent: Intent) {
+//            when (intent.getIntExtra(KEY_EVENT_EXTRA, KeyEvent.KEYCODE_UNKNOWN)) {
+//                // When the volume down button is pressed, simulate a shutter button click
+//                KeyEvent.KEYCODE_VOLUME_DOWN -> {
+////                    val shutter = container
+////                            .findViewById<ImageButton>(R.id.camera_capture_button)
+////                    shutter.simulateClick()
+//                }
+//            }
+//        }
+//    }
     /**
      * We need a display listener for orientation changes that do not trigger a configuration
      * change, for example if we choose to override config change in manifest or for 180-degree
@@ -173,11 +178,11 @@ class QRView(private val registrar: PluginRegistry.Registrar, id: Int) :
 
     fun newBar() {
         viewFinder = TextureView(registrar.activity().applicationContext)
-        broadcastManager = LocalBroadcastManager.getInstance(view.context)
+//        broadcastManager = LocalBroadcastManager.getInstance(view.context)
 
         // Set up the intent filter that will receive events from our main activity
         val filter = IntentFilter().apply { addAction(KEY_EVENT_ACTION) }
-        broadcastManager.registerReceiver(volumeDownReceiver, filter)
+//        broadcastManager.registerReceiver(volumeDownReceiver, filter)
 
         // Every time the orientation of device changes, recompute layout
         displayManager = viewFinder.context
@@ -283,7 +288,7 @@ class QRView(private val registrar: PluginRegistry.Registrar, id: Int) :
     override fun dispose() {
 //        barcodeView?.pause()
 //        barcodeView = null
-        broadcastManager.unregisterReceiver(volumeDownReceiver)
+//        broadcastManager.unregisterReceiver(volumeDownReceiver)
         displayManager.unregisterDisplayListener(displayListener)
     }
 

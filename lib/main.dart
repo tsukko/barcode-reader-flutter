@@ -22,18 +22,17 @@ class MyApp extends StatelessWidget {
       home: _MyApp(),
       routes: <String, WidgetBuilder>{
         '/top': (context) => Top(),
-        '/qrview': (BuildContext context) => const BarcodeScan(),
-        '/favorite': (BuildContext context) => Favorite(),
-        '/select_document': (BuildContext context) => SelectDocument(),
-        '/update_list': (BuildContext context) => UpdateList(),
-        '/search_conditional': (BuildContext context) => SearchConditional(),
-        '/search_conditional_detail': (BuildContext context) =>
-            SearchConditionalDetail(),
-        '/search_result': (BuildContext context) => SearchResult(),
-        // 以降は、削除予定
-        '/showpdf': (BuildContext context) => Pdf(),
-        '/debug_camera': (BuildContext context) => CameraApp(),
-        '/debug_page': (BuildContext context) => DebugDb(),
+        '/qrview': (context) => const BarcodeScan(),
+        '/favorite': (context) => Favorite(),
+        '/select_document': (context) => SelectDocument(),
+        '/update_list': (context) => UpdateList(),
+        '/search_conditional': (context) => SearchConditional(),
+        '/search_conditional_detail': (context) => SearchConditionalDetail(),
+        '/search_result': (context) => SearchResult(),
+        // 以降は、debug用。削除予定
+        '/showpdf': (context) => Pdf(),
+        '/debug_camera': (context) => CameraApp(),
+        '/debug_page': (context) => DebugDb(),
 //        '/license': (BuildContext context) => new LicenseScreen(),
       },
     );
@@ -42,29 +41,29 @@ class MyApp extends StatelessWidget {
 
 class _MyApp extends StatefulWidget {
   @override
-  _MyAppState createState() => new _MyAppState();
+  _MyAppState createState() => _MyAppState();
 }
 
 class _MyAppState extends State<_MyApp> {
   @override
   Widget build(BuildContext context) {
-    return new SplashScreen(
+    return SplashScreen(
         seconds: 2,
-        navigateAfterSeconds: new Top(),
-        title: new Text(
+        navigateAfterSeconds: Top(),
+        title: Text(
           'Welcome In SplashScreen',
-          style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
         ),
 //        image: new Image.network('https://i.imgur.com/TyCSG9A.png'),
 //        image: new DecorationImage(
 //          image: new AssetImage("assets/medical_medicine.png"),
 //          fit: BoxFit.cover,
 //        ),
-        image: new Image.asset("assets/medical_medicine.png"),
+        image: Image.asset('assets/medical_medicine.png'),
         backgroundColor: Colors.lightBlueAccent[100],
-        styleTextUnderTheLoader: new TextStyle(),
+        styleTextUnderTheLoader: TextStyle(),
         photoSize: 100.0,
-        onClick: () => print("Flutter Egypt"),
+        onClick: () => print('Flutter Egypt'),
         loaderColor: Colors.red);
   }
 }
