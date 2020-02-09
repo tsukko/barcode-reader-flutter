@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/tsukko/work/flutter_barcode/ios/Runner/CameraSample.m">
-   </FileRef>
-   <FileRef
       location = "group:Runner.xcodeproj">
    </FileRef>
    <FileRef

@@ -53,11 +53,11 @@ import Flutter
                 let colorSpace = CGColorSpaceCreateDeviceRGB()
                 let bitsPerCompornent = 8
                 let bitmapInfo = CGBitmapInfo(rawValue: (CGBitmapInfo.byteOrder32Little.rawValue | CGImageAlphaInfo.premultipliedFirst.rawValue) as UInt32)
-                let newContext = CGContext(data: base, width: Int(width), height: Int(height), bitsPerComponent: Int(bitsPerCompornent), bytesPerRow: Int(bytesPerRow), space: colorSpace, bitmapInfo: bitmapInfo.rawValue)! as CGContext
+//                let newContext = CGContext(data: base, width: Int(width), height: Int(height), bitsPerComponent: Int(bitsPerCompornent), bytesPerRow: Int(bytesPerRow), space: colorSpace, bitmapInfo: bitmapInfo.rawValue)! as CGContext
 
                 // 画像作成
-                let imageRef = newContext.makeImage()!
-                let image = UIImage(cgImage: imageRef, scale: 1.0, orientation: UIImageOrientation.up)
+//                let imageRef = newContext.makeImage()!
+//                let image = UIImage(cgImage: imageRef, scale: 1.0, orientation: UIImageOrientation.up)
                 
 //                ssss.testMethod2(buf)
                 print("height:\(String(describing: height)), width:\(String(describing: width))")

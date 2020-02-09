@@ -4,4 +4,8 @@ TRACK_WIDGET_CREATION=
 
 FLUTTER_FLAVOR=Develop
 PRODUCT_BUNDLE_IDENTIFIER=jp.co.integrityworks.qrcode.dev
-DISPLAY_NAME=SAMPLE-dev
+DISPLAY_NAME=$(PRODUCT_NAME)-dev
+// 参考：https://qiita.com/ko2ic/items/53f97bb7c28632268b5a
+// https://medium.com/flutter-jp/flavor-b952f2d05b5d
+// https://qiita.com/skycat_me/items/0a0f5e3982fbfca14444
+

@@ -1,8 +1,0 @@
-#include "Generated.xcconfig"
-
-FLUTTER_TARGET=lib/main.dart
-
-// 参考：https://qiita.com/ko2ic/items/53f97bb7c28632268b5a
-// https://medium.com/flutter-jp/flavor-b952f2d05b5d
-// https://qiita.com/skycat_me/items/0a0f5e3982fbfca14444
-PRODUCT_BUNDLE_IDENTIFIER=ko2ic.sample.dev
