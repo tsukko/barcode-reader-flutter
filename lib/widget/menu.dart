@@ -54,10 +54,10 @@ class Menu extends StatelessWidget {
           ListTile(
             selected: true,
             leading: Icon(Icons.settings),
-            title: Text('debug_page'),
+            title: Text('debug_db'),
             onTap: () {
               Navigator.pop(context);
-              Navigator.pushNamed(context, '/debug_page');
+              Navigator.pushNamed(context, '/debug_db');
             },
           ),
         ],

@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:intl/date_symbol_data_local.dart';
-import "package:intl/intl.dart";
-import 'package:qr_code/models/shared_preferences.dart';
+import 'package:qr_code/util/shared_preferences_util.dart';
 import 'package:qr_code/widget/debug_widget.dart';
 import 'package:qr_code/widget/menu.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class Top extends StatefulWidget {
   @override
@@ -16,25 +13,9 @@ class _TopState extends State<Top> {
   String loadStr;
 
   Future<void> _readData() async {
-    await initializeDateFormatting('ja_JP');
-    final SharedPreferences pref = await SharedPreferences.getInstance();
-    setState(() {
-      final formatter = DateFormat('yyyy/MM/dd(E) HH:mm', 'ja_JP');
-      final data = pref.getInt('last_data');
-      if (data == null) {
-        loadStr = '更新日時なし';
-      } else {
-        DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(data);
-        var formatted = formatter.format(dateTime);
-        loadStr = formatted;
-      }
-
-      int timestamp = DateTime.now().millisecondsSinceEpoch;
-      pref.setInt('last_data', timestamp);
-      DateTime dateTimeNow = DateTime.fromMillisecondsSinceEpoch(timestamp);
-      var formattedNow = formatter.format(dateTimeNow);
-      nowStr = formattedNow;
-    });
+    loadStr = await SharedPreferencesUtil().lastDate();
+    nowStr = await SharedPreferencesUtil().updateDate();
+    setState(() {});
   }
 
   @override
@@ -45,7 +26,6 @@ class _TopState extends State<Top> {
 
   @override
   Widget build(BuildContext context) {
-    loadDate().then((v) => loadStr);
     return Scaffold(
       backgroundColor: Colors.lime[100],
       appBar: AppBar(title: Text('Top Screen')),
@@ -86,14 +66,14 @@ class _TopState extends State<Top> {
   Widget _nowDate() {
     return Container(
       margin: EdgeInsets.all(8.0),
-      child: Text('アクセス日時：$nowStr'),
+      child: Text('aアクセス日時：$nowStr'),
     );
   }
 
   Widget _lastDate() {
     return Container(
       margin: EdgeInsets.all(8.0),
-      child: Text('最終更新日時：$loadStr'),
+      child: Text('b最終更新日時：$loadStr'),
     );
   }
 

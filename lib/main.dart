@@ -11,7 +11,7 @@ import 'package:qr_code/views/top.dart';
 import 'package:qr_code/views/update_list.dart';
 import 'package:splashscreen/splashscreen.dart';
 
-import 'debug/debug_page.dart';
+import 'debug/debug_db.dart';
 
 void main() => runApp(MyApp());
 
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         // 以降は、debug用。削除予定
         '/showpdf': (context) => Pdf(),
         '/debug_camera': (context) => CameraApp(),
-        '/debug_page': (context) => DebugDb(),
+        '/debug_db': (context) => DebugDb(),
 //        '/license': (BuildContext context) => new LicenseScreen(),
       },
     );

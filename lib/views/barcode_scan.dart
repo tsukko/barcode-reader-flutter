@@ -210,7 +210,7 @@ class _BarcodeScanState extends State<BarcodeScan> {
               final resUrl = await BasicApi().postSearch("");
 //              final resUrl = await BasicApi().postMultiple("");
               print('QRView url: $resUrl');
-              Navigator.pushNamed(context, '/showpdf', arguments: resUrl);
+              await Navigator.pushNamed(context, '/showpdf', arguments: resUrl);
             },
             child: const Text('test', style: TextStyle(fontSize: 20)),
           ),

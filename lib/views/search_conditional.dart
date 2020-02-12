@@ -172,7 +172,6 @@ class _SearchConditionalState extends State<SearchConditional> {
 //                maxLengthEnforced: false,
 //                obscureText: false,
                 maxLines: 1,
-                //パスワード
                 onChanged: _handleText,
               ),
             ),

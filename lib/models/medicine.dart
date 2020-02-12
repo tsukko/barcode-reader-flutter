@@ -9,13 +9,13 @@ class Medicine {
   Medicine(
       this.gs1code, this.medicineName, this.docType, this.url, this.favorite);
 
-//  Medicine({this.gs1code, this.medicineName, this.attachmentUrl});
-//
-//  factory Medicine.fromJson(Map<String, dynamic> json) {
-//    return Medicine(
-//      gs1code: json['gs1code'],
-//      medicineName: json['medicineName'],
-//      attachmentUrl: json['attachmentUrl'],
-//    );
-//  }
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'gs1code': gs1code,
+      'medicineName': medicineName,
+      'docType': docType,
+      'url': url,
+      'favorite': favorite ? 1 : 0,
+    };
+  }
 }
