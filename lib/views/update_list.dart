@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qr_code/debug/debug_data.dart';
-import 'package:qr_code/util/const.dart';
+import 'package:qr_code/util/api_parameter.dart';
 
 class UpdateList extends StatefulWidget {
   @override
@@ -42,7 +42,7 @@ class _UpdateListState extends State<UpdateList> {
               subtitle: Text(sampleData[index].gs1code),
               onTap: () {
                 Navigator.pushNamed(context, '/showpdf',
-                    arguments: Const.addBaseUrl(sampleData[index].url));
+                    arguments: ApiParameter.addBaseUrl(sampleData[index].url));
               },
             ),
           );

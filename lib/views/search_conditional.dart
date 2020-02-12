@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qr_code/debug/condition1.dart';
+import 'package:qr_code/util/view_const.dart';
 import 'package:qr_code/widget/dialog.dart';
 
 class SearchConditional extends StatefulWidget {
@@ -20,21 +21,6 @@ class _SearchConditionalState extends State<SearchConditional> {
         _type = e;
         isCode = !isCode;
       });
-
-//  IconData _changeIcon(String e) {
-//    IconData icon = null;
-//    switch (e) {
-//      case 'thumb_up':
-//        icon = Icons.thumb_up;
-//        break;
-//      case 'favorite':
-//        icon = Icons.favorite;
-//        break;
-//      default:
-//        icon = Icons.thumb_up;
-//    }
-//    return icon;
-//  }
 
   @override
   void initState() {
@@ -66,7 +52,7 @@ class _SearchConditionalState extends State<SearchConditional> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lime[100],
+      backgroundColor: ViewConst.baseBackgroundColor,
       appBar: AppBar(
         title: const Text('条件検索'),
         actions: [
@@ -134,9 +120,9 @@ class _SearchConditionalState extends State<SearchConditional> {
                 child: const Text('検索',
                     style: TextStyle(fontSize: 18, color: Colors.white)),
                 color: Colors.blue,
-//              shape: RoundedRectangleBorder(
-//                borderRadius: new BorderRadius.circular(10.0),
-//              ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
                 onPressed: () {
                   Navigator.pushNamed(context, '/search_conditional_detail');
                 },

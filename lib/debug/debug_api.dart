@@ -4,7 +4,7 @@ import 'dart:typed_data';
 import 'package:http/http.dart' as http;
 import 'package:qr_code/debug/debug_data.dart';
 import 'package:qr_code/repository/basic_api.dart';
-import 'package:qr_code/util/const.dart';
+import 'package:qr_code/util/api_parameter.dart';
 
 class DebugApi {
   Future<String> debugPost(String codeId) async {
@@ -14,7 +14,7 @@ class DebugApi {
 
   // test用メソッド　ここから
   Future<String> postMultiple(String codeId) async {
-    final url = Const.baseUrl + Const.searchDir;
+    final url = ApiParameter.baseUrl + ApiParameter.searchDir;
 
     final client = http.Client();
 
@@ -22,8 +22,8 @@ class DebugApi {
       codeId = '(01)14987080100314';
     }
 
-    final bodyParam = Const.getBodyGs1code(codeId);
-    final hdr = Const.getHeader();
+    final bodyParam = ApiParameter.getBodyGs1code(codeId);
+    final hdr = ApiParameter.getHeader();
     final DateTime timeStartReq = DateTime.now();
     print('deb1 : $timeStartReq');
     final List<http.Response> responses = await Future.wait([
@@ -89,9 +89,9 @@ class DebugApi {
           RegExp('/PmdaSearch/iyakuDetail/ResultDataSetPDF/.*?>')
               .allMatches(resBody);
 
-      var pdfUrl = Const.baseUrl;
+      var pdfUrl = ApiParameter.baseUrl;
       for (Match m in matches) {
-        pdfUrl = Const.baseUrl + m.group(0).replaceAll("'>", "");
+        pdfUrl = ApiParameter.baseUrl + m.group(0).replaceAll("'>", "");
 //        print("pdf url : $pdfUrl");
       }
       final DateTime timeEndRes = DateTime.now();

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qr_code/util/view_const.dart';
 
 class SearchResult extends StatelessWidget {
   @override
@@ -6,10 +7,9 @@ class SearchResult extends StatelessWidget {
     final String args = ModalRoute.of(context).settings.arguments as String;
     return Scaffold(
       appBar: AppBar(title: const Text('Result Screen')),
-      backgroundColor: Colors.lime[100],
+      backgroundColor: ViewConst.baseBackgroundColor,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Container(

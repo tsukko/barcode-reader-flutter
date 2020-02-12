@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qr_code/debug/debug_data.dart';
 import 'package:qr_code/models/medicine.dart';
-import 'package:qr_code/util/const.dart';
+import 'package:qr_code/util/api_parameter.dart';
 import 'package:qr_code/widget/dialog.dart';
 
 class Favorite extends StatefulWidget {
@@ -65,7 +65,7 @@ class _FavoriteState extends State<Favorite> {
                 subtitle: Text(item.docType),
                 onTap: () {
                   Navigator.pushNamed(context, '/showpdf',
-                      arguments: Const.addBaseUrl(item.url));
+                      arguments: ApiParameter.addBaseUrl(item.url));
                 },
               ),
               const Divider(),

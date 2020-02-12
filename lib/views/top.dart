@@ -27,31 +27,20 @@ class _TopState extends State<Top> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lime[100],
-      appBar: AppBar(title: Text('Top Screen')),
+      appBar: AppBar(
+        title: Text('Top Screen'),
+      ),
       drawer: Menu().build(context),
       body: Stack(
         children: <Widget>[
           Align(
             alignment: Alignment.topCenter,
             child: pendingWidget('top area.', 160.0),
-//            child: Container(
-//              margin: EdgeInsets.all(32.0),
-//              child: FlutterLogo(
-//                size: 120,
-//              ),
-//            ),
           ),
           Center(
             child: Column(
               mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-//                debugCamera(context),
-                _nowDate(),
-                _lastDate(),
-                _scan(),
-                _search()
-              ],
+              children: <Widget>[_nowDate(), _lastDate(), _scan(), _search()],
             ),
           ),
           Align(

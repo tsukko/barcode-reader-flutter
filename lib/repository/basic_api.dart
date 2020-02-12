@@ -1,9 +1,9 @@
 import 'package:http/http.dart' as http;
-import 'package:qr_code/util/const.dart';
+import 'package:qr_code/util/api_parameter.dart';
 
 class BasicApi {
   Future<String> postSearch(String codeId) async {
-    final url = Const.baseUrl + Const.searchDir;
+    final url = ApiParameter.baseUrl + ApiParameter.searchDir;
 //    DateTime timeStartReq = new DateTime.now();
 
     final client = http.Client();
@@ -14,8 +14,8 @@ class BasicApi {
       return null;
     }
 //    print("deb1 codeId: $codeId");
-    final bodyParam = Const.getBodyGs1code(codeId);
-    final hdr = Const.getHeader();
+    final bodyParam = ApiParameter.getBodyGs1code(codeId);
+    final hdr = ApiParameter.getHeader();
 
     final response = await client.post(url, body: bodyParam, headers: hdr);
 
@@ -32,9 +32,9 @@ class BasicApi {
           RegExp('/PmdaSearch/iyakuDetail/ResultDataSetPDF/.*?>')
               .allMatches(resBody);
 
-      var pdfUrl = Const.baseUrl;
+      var pdfUrl = ApiParameter.baseUrl;
       for (var m in matches) {
-        pdfUrl = Const.baseUrl + m.group(0).replaceAll("'>", '');
+        pdfUrl = ApiParameter.baseUrl + m.group(0).replaceAll("'>", '');
 //        print("pdf url : $pdfUrl");
       }
 

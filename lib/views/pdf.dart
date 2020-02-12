@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:qr_code/util/const.dart';
+import 'package:qr_code/util/api_parameter.dart';
+import 'package:qr_code/util/view_const.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class Pdf extends StatefulWidget {
@@ -36,12 +37,12 @@ class _PdfState extends State<Pdf> {
 //    loadDocument();
 //    final String url = "https://docs.google.com/gview?embedded=true&url=" +
 //        ModalRoute.of(context).settings.arguments;
-    final String url = Const.createLoadUrl(
+    final String url = ApiParameter.createLoadUrl(
         ModalRoute.of(context).settings.arguments as String);
     WebViewController _controller;
     print('PdfScreen build :$url');
     return Scaffold(
-      backgroundColor: Colors.lime[100],
+      backgroundColor: ViewConst.baseBackgroundColor,
       appBar: AppBar(
         title: const Text('Show PDF'),
         actions: <Widget>[

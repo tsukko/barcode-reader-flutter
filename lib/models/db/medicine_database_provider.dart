@@ -27,6 +27,17 @@ class MedicineDatabaseProvider extends DatabaseProvider {
         """,
       );
 
+  @override
+  Future<void> upgradeDatabase(
+      Database db, int oldVersion, int newVersion) async {
+    for (var i = oldVersion + 1; i <= newVersion; i++) {
+//      var queries = scripts[i.toString()];
+//      for (String query in queries) {
+//        await db.execute(query);
+//      }
+    }
+  }
+
   Future<int> insertMedicine(Medicine medicine) async {
     final Database db = await database;
     return await db.insert(

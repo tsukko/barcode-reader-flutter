@@ -1,6 +1,6 @@
 import 'dart:io';
 
-class Const {
+class ApiParameter {
 //    var scheme = "https://";
 //    var host = "www";
 //    var domain = "pmda.go.jp";
@@ -9,7 +9,6 @@ class Const {
 
   static var baseBody = {
     // 必須パラメータ
-
     'ListRows': '10',
     'dispColumnsList[0]': '1',
     'updateDocFrDt': '',

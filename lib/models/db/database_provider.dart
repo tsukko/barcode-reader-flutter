@@ -20,14 +20,14 @@ abstract class DatabaseProvider {
           databaseName,
         ),
         onCreate: createDatabase,
-//        onUpgrade: //TODO マイグレーション,
+        onUpgrade: upgradeDatabase,
         version: databaseVersion,
       );
     }
     return _instance;
   }
 
-// DBがpathに存在しなかった場合に onCreateメソッドが呼ばれます。
-// （https://iganin.hatenablog.com/entry/2019/01/09/010804 より）
   Future<void> createDatabase(Database db, int version);
+
+  Future<void> upgradeDatabase(Database db, int oldVersion, int newVersion);
 }

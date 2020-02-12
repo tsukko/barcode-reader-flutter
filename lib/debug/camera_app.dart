@@ -59,7 +59,6 @@ class _CameraAppState extends State<CameraApp> {
     }
 
     try {
-//      await controller.takePicture(filePath);
       await controller.startImageStream((availableImage) {
 //        controller.stopImageStream();
         _scanText(availableImage);
