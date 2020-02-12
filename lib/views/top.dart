@@ -79,11 +79,10 @@ class _TopState extends State<Top> {
             Expanded(
               flex: 1,
               child: Container(
-                margin: EdgeInsets.all(8.0),
+                margin: EdgeInsets.all(16.0),
                 child: Icon(
                   Icons.photo_camera,
-//                  color: Colors.pink,
-                  size: 48.0,
+                  size: 38.0,
                   semanticLabel: 'Text to announce in accessibility modes',
                 ),
               ),
@@ -115,11 +114,11 @@ class _TopState extends State<Top> {
             Expanded(
               flex: 1,
               child: Container(
-                margin: EdgeInsets.all(8.0),
+                margin: EdgeInsets.all(16.0),
                 child: Icon(
                   Icons.find_in_page,
 //                  color: Colors.pink,
-                  size: 48.0,
+                  size: 38.0,
                   semanticLabel: 'Text to announce in accessibility modes',
                 ),
               ),

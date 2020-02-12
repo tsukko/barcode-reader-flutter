@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:qr_code/repository/basic_api.dart';
 import 'package:qr_code/util/camera.dart';
-import 'package:qr_code/util/view_const.dart';
 import 'package:qr_code/widget/camera_view.dart';
 import 'package:qr_code/widget/camera_view_overlay_shape.dart';
 
@@ -94,7 +93,6 @@ class _BarcodeScanState extends State<BarcodeScan> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ViewConst.baseBackgroundColor,
       appBar: AppBar(title: const Text('バーコード読み取り')),
       body: Column(
         children: <Widget>[

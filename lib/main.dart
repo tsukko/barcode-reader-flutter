@@ -21,16 +21,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        brightness: Brightness.dark,
+//        brightness: Brightness.dark,
         primaryColor: Colors.grey[200],
         accentColor: Colors.black,
         indicatorColor: Colors.cyan[600],
         bottomAppBarColor: Colors.orange,
         backgroundColor: Colors.blue,
         // メニューのDrawerHeader以外の背景色
-        canvasColor: Colors.grey,
+        canvasColor: Colors.orange[200],
         // 画面の背景色（未設定ならcanvasColorの色が使用される）
-        scaffoldBackgroundColor: Colors.lime[50],
+        scaffoldBackgroundColor: Colors.grey[100],
+        //Colors.lime[50],
         toggleableActiveColor: Colors.pink[400],
         cardColor: Colors.white,
         hoverColor: Colors.blue[400],
@@ -56,38 +57,38 @@ class MyApp extends StatelessWidget {
               .merge(ViewConst.font_normal)
               .merge(ViewConst.font_size_15),
           body1: TextStyle(
-            color: Colors.pink[300],
+            color: Colors.black54,
           ).merge(ViewConst.font_normal).merge(ViewConst.font_size_15),
           button: TextStyle(
             color: Colors.orange,
-          ).merge(ViewConst.font_medium).merge(ViewConst.font_size_17),
-          title: TextStyle(
-            color: Colors.teal,
-          ).merge(ViewConst.font_medium).merge(ViewConst.font_size_17),
-          subtitle: TextStyle(
-            color: Colors.amberAccent,
-          ).merge(ViewConst.font_medium).merge(ViewConst.font_size_16),
-          display4: TextStyle(
-            color: Colors.amberAccent,
-          ).merge(ViewConst.font_medium).merge(ViewConst.font_size_16),
-          display3: TextStyle(
-            color: Colors.amberAccent,
-          ).merge(ViewConst.font_medium).merge(ViewConst.font_size_16),
-          display2: TextStyle(
-            color: Colors.amberAccent,
-          ).merge(ViewConst.font_medium).merge(ViewConst.font_size_16),
-          display1: TextStyle(
-            color: Colors.amberAccent,
-          ).merge(ViewConst.font_medium).merge(ViewConst.font_size_16),
-          subhead: TextStyle(
-            color: Colors.amberAccent,
-          ).merge(ViewConst.font_medium).merge(ViewConst.font_size_16),
-          caption: TextStyle(
-            color: Colors.amberAccent,
-          ).merge(ViewConst.font_medium).merge(ViewConst.font_size_16),
-          overline: TextStyle(
-            color: Colors.amberAccent,
-          ).merge(ViewConst.font_medium).merge(ViewConst.font_size_16),
+          ).merge(ViewConst.font_medium).merge(ViewConst.font_size_18),
+//          title: TextStyle(
+//            color: Colors.teal,
+//          ).merge(ViewConst.font_medium).merge(ViewConst.font_size_17),
+//          subtitle: TextStyle(
+//            color: Colors.amberAccent,
+//          ).merge(ViewConst.font_medium).merge(ViewConst.font_size_16),
+//          display4: TextStyle(
+//            color: Colors.amberAccent,
+//          ).merge(ViewConst.font_medium).merge(ViewConst.font_size_16),
+//          display3: TextStyle(
+//            color: Colors.amberAccent,
+//          ).merge(ViewConst.font_medium).merge(ViewConst.font_size_16),
+//          display2: TextStyle(
+//            color: Colors.amberAccent,
+//          ).merge(ViewConst.font_medium).merge(ViewConst.font_size_16),
+//          display1: TextStyle(
+//            color: Colors.amberAccent,
+//          ).merge(ViewConst.font_medium).merge(ViewConst.font_size_16),
+//          subhead: TextStyle(
+//            color: Colors.amberAccent,
+//          ).merge(ViewConst.font_medium).merge(ViewConst.font_size_16),
+//          caption: TextStyle(
+//            color: Colors.amberAccent,
+//          ).merge(ViewConst.font_medium).merge(ViewConst.font_size_16),
+//          overline: TextStyle(
+//            color: Colors.amberAccent,
+//          ).merge(ViewConst.font_medium).merge(ViewConst.font_size_16),
         ),
       ),
       home: _MyApp(),

@@ -5,7 +5,8 @@ class ViewConst {
   static Color splashBackgroundColor = Colors.lightBlueAccent[100];
   static Color splashLoaderColor = Colors.red;
   static Color appBarBackgroundColor = Colors.grey[100];
-  static Color baseBackgroundColor = Colors.lime[50];
+
+//  static Color baseBackgroundColor = Colors.lime[50];
 
   static const TextStyle font_normal = const TextStyle(
     fontSize: 16.0,

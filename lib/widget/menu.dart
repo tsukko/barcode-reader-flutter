@@ -16,15 +16,18 @@ class Menu extends StatelessWidget {
             ),
             decoration: BoxDecoration(
               color: Theme.of(context).primaryColor,
+//              color: Theme.of(context).indicatorColor,
             ),
+            margin: EdgeInsets.zero,
           ),
+          CommonDivider2(),
           Container(
             color: Colors.grey[200],
             child: Column(
               children: <Widget>[
                 ListTile(
                   selected: true,
-                  leading: Icon(Icons.favorite),
+                  leading: Icon(Icons.favorite, color: Colors.black),
                   title: Text('お知らせ', style: TextStyle(color: Colors.black)),
                   onTap: () {
                     Navigator.pop(context);
@@ -34,19 +37,18 @@ class Menu extends StatelessWidget {
                 CommonDivider(),
                 ListTile(
                   selected: true,
-                  leading: Icon(Icons.favorite),
-                  title: Text('お気に入り'),
+                  leading: Icon(Icons.favorite, color: Colors.black),
+                  title: Text('お気に入り', style: TextStyle(color: Colors.black)),
                   onTap: () {
                     Navigator.pop(context);
                     Navigator.pushNamed(context, '/favorite');
                   },
                 ),
-                CommonDivider(),
                 CommonDivider2(),
                 ListTile(
                   selected: true,
-                  leading: Icon(Icons.settings),
-                  title: Text('設定'),
+                  leading: Icon(Icons.settings, color: Colors.black),
+                  title: Text('設定', style: TextStyle(color: Colors.black)),
                   onTap: () {
                     Navigator.pop(context);
                     Navigator.pushNamed(context, '/favorite');
@@ -55,8 +57,9 @@ class Menu extends StatelessWidget {
                 CommonDivider(),
                 ListTile(
                   selected: true,
-                  leading: Icon(Icons.info_outline),
-                  title: Text('このアプリについて'),
+                  leading: Icon(Icons.info_outline, color: Colors.black),
+                  title:
+                      Text('このアプリについて', style: TextStyle(color: Colors.black)),
                   onTap: () {
                     Navigator.pop(context);
                     showLicensePage(
@@ -72,11 +75,12 @@ class Menu extends StatelessWidget {
                     );
                   },
                 ),
-                CommonDivider(),
+                CommonDivider2(),
                 ListTile(
                   selected: true,
-                  leading: Icon(Icons.settings),
-                  title: Text('debug_db'),
+                  leading: Icon(Icons.settings, color: Colors.black),
+                  title:
+                      Text('debug_db', style: TextStyle(color: Colors.black)),
                   onTap: () {
                     Navigator.pop(context);
                     Navigator.pushNamed(context, '/debug_db');

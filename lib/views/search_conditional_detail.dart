@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:qr_code/util/view_const.dart';
 
 class SearchConditionalDetail extends StatefulWidget {
   @override
@@ -23,7 +22,6 @@ class _SearchConditionalDetailState extends State<SearchConditionalDetail> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ViewConst.baseBackgroundColor,
       appBar: AppBar(
         title: Text('文書選択'),
       ),

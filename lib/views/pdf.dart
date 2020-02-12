@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:qr_code/util/api_parameter.dart';
-import 'package:qr_code/util/view_const.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class Pdf extends StatefulWidget {
@@ -42,7 +41,6 @@ class _PdfState extends State<Pdf> {
     WebViewController _controller;
     print('PdfScreen build :$url');
     return Scaffold(
-      backgroundColor: ViewConst.baseBackgroundColor,
       appBar: AppBar(
         title: const Text('Show PDF'),
         actions: <Widget>[

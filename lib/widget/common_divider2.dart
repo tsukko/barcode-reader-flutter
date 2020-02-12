@@ -5,7 +5,7 @@ class CommonDivider2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Divider(
       color: Colors.grey.shade300,
-      height: 28.0,
+      thickness: 12.0,
     );
   }
 }

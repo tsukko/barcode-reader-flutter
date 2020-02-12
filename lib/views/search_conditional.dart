@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:qr_code/debug/condition1.dart';
-import 'package:qr_code/util/view_const.dart';
 import 'package:qr_code/widget/dialog.dart';
 
 class SearchConditional extends StatefulWidget {
@@ -52,7 +51,6 @@ class _SearchConditionalState extends State<SearchConditional> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ViewConst.baseBackgroundColor,
       appBar: AppBar(
         title: const Text('条件検索'),
         actions: [
