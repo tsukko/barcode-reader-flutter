@@ -9,6 +9,7 @@ class Const {
 
   static var baseBody = {
     // 必須パラメータ
+
     'ListRows': '10',
     'dispColumnsList[0]': '1',
     'updateDocFrDt': '',

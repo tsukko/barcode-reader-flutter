@@ -211,49 +211,49 @@ class _SearchConditionalState extends State<SearchConditional> {
               ),
             ],
           ),
-          Row(
-            children: <Widget>[
-              Radio(
-                activeColor: Colors.blue,
-                value: '0',
-                groupValue: _type1,
-                onChanged: _handleRadio,
-              ),
-              const Text('一般名及び販売名', style: TextStyle(fontSize: 12)),
-              Radio(
-                activeColor: Colors.blue,
-                value: '1',
-                groupValue: _type1,
-                onChanged: _handleRadio,
-              ),
-              const Text('一般名のみ', style: TextStyle(fontSize: 12)),
-              Radio(
-                activeColor: Colors.blue,
-                value: '2',
-                groupValue: _type1,
-                onChanged: _handleRadio,
-              ),
-              const Text('販売名のみ', style: TextStyle(fontSize: 12)),
-            ],
-          ),
-          Row(
-            children: <Widget>[
-              Radio(
-                activeColor: Colors.blue,
-                value: '0',
-                groupValue: _type2,
-                onChanged: _handleRadio,
-              ),
-              const Text('部分一致', style: TextStyle(fontSize: 12)),
-              Radio(
-                activeColor: Colors.blue,
-                value: '1',
-                groupValue: _type2,
-                onChanged: _handleRadio,
-              ),
-              const Text('前方一致', style: TextStyle(fontSize: 12)),
-            ],
-          ),
+//          Row(
+//            children: <Widget>[
+//              Radio(
+//                activeColor: Colors.blue,
+//                value: '0',
+//                groupValue: _type1,
+//                onChanged: _handleRadio,
+//              ),
+//              const Text('一般名及び販売名', style: TextStyle(fontSize: 12)),
+//              Radio(
+//                activeColor: Colors.blue,
+//                value: '1',
+//                groupValue: _type1,
+//                onChanged: _handleRadio,
+//              ),
+//              const Text('一般名のみ', style: TextStyle(fontSize: 12)),
+//              Radio(
+//                activeColor: Colors.blue,
+//                value: '2',
+//                groupValue: _type1,
+//                onChanged: _handleRadio,
+//              ),
+//              const Text('販売名のみ', style: TextStyle(fontSize: 12)),
+//            ],
+//          ),
+//          Row(
+//            children: <Widget>[
+//              Radio(
+//                activeColor: Colors.blue,
+//                value: '0',
+//                groupValue: _type2,
+//                onChanged: _handleRadio,
+//              ),
+//              const Text('部分一致', style: TextStyle(fontSize: 12)),
+//              Radio(
+//                activeColor: Colors.blue,
+//                value: '1',
+//                groupValue: _type2,
+//                onChanged: _handleRadio,
+//              ),
+//              const Text('前方一致', style: TextStyle(fontSize: 12)),
+//            ],
+//          ),
           DebugCondition(),
         ],
       ),
