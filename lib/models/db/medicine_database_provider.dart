@@ -35,4 +35,34 @@ class MedicineDatabaseProvider extends DatabaseProvider {
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
   }
+
+  Future<List<Medicine>> getMedicineAll() async {
+    final Database db = await database;
+    final List<Map<String, dynamic>> maps = await db.query(tableName);
+    return List.generate(maps.length, (i) {
+      return Medicine(
+//        id: maps[i]['id'],
+          maps[i]['gs1code'] as String,
+          maps[i]['medicineName'] as String,
+          maps[i]['docType'] as String,
+          maps[i]['url'] as String,
+          (maps[i]['favorite'] == 0));
+    });
+  }
+
+  Future<Medicine> getMedicine(int id) async {
+    final Database db = await database;
+    final List<Map<String, dynamic>> medicines =
+        await db.query(tableName, where: 'id = ?', whereArgs: <dynamic>[id]);
+    var ggg = List.generate(medicines.length, (i) {
+      return Medicine(
+//        id: maps[i]['id'],
+          medicines[i]['gs1code'] as String,
+          medicines[i]['medicineName'] as String,
+          medicines[i]['docType'] as String,
+          medicines[i]['url'] as String,
+          (medicines[i]['favorite'] == 0));
+    });
+    return ggg[0];
+  }
 }

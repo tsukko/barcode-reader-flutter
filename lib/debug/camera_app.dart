@@ -31,7 +31,7 @@ class _CameraAppState extends State<CameraApp> {
         }
 
         /////////
-        controller.startImageStream((CameraImage availableImage) {
+        controller.startImageStream((availableImage) {
 //          controller.stopImageStream();
           _scanText(availableImage);
         });
@@ -60,7 +60,7 @@ class _CameraAppState extends State<CameraApp> {
 
     try {
 //      await controller.takePicture(filePath);
-      controller.startImageStream((CameraImage availableImage) {
+      await controller.startImageStream((availableImage) {
 //        controller.stopImageStream();
         _scanText(availableImage);
       });
@@ -104,7 +104,7 @@ class _CameraAppState extends State<CameraApp> {
 
   static const platform = MethodChannel('com.tasogarei.test/web');
 
-  void _scanText(CameraImage availableImage) async {
+  Future<void> _scanText(CameraImage availableImage) async {
 //    print("start _scanText. height:${availableImage.height}, "
 //        "width:${availableImage.width}, format.group:${availableImage.format.group}.");
 //

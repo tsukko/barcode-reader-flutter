@@ -41,7 +41,7 @@ class _FavoriteState extends State<Favorite> {
   Widget _docList() {
     return ListView.builder(
       itemCount: localData.length,
-      itemBuilder: (context, int index) {
+      itemBuilder: (context, index) {
         final item = localData[index];
 //          fav_flag = item.favorite;
         return Dismissible(

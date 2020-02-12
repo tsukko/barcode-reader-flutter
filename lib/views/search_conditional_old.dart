@@ -78,10 +78,10 @@ class _SearchConditionalState extends State<SearchConditional>
     return ExpansionPanelList.radio(
       initialOpenPanelValue: 2,
       children: _data.map<ExpansionPanelRadio>(
-        (Item item) {
+        (item) {
           return ExpansionPanelRadio(
             value: item.id,
-            headerBuilder: (BuildContext context, bool isExpanded) {
+            headerBuilder: (context, isExpanded) {
               return ListTile(
                 title: Text(item.headerValue),
               );
@@ -137,7 +137,7 @@ class Item {
 }
 
 List<Item> generateItems(int numberOfItems) {
-  return List.generate(numberOfItems, (int index) {
+  return List.generate(numberOfItems, (index) {
     return Item(
       id: index,
       headerValue: 'Panel $index',

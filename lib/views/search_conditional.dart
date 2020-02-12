@@ -12,30 +12,29 @@ class _SearchConditionalState extends State<SearchConditional> {
   String _type1 = '';
   String _type2 = '';
   bool isCode = true;
-
-  final TextEditingController _textEditingController =
-      new TextEditingController();
   String _text = '';
+
+  final TextEditingController _textEditingController = TextEditingController();
 
   void _handleRadio(String e) => setState(() {
         _type = e;
         isCode = !isCode;
       });
 
-  IconData _changeIcon(String e) {
-    IconData icon = null;
-    switch (e) {
-      case 'thumb_up':
-        icon = Icons.thumb_up;
-        break;
-      case 'favorite':
-        icon = Icons.favorite;
-        break;
-      default:
-        icon = Icons.thumb_up;
-    }
-    return icon;
-  }
+//  IconData _changeIcon(String e) {
+//    IconData icon = null;
+//    switch (e) {
+//      case 'thumb_up':
+//        icon = Icons.thumb_up;
+//        break;
+//      case 'favorite':
+//        icon = Icons.favorite;
+//        break;
+//      default:
+//        icon = Icons.thumb_up;
+//    }
+//    return icon;
+//  }
 
   @override
   void initState() {

@@ -17,8 +17,8 @@ class BarcodeScan extends StatefulWidget {
 
 class _BarcodeScanState extends State<BarcodeScan> {
   String qrText = '';
-  String flashState = Camera.flash_on;
-  String cameraState = Camera.front_camera;
+  String flashState = Camera.flashOn;
+  String cameraState = Camera.cameraFront;
 
 //  QRViewController controller;
 //  CameraController controller;

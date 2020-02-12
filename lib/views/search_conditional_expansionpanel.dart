@@ -15,7 +15,7 @@ class PlaceItem {
 
 ExpansionPanel _createPanel(PlaceItem place) {
   return ExpansionPanel(
-    headerBuilder: (BuildContext context, bool isExpanded) {
+    headerBuilder: (context, isExpanded) {
       return Container(
         padding: EdgeInsets.all(8.0),
         child: Row(
@@ -47,7 +47,7 @@ ExpansionPanel _createPanel(PlaceItem place) {
 }
 
 class _SearchConditionalState extends State<SearchConditional> {
-  var _placeList = new List<PlaceItem>();
+  var _placeList = List<PlaceItem>();
 
   @override
   void initState() {
@@ -74,7 +74,7 @@ class _SearchConditionalState extends State<SearchConditional> {
         child: ListView(
           children: <Widget>[
             ExpansionPanelList(
-              expansionCallback: (int index, bool isExpanded) {
+              expansionCallback: (index, isExpanded) {
                 setState(() {
                   _placeList[index].isExpanded = !_placeList[index].isExpanded;
                 });

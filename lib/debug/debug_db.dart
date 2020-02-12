@@ -16,37 +16,53 @@ class _DebugDbState extends State<DebugDb> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("debug_db"),
+        title: Text("debug_db2"),
       ),
       body: Column(
         children: <Widget>[
-          Text('This is the result of scan: $qrText'),
+          Text('data: $qrText'),
           RaisedButton(
             child: Text("instert",
                 style: TextStyle(fontSize: 18, color: Colors.white)),
             color: Colors.blue,
             onPressed: () async {
-//              final resUrl = await BasicApi().postSearch("");
-              final resUrl = await addMedicine();
-//
-//              setState(() {});
+              final res = await addMedicine();
+
+              setState(() {
+                print("res: $res");
+                qrText = res.toString();
+              });
             },
           ),
           RaisedButton(
-            child: Text("get",
+            child: Text("get all ",
                 style: TextStyle(fontSize: 18, color: Colors.white)),
             color: Colors.blue,
-            onPressed: () {
-              Navigator.pushNamed(context, '/search_conditional_detail');
+            onPressed: () async {
+              List<Medicine> aaa =
+                  await MedicineDatabaseProvider().getMedicineAll();
+              setState(() {
+                print("getMedicineAll: $aaa");
+                qrText = aaa[0].medicineName + aaa[1].medicineName;
+              });
+            },
+          ),
+          RaisedButton(
+            child: Text("get 1",
+                style: TextStyle(fontSize: 18, color: Colors.white)),
+            color: Colors.blue,
+            onPressed: () async {
+              Medicine data = await MedicineDatabaseProvider().getMedicine(1);
+              setState(() {
+                qrText = data.medicineName;
+              });
             },
           ),
           RaisedButton(
             child: Text("delete",
                 style: TextStyle(fontSize: 18, color: Colors.white)),
             color: Colors.blue,
-            onPressed: () {
-              Navigator.pushNamed(context, '/search_conditional_detail');
-            },
+            onPressed: () {},
           ),
         ],
       ),
@@ -69,6 +85,6 @@ class _DebugDbState extends State<DebugDb> {
         '/PmdaSearch/iyakuDetail/ResultDataSetPDF/780075_1124023F1118_1_04',
         true);
     final MedicineDatabaseProvider provider = MedicineDatabaseProvider();
-    return 1; //await provider.insertMedicine(dummyData);
+    return await provider.insertMedicine(dummyData);
   }
 }

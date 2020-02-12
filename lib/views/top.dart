@@ -66,14 +66,14 @@ class _TopState extends State<Top> {
   Widget _nowDate() {
     return Container(
       margin: EdgeInsets.all(8.0),
-      child: Text('aアクセス日時：$nowStr'),
+      child: Text('アクセス日時：$nowStr'),
     );
   }
 
   Widget _lastDate() {
     return Container(
       margin: EdgeInsets.all(8.0),
-      child: Text('b最終更新日時：$loadStr'),
+      child: Text('最終更新日時：$loadStr'),
     );
   }
 

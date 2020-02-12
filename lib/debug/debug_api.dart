@@ -78,7 +78,7 @@ class DebugApi {
 //      client.post(url, body: bodyParam, headers: hdr),
 //      client.post(url, body: bodyParam, headers: hdr), //50
     ]);
-    final DateTime timeSecondRes = new DateTime.now();
+    final DateTime timeSecondRes = DateTime.now();
     print('deb2: $timeSecondRes');
 
     final response = responses[0];
@@ -110,7 +110,7 @@ class DebugApi {
   }
 
   // 旧サイトに接続
-  void testHttpGet() async {
+  Future<void> testHttpGet() async {
     var url =
         'https://www.info.pmda.go.jp/psearch/PackinsSearch?dragname=ソラナックス';
     var response = await http.get(url);

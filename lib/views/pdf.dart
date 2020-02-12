@@ -8,7 +8,7 @@ class Pdf extends StatefulWidget {
 }
 
 class _PdfState extends State<Pdf> {
-  bool _isLoading = true;
+//  bool _isLoading = true;
 
 //  PDFDocument document;
 
