@@ -137,7 +137,7 @@ class _SearchConditionalState extends State<SearchConditional> {
     return Card(
       margin: const EdgeInsets.all(8),
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
         child: const TextField(
           maxLines: 1,
           decoration: InputDecoration(
@@ -155,7 +155,7 @@ class _SearchConditionalState extends State<SearchConditional> {
       child: Column(
         children: <Widget>[
           Container(
-            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
             child: const TextField(
               maxLines: 1,
               decoration: InputDecoration(

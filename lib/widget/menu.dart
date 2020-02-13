@@ -13,11 +13,12 @@ class Menu extends StatelessWidget {
           DrawerHeader(
             child: Text(
               'メニュー',
-              style: Theme.of(context).primaryTextTheme.title,
+              style: TextStyle(color: Colors.white),
+              //Theme.of(context).primaryTextTheme.title,
             ),
             decoration: BoxDecoration(
 //              color: Theme.of(context).primaryColor,
-              color: Colors.brown[200],
+              color: Colors.black87,
             ),
             margin: EdgeInsets.zero,
           ),
@@ -28,7 +29,7 @@ class Menu extends StatelessWidget {
               children: <Widget>[
                 ListTile(
                   selected: true,
-                  leading: Icon(Icons.info_outline, color: Colors.black),
+                  leading: Icon(Icons.info_outline, color: Colors.blue),
                   title: Text('お知らせ', style: TextStyle(color: Colors.black)),
                   onTap: () {
                     Navigator.pop(context);
@@ -38,7 +39,7 @@ class Menu extends StatelessWidget {
                 CommonDivider(),
                 ListTile(
                   selected: true,
-                  leading: Icon(Icons.favorite, color: Colors.black),
+                  leading: Icon(Icons.favorite, color: Colors.green),
                   title: Text('お気に入り', style: TextStyle(color: Colors.black)),
                   onTap: () {
                     Navigator.pop(context);
@@ -48,7 +49,7 @@ class Menu extends StatelessWidget {
                 CommonDivider2(),
                 ListTile(
                   selected: true,
-                  leading: Icon(Icons.settings, color: Colors.black),
+                  leading: Icon(Icons.settings, color: Colors.red),
                   title: Text('設定', style: TextStyle(color: Colors.black)),
                   onTap: () {
                     Navigator.pop(context);
@@ -58,7 +59,7 @@ class Menu extends StatelessWidget {
                 CommonDivider(),
                 ListTile(
                   selected: true,
-                  leading: Icon(Icons.help_outline, color: Colors.black),
+                  leading: Icon(Icons.help_outline, color: Colors.cyan),
                   title:
                       Text('このアプリについて', style: TextStyle(color: Colors.black)),
                   onTap: () {
@@ -79,7 +80,7 @@ class Menu extends StatelessWidget {
                 CommonDivider2(),
                 ListTile(
                   selected: true,
-                  leading: Icon(Icons.developer_mode, color: Colors.black),
+                  leading: Icon(Icons.developer_mode, color: Colors.brown),
                   title:
                       Text('debug_db', style: TextStyle(color: Colors.black)),
                   onTap: () {

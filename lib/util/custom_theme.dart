@@ -3,8 +3,8 @@ import 'package:qr_code/util/view_const.dart';
 
 ThemeData themeData = ThemeData(
 //        brightness: Brightness.dark,
-  primaryColor: Colors.grey[200],
-  accentColor: Colors.black,
+  primaryColor: Colors.black,
+//  accentColor: Colors.black,
   indicatorColor: Colors.cyan[600],
   bottomAppBarColor: Colors.orange,
   backgroundColor: Colors.blue,

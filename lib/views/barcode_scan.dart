@@ -48,7 +48,7 @@ class _BarcodeScanState extends State<BarcodeScan> {
         }
 
         controller.startImageStream((availableImage) {
-          print('deb::controller.startImageStream');
+//          print('deb::controller.startImageStream');
           _scanText(availableImage);
         });
         setState(() {});
@@ -70,6 +70,7 @@ class _BarcodeScanState extends State<BarcodeScan> {
       'height0': availableImage.planes[0].height,
       'width0': availableImage.planes[0].width,
     });
+//    await _showPdf(barcode);
 
     if (!mounted) {
       return;
@@ -84,6 +85,13 @@ class _BarcodeScanState extends State<BarcodeScan> {
 //        final resUrl = await BasicApi().debugPost(barcode);
 //        Navigator.pushNamed(context, '/showpdf', arguments: resUrl);
       }
+    });
+  }
+
+  Future<void> _showPdf(String barcode) async {
+    final resUrl = await BasicApi().postSearch(barcode);
+    setState(() {
+      Navigator.pushNamed(context, '/showpdf', arguments: resUrl);
     });
   }
 
@@ -115,7 +123,7 @@ class _BarcodeScanState extends State<BarcodeScan> {
                 cutOutSize: MediaQuery.of(context).size.width * 0.9,
               ),
             ),
-            flex: 4,
+            flex: 8,
           ),
           Expanded(
             child: FittedBox(
@@ -123,8 +131,8 @@ class _BarcodeScanState extends State<BarcodeScan> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Text('This is the result of scan: $qrText'),
-                  _row1(),
+//                  Text('This is the result of scan: $qrText'),
+//                  _row1(),
                   _row2(),
                 ],
               ),
@@ -190,24 +198,24 @@ class _BarcodeScanState extends State<BarcodeScan> {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        Container(
-          margin: const EdgeInsets.all(8),
-          child: RaisedButton(
-            onPressed: () {
-//              controller?.pauseCamera();
-            },
-            child: const Text('pause', style: TextStyle(fontSize: 20)),
-          ),
-        ),
-        Container(
-          margin: const EdgeInsets.all(8),
-          child: RaisedButton(
-            onPressed: () {
-//              controller?.resumeCamera();
-            },
-            child: const Text('resume', style: TextStyle(fontSize: 20)),
-          ),
-        ),
+//        Container(
+//          margin: const EdgeInsets.all(8),
+//          child: RaisedButton(
+//            onPressed: () {
+////              controller?.pauseCamera();
+//            },
+//            child: const Text('pause', style: TextStyle(fontSize: 20)),
+//          ),
+//        ),
+//        Container(
+//          margin: const EdgeInsets.all(8),
+//          child: RaisedButton(
+//            onPressed: () {
+////              controller?.resumeCamera();
+//            },
+//            child: const Text('resume', style: TextStyle(fontSize: 20)),
+//          ),
+//        ),
         Container(
           margin: const EdgeInsets.all(8),
           child: RaisedButton(

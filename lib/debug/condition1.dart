@@ -54,7 +54,7 @@ class _ShoppingActionState extends State<DebugCondition> {
                       selectedColor: Colors.blue, //pc.color,
                       label: Text(
                         pc.colorName,
-                        style: TextStyle(fontSize: 16, color: Colors.black),
+                        style: TextStyle(fontSize: 12, color: Colors.black),
 //                        style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       selected: _value == pc.colorName,
@@ -85,7 +85,7 @@ class _ShoppingActionState extends State<DebugCondition> {
                           selectedColor: Colors.blue,
                           label: Text(
                             pc,
-                            style: TextStyle(fontSize: 16, color: Colors.black),
+                            style: TextStyle(fontSize: 12, color: Colors.black),
                           ),
                           selected: _sizeValue == pc,
                           onSelected: (selected) {
@@ -99,61 +99,26 @@ class _ShoppingActionState extends State<DebugCondition> {
         ],
       );
 
-//  Widget quantityCard() {
-//    CartBloc cartBloc = CartBloc(widget.product);
-//    return Column(
-//      crossAxisAlignment: CrossAxisAlignment.start,
-//      children: <Widget>[
-//        Text(
-//          "Sizes",
-//          style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20.0),
-//        ),
-//        SizedBox(
-//          height: 10.0,
-//        ),
-//        Row(
-//          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//          children: <Widget>[
-//            CustomFloat(
-//              isMini: true,
-//              icon: FontAwesomeIcons.minus,
-//              qrCallback: () => cartBloc.subtractionController.add(true),
-//            ),
-//            StreamBuilder<int>(
-//              stream: cartBloc.getCount,
-//              initialData: 0,
-//              builder: (context, snapshot) => Text(
-//                snapshot.data.toString(),
-//                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20.0),
-//              ),
-//            ),
-//            CustomFloat(
-//              isMini: true,
-//              icon: FontAwesomeIcons.plus,
-//              qrCallback: () => cartBloc.additionalController.add(true),
-//            ),
-//          ],
-//        )
-//      ],
-//    );
-//  }
-
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         CommonDivider(),
+        Container(
+          margin: EdgeInsets.only(left: 8, top: 8),
+          child: Text('検索条件', style: TextStyle(fontSize: 16)),
+        ),
         colorsCard(),
         CommonDivider(),
         const SizedBox(
           height: 5.0,
         ),
         sizesCard(),
-        CommonDivider(),
-        const SizedBox(
-          height: 5.0,
-        ),
+//        CommonDivider(),
+//        const SizedBox(
+//          height: 5.0,
+//        ),
 //        quantityCard(),
 //        SizedBox(
 //          height: 20.0,
