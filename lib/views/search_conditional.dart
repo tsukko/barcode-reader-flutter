@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:qr_code/debug/condition1.dart';
+import 'package:qr_code/models/search_parameter.dart';
 import 'package:qr_code/widget/dialog.dart';
 
 class SearchConditional extends StatefulWidget {
@@ -14,9 +16,11 @@ class _SearchConditionalState extends State<SearchConditional> {
 //  String _type2 = '';
   bool isCode = true;
 
-//  String _text = '';
+  String _gsText = '';
+  String _prText = 'カフェイン';
 
-  final TextEditingController _textEditingController = TextEditingController();
+  final _textEditGs1Controller = TextEditingController();
+  final _textEditProductController = TextEditingController(text: 'カフェイン');
 
   void _handleRadio(String e) => setState(() {
         _type = e;
@@ -26,7 +30,8 @@ class _SearchConditionalState extends State<SearchConditional> {
   @override
   void initState() {
     super.initState();
-    _textEditingController.addListener(_printLatestValue);
+    _textEditGs1Controller.addListener(_printLatestValue);
+    _textEditProductController.addListener(_printLatestValue);
 
     setState(() {
       _type = 'thumb_up';
@@ -37,18 +42,25 @@ class _SearchConditionalState extends State<SearchConditional> {
 
   @override
   void dispose() {
-    _textEditingController.dispose();
+    _textEditGs1Controller.dispose();
+    _textEditProductController.dispose();
     super.dispose();
   }
 
-//  void _handleText(String e) {
-//    setState(() {
-//      _text = e;
-//    });
-//  }
+  void _handleGsText(String e) {
+    setState(() {
+      _gsText = e;
+    });
+  }
+
+  void _handlePrText(String e) {
+    setState(() {
+      _prText = e;
+    });
+  }
 
   void _printLatestValue() {
-    print('入力状況: ${_textEditingController.text}');
+    print('入力状況: ${_textEditGs1Controller.text}');
   }
 
   @override
@@ -122,7 +134,9 @@ class _SearchConditionalState extends State<SearchConditional> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   onPressed: () {
-                    Navigator.pushNamed(context, '/search_conditional_detail');
+                    var searchParam = SearchParameter(_gsText, _prText, 0, 0);
+                    Navigator.pushNamed(context, '/search_conditional_detail',
+                        arguments: searchParam);
                   },
                 ),
               ),
@@ -138,12 +152,19 @@ class _SearchConditionalState extends State<SearchConditional> {
       margin: const EdgeInsets.all(8),
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-        child: const TextField(
+        child: TextField(
+          controller: _textEditGs1Controller,
+          maxLength: 16,
           maxLines: 1,
           decoration: InputDecoration(
             hintText: 'GS1 コードを入力ください',
             labelText: 'GS1 Code',
           ),
+          keyboardType: TextInputType.number,
+          inputFormatters: <TextInputFormatter>[
+            WhitelistingTextInputFormatter.digitsOnly,
+          ],
+          onChanged: _handleGsText,
         ),
       ),
     );
@@ -156,12 +177,14 @@ class _SearchConditionalState extends State<SearchConditional> {
         children: <Widget>[
           Container(
             padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-            child: const TextField(
+            child: TextField(
+              controller: _textEditProductController,
               maxLines: 1,
               decoration: InputDecoration(
                 hintText: '医薬品名を入力ください',
                 labelText: '医薬品名',
               ),
+              onChanged: _handlePrText,
             ),
           ),
           DebugCondition(),

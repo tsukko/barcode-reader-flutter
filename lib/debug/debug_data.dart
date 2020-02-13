@@ -28,6 +28,15 @@ List<Medicine> sampleData = List<Medicine>.generate(
         '/PmdaSearch/iyakuDetail/ResultDataSetPDF/780075_1124023F1118_1_04',
         true));
 
+List<Medicine> searchSampleData = List<Medicine>.generate(
+    20,
+    (i) => Medicine(
+        '(01)1498708010031$i',
+        'コンスタン0.4mg錠／コンスタン0.8mg錠',
+        docData2[i],
+        '/PmdaSearch/iyakuDetail/ResultDataSetPDF/780075_1124023F1118_1_04',
+        true));
+
 List<String> docData2 = [
   '添付文書',
   '患者向医薬品ガイド／ワクチン接種を受ける人へのガイド',

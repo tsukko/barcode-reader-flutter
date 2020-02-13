@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:qr_code/models/search_parameter.dart';
+
 //    var scheme = "https://";
 //    var host = "www";
 //    var domain = "pmda.go.jp";
@@ -74,6 +76,15 @@ String createLoadUrl(String url) {
 
 Map<String, String> getBodyGs1code(String code) {
   baseBody.update('gs1code', (v) => code);
+  return baseBody;
+}
+
+Map<String, String> getBodyMedicine(SearchParameter param) {
+  baseBody.addAll({
+    'nameWord': param.medicineWord,
+    'iyakuHowtoNameSearchRadioValue': param.searchCondition1.toString(),
+    'howtoMatchRadioValue': param.searchCondition2.toString(),
+  });
   return baseBody;
 }
 

@@ -115,9 +115,10 @@ class _CameraAppState extends State<CameraApp> {
 
 //    print("bytes    : ${availableImage.planes[0].bytes}");
 //    print("bytes buf: ${availableImage.planes[0].bytes.buffer}");
-    var bytesList = availableImage.planes.map((plane) {
-      return plane.bytes;
-    }).toList();
+
+//    var bytesList = availableImage.planes.map((plane) {
+//      return plane.bytes;
+//    }).toList();
     String dateString = await platform.invokeMethod('camera', {
       "bytes": availableImage.planes[0].bytes,
       "height": availableImage.height,

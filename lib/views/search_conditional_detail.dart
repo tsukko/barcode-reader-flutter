@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qr_code/models/search_parameter.dart';
 
 class SearchConditionalDetail extends StatefulWidget {
   @override
@@ -151,7 +152,10 @@ class _SearchConditionalDetailState extends State<SearchConditionalDetail> {
 //                borderRadius: new BorderRadius.circular(10.0),
 //              ),
                   onPressed: () {
-                    Navigator.pushNamed(context, '/search_conditional_detail');
+                    var aaa = ModalRoute.of(context).settings.arguments
+                        as SearchParameter;
+                    Navigator.pushNamed(context, '/search_result',
+                        arguments: ModalRoute.of(context).settings.arguments);
                   },
                 ),
               ),
