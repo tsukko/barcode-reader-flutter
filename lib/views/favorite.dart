@@ -65,7 +65,7 @@ class _FavoriteState extends State<Favorite> {
                 subtitle: Text(item.docType),
                 onTap: () {
                   Navigator.pushNamed(context, '/showpdf',
-                      arguments: ApiParameter.addBaseUrl(item.url));
+                      arguments: addBaseUrl(item.url));
                 },
               ),
               const Divider(),

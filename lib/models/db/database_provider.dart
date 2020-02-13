@@ -13,17 +13,15 @@ abstract class DatabaseProvider {
   int get databaseVersion;
 
   Future<Database> get database async {
-    if (_instance == null) {
-      _instance = await openDatabase(
-        join(
-          await getDatabasesPath(),
-          databaseName,
-        ),
-        onCreate: createDatabase,
-        onUpgrade: upgradeDatabase,
-        version: databaseVersion,
-      );
-    }
+    _instance ??= await openDatabase(
+      join(
+        await getDatabasesPath(),
+        databaseName,
+      ),
+      onCreate: createDatabase,
+      onUpgrade: upgradeDatabase,
+      version: databaseVersion,
+    );
     return _instance;
   }
 

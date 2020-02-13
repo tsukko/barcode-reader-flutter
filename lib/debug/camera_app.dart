@@ -30,7 +30,6 @@ class _CameraAppState extends State<CameraApp> {
           return;
         }
 
-        /////////
         controller.startImageStream((availableImage) {
 //          controller.stopImageStream();
           _scanText(availableImage);
@@ -119,7 +118,7 @@ class _CameraAppState extends State<CameraApp> {
     var bytesList = availableImage.planes.map((plane) {
       return plane.bytes;
     }).toList();
-    String dateString = await platform.invokeMethod('web', {
+    String dateString = await platform.invokeMethod('camera', {
       "bytes": availableImage.planes[0].bytes,
       "height": availableImage.height,
       "width": availableImage.width

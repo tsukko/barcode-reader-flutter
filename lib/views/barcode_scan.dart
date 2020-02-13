@@ -89,7 +89,7 @@ class _BarcodeScanState extends State<BarcodeScan> {
 
   @override
   void dispose() {
-    print("deb::dispose");
+    print('deb::dispose');
     if (controller != null && controller.value.isStreamingImages) {
       controller.stopImageStream();
     }
@@ -212,8 +212,8 @@ class _BarcodeScanState extends State<BarcodeScan> {
           margin: const EdgeInsets.all(8),
           child: RaisedButton(
             onPressed: () async {
-              final resUrl = await BasicApi().postSearch("");
-//              final resUrl = await BasicApi().postMultiple("");
+              final resUrl = await BasicApi().postSearch('');
+//              final resUrl = await BasicApi().postMultiple('');
               print('QRView url: $resUrl');
               await Navigator.pushNamed(context, '/showpdf', arguments: resUrl);
             },

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:qr_code/debug/debug_data.dart';
-import 'package:qr_code/models/medicine.dart';
 
 class SelectDocument extends StatefulWidget {
   @override
@@ -10,8 +9,8 @@ class SelectDocument extends StatefulWidget {
 class _SelectDocumentState extends State<SelectDocument> {
   @override
   Widget build(BuildContext context) {
-    final int index = ModalRoute.of(context).settings.arguments as int;
-    final Medicine item = sampleData[index];
+    final index = ModalRoute.of(context).settings.arguments as int;
+    final item = sampleData[index];
 
     return Scaffold(
       appBar: AppBar(

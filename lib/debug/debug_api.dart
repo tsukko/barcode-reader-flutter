@@ -14,7 +14,7 @@ class DebugApi {
 
   // test用メソッド　ここから
   Future<String> postMultiple(String codeId) async {
-    final url = ApiParameter.baseUrl + ApiParameter.searchDir;
+    final url = baseUrl + searchDir;
 
     final client = http.Client();
 
@@ -22,8 +22,8 @@ class DebugApi {
       codeId = '(01)14987080100314';
     }
 
-    final bodyParam = ApiParameter.getBodyGs1code(codeId);
-    final hdr = ApiParameter.getHeader();
+    final bodyParam = getBodyGs1code(codeId);
+    final hdr = getHeader();
     final DateTime timeStartReq = DateTime.now();
     print('deb1 : $timeStartReq');
     final List<http.Response> responses = await Future.wait([
@@ -89,9 +89,9 @@ class DebugApi {
           RegExp('/PmdaSearch/iyakuDetail/ResultDataSetPDF/.*?>')
               .allMatches(resBody);
 
-      var pdfUrl = ApiParameter.baseUrl;
+      var pdfUrl = baseUrl;
       for (Match m in matches) {
-        pdfUrl = ApiParameter.baseUrl + m.group(0).replaceAll("'>", "");
+        pdfUrl = baseUrl + m.group(0).replaceAll("'>", "");
 //        print("pdf url : $pdfUrl");
       }
       final DateTime timeEndRes = DateTime.now();

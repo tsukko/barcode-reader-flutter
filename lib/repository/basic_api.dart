@@ -3,7 +3,7 @@ import 'package:qr_code/util/api_parameter.dart';
 
 class BasicApi {
   Future<String> postSearch(String codeId) async {
-    final url = ApiParameter.baseUrl + ApiParameter.searchDir;
+    final url = baseUrl + searchDir;
 //    DateTime timeStartReq = new DateTime.now();
 
     final client = http.Client();
@@ -13,9 +13,9 @@ class BasicApi {
       print('error code is empty.');
       return null;
     }
-//    print("deb1 codeId: $codeId");
-    final bodyParam = ApiParameter.getBodyGs1code(codeId);
-    final hdr = ApiParameter.getHeader();
+//    print('deb1 codeId: $codeId');
+    final bodyParam = getBodyGs1code(codeId);
+    final hdr = getHeader();
 
     final response = await client.post(url, body: bodyParam, headers: hdr);
 
@@ -32,10 +32,11 @@ class BasicApi {
           RegExp('/PmdaSearch/iyakuDetail/ResultDataSetPDF/.*?>')
               .allMatches(resBody);
 
-      var pdfUrl = ApiParameter.baseUrl;
-      for (var m in matches) {
-        pdfUrl = ApiParameter.baseUrl + m.group(0).replaceAll("'>", '');
-//        print("pdf url : $pdfUrl");
+      var pdfUrl = baseUrl;
+      // ignore: prefer_final_in_for_each
+      for (final m in matches) {
+        pdfUrl = baseUrl + m.group(0).replaceAll("'>", '');
+//        print('pdf url : $pdfUrl');
       }
 
 //      DateTime timeEndRes = new DateTime.now();
@@ -44,7 +45,7 @@ class BasicApi {
 //      int sinceEpochEndRes = timeEndRes.millisecondsSinceEpoch;
 //      var api_time = sinceEpochSecondRes - sinceEpochStartReq;
 //      var total_time = sinceEpochEndRes - sinceEpochStartReq;
-//      print("time log, api: $api_time (ms), total: $total_time (ms).");
+//      print('time log, api: $api_time (ms), total: $total_time (ms).');
 
       return pdfUrl;
     } else {

@@ -6,22 +6,22 @@ class SearchConditional extends StatefulWidget {
 }
 
 class PlaceItem {
+  PlaceItem(this.isExpanded, this.name, this.image);
+
   bool isExpanded;
   String name;
   String image;
-
-  PlaceItem(this.isExpanded, this.name, this.image);
 }
 
 ExpansionPanel _createPanel(PlaceItem place) {
   return ExpansionPanel(
     headerBuilder: (context, isExpanded) {
       return Container(
-        padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8),
         child: Row(
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(right: 10.0),
+              padding: const EdgeInsets.only(right: 10),
               child: Icon(Icons.image),
             ),
             Text(
@@ -47,19 +47,20 @@ ExpansionPanel _createPanel(PlaceItem place) {
 }
 
 class _SearchConditionalState extends State<SearchConditional> {
-  var _placeList = List<PlaceItem>();
+  final _placeList = List<PlaceItem>();
 
   @override
   void initState() {
-    _placeList.add(
-      PlaceItem(false, 'Huntington Beach', 'barcode.jpg'),
-    );
-    _placeList.add(
-      PlaceItem(false, 'The Hat', 'the-hat.jpg'),
-    );
-    _placeList.add(
-      PlaceItem(false, 'Shake Shack', 'shake-shack.jpg'),
-    );
+    _placeList
+      ..add(
+        PlaceItem(false, 'Huntington Beach', 'barcode.jpg'),
+      )
+      ..add(
+        PlaceItem(false, 'The Hat', 'the-hat.jpg'),
+      )
+      ..add(
+        PlaceItem(false, 'Shake Shack', 'shake-shack.jpg'),
+      );
     super.initState();
   }
 
@@ -67,10 +68,10 @@ class _SearchConditionalState extends State<SearchConditional> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('California'),
+        title: const Text('California'),
       ),
       body: Container(
-        padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8),
         child: ListView(
           children: <Widget>[
             ExpansionPanelList(

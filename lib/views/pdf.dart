@@ -36,8 +36,8 @@ class _PdfState extends State<Pdf> {
 //    loadDocument();
 //    final String url = "https://docs.google.com/gview?embedded=true&url=" +
 //        ModalRoute.of(context).settings.arguments;
-    final String url = ApiParameter.createLoadUrl(
-        ModalRoute.of(context).settings.arguments as String);
+    final url =
+        createLoadUrl(ModalRoute.of(context).settings.arguments as String);
     WebViewController _controller;
     print('PdfScreen build :$url');
     return Scaffold(

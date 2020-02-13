@@ -2,8 +2,8 @@
 import 'medicine.dart';
 
 class SearchData {
+  SearchData(this.searchCount, this.medicineList);
+
   final int searchCount;
   final List<Medicine> medicineList;
-
-  SearchData(this.searchCount, this.medicineList);
 }

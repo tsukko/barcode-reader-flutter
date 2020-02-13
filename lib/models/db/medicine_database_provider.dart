@@ -8,14 +8,14 @@ class MedicineDatabaseProvider extends DatabaseProvider {
   String get databaseName => 'sample.db';
 
   @override
-  String get tableName => "medicines";
+  String get tableName => 'medicines';
 
   @override
   int get databaseVersion => 1;
 
   @override
   Future<void> createDatabase(Database db, int version) => db.execute(
-        """
+        '''
           CREATE TABLE $tableName(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             gs1code TEXT,
@@ -24,7 +24,7 @@ class MedicineDatabaseProvider extends DatabaseProvider {
             url TEXT,
             favorite INTEGER
           )
-        """,
+        ''',
       );
 
   @override
@@ -57,7 +57,7 @@ class MedicineDatabaseProvider extends DatabaseProvider {
           maps[i]['medicineName'] as String,
           maps[i]['docType'] as String,
           maps[i]['url'] as String,
-          (maps[i]['favorite'] == 0));
+          maps[i]['favorite'] == 0);
     });
   }
 
@@ -65,15 +65,15 @@ class MedicineDatabaseProvider extends DatabaseProvider {
     final Database db = await database;
     final List<Map<String, dynamic>> medicines =
         await db.query(tableName, where: 'id = ?', whereArgs: <dynamic>[id]);
-    var ggg = List.generate(medicines.length, (i) {
+    var resMedicine = List.generate(medicines.length, (i) {
       return Medicine(
 //        id: maps[i]['id'],
           medicines[i]['gs1code'] as String,
           medicines[i]['medicineName'] as String,
           medicines[i]['docType'] as String,
           medicines[i]['url'] as String,
-          (medicines[i]['favorite'] == 0));
+          medicines[i]['favorite'] == 0);
     });
-    return ggg[0];
+    return resMedicine[0];
   }
 }

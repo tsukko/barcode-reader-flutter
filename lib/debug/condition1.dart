@@ -5,29 +5,29 @@ import 'package:qr_code/widget/common_divider.dart';
 class DebugCondition extends StatefulWidget {
   // どっかから持ってきたやつで、不要なのもそのまま
   final Product product = Product(
-      brand: "Levis",
-      description: "Print T-shirt",
+      brand: 'Levis',
+      description: 'Print T-shirt',
       image:
-          "https://mosaic02.ztat.net/vgs/media/pdp-zoom/LE/22/1D/02/2A/12/LE221D022-A12@16.1.jpg",
-      name: "THE PERFECT",
-      price: "£19.99",
+          'https://mosaic02.ztat.net/vgs/media/pdp-zoom/LE/22/1D/02/2A/12/LE221D022-A12@16.1.jpg',
+      name: 'THE PERFECT',
+      price: '£19.99',
       rating: 4.0,
       colors: [
         ProductColor(
           color: Colors.blue,
-          colorName: "一般名及び販売名",
+          colorName: '一般名及び販売名',
         ),
         ProductColor(
           color: Colors.blue,
-          colorName: "一般名のみ",
+          colorName: '一般名のみ',
         ),
         ProductColor(
           color: Colors.blue,
-          colorName: "販売名のみ",
+          colorName: '販売名のみ',
         ),
       ],
       quantity: 0,
-      sizes: ["部分一致", "前方一致"],
+      sizes: ['部分一致', '前方一致'],
       totalReviews: 170);
 
   @override
@@ -37,8 +37,8 @@ class DebugCondition extends StatefulWidget {
 }
 
 class _ShoppingActionState extends State<DebugCondition> {
-  String _value = "一般名のみ";
-  String _sizeValue = "部分一致";
+  String _value = '一般名のみ';
+  String _sizeValue = '部分一致';
 
   Widget colorsCard() => Column(
 //        mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -146,12 +146,12 @@ class _ShoppingActionState extends State<DebugCondition> {
         CommonDivider(),
         colorsCard(),
         CommonDivider(),
-        SizedBox(
+        const SizedBox(
           height: 5.0,
         ),
         sizesCard(),
         CommonDivider(),
-        SizedBox(
+        const SizedBox(
           height: 5.0,
         ),
 //        quantityCard(),

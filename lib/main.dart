@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: CustomTheme.themeData,
+      theme: themeData,
       home: _MyApp(),
       routes: <String, WidgetBuilder>{
         '/top': (context) => Top(),
@@ -55,12 +55,12 @@ class _MyAppState extends State<_MyApp> {
         navigateAfterSeconds: Top(),
         title: Text(
           'Welcome In SplashScreen',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
         ),
         image: Image.asset('assets/medical_medicine.png'),
         backgroundColor: ViewConst.splashBackgroundColor,
-        styleTextUnderTheLoader: TextStyle(),
-        photoSize: 100.0,
+        styleTextUnderTheLoader: const TextStyle(),
+        photoSize: 100,
         onClick: () => print('Flutter Egypt'),
         loaderColor: ViewConst.splashLoaderColor);
   }

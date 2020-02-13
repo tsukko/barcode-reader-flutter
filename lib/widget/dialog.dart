@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code/debug/debug_data.dart';
 
-enum Answers { YES, NO }
+enum Answers { yes, no }
 
 Widget _buildSignOutDialogAndroid(BuildContext context, List<String> data) {
   return AlertDialog(
@@ -45,10 +45,10 @@ Widget _buildSignOutDialogiOS(BuildContext context, List<String> data) {
 }
 
 void showBasicDialog(BuildContext context, String dialogKey) {
-  final List<String> data = dialogStr[dialogKey];
+  final data = dialogStr[dialogKey];
 
 //  StatelessWidget dialog;
-  StatelessWidget dialog = (Platform.isIOS
+  final dialog = (Platform.isIOS
       ? _buildSignOutDialogiOS(context, data)
       : _buildSignOutDialogAndroid(context, data)) as StatelessWidget;
 
@@ -60,10 +60,10 @@ void showBasicDialog(BuildContext context, String dialogKey) {
   ).then(
     (value) {
       switch (value) {
-        case Answers.YES:
+        case Answers.yes:
 //        _setValue('Yes');
           break;
-        case Answers.NO:
+        case Answers.no:
 //        _setValue('No');
           break;
       }

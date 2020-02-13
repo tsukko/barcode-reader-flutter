@@ -12,7 +12,7 @@ class _UpdateListState extends State<UpdateList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('更新一覧'),
+        title: const Text('更新一覧'),
       ),
       body: ListView.builder(
         itemCount: sampleData.length,
@@ -30,7 +30,6 @@ class _UpdateListState extends State<UpdateList> {
                 sampleData.removeAt(index);
               });
 
-              // Then show a snackbar.
               Scaffold.of(context)
                   .showSnackBar(SnackBar(content: Text('$item dismissed')));
             },
@@ -42,7 +41,7 @@ class _UpdateListState extends State<UpdateList> {
               subtitle: Text(sampleData[index].gs1code),
               onTap: () {
                 Navigator.pushNamed(context, '/showpdf',
-                    arguments: ApiParameter.addBaseUrl(sampleData[index].url));
+                    arguments: addBaseUrl(sampleData[index].url));
               },
             ),
           );
