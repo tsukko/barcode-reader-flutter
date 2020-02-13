@@ -28,41 +28,75 @@ class _TopState extends State<Top> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Top Screen'),
+        title: const Text('Top Screen'),
       ),
       drawer: Menu().build(context),
-      body: Stack(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Align(
-            alignment: Alignment.topCenter,
-            child: pendingWidget('top area.', 160.0),
+          _header(),
+          Column(
+            children: <Widget>[
+              _mainBody(),
+              _mainDummyBody(),
+            ],
           ),
-          Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[_nowDate(), _lastDate(), _scan(), _search()],
-            ),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: pendingWidget('footer.', 88.0),
-          ),
+          _footer(),
         ],
       ),
     );
   }
 
+  Widget _header() {
+    return Align(
+      alignment: Alignment.topRight,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          _nowDate(),
+          _lastDate(),
+        ],
+      ),
+      //pendingWidget('top area.', 120.0),
+    );
+  }
+
   Widget _nowDate() {
     return Container(
-      margin: EdgeInsets.all(8.0),
-      child: Text('アクセス日時：$nowStr'),
+      child: Text('アクセス日時：$nowStr', style: const TextStyle(fontSize: 12)),
     );
   }
 
   Widget _lastDate() {
     return Container(
-      margin: EdgeInsets.all(8.0),
-      child: Text('最終更新日時：$loadStr'),
+//      margin: EdgeInsets.all(2.0),
+      child: Text('最終更新日時：$loadStr', style: const TextStyle(fontSize: 12)),
+    );
+  }
+
+  Widget _footer() {
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: pendingWidget('footer.', 42),
+    );
+  }
+
+  Widget _mainBody() {
+    return Container(
+      padding: const EdgeInsets.all(8),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+          Expanded(
+            flex: 1,
+            child: _scan(),
+          ),
+          Expanded(
+            flex: 1,
+            child: _search(),
+          ),
+        ],
+      ),
     );
   }
 
@@ -72,28 +106,22 @@ class _TopState extends State<Top> {
         Navigator.pushNamed(context, '/qrview');
       },
       child: Card(
-        margin: EdgeInsets.all(16.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        margin: const EdgeInsets.all(8),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Expanded(
-              flex: 1,
-              child: Container(
-                margin: EdgeInsets.all(16.0),
-                child: Icon(
-                  Icons.photo_camera,
-                  size: 38.0,
-                  semanticLabel: 'Text to announce in accessibility modes',
-                ),
+            Container(
+              margin: const EdgeInsets.all(8),
+              child: Icon(
+                Icons.photo_camera,
+                size: 42,
+                semanticLabel: 'Text to announce in accessibility modes',
               ),
             ),
-            Expanded(
-              flex: 5,
-              child: Container(
-                margin: EdgeInsets.all(8.0),
-                child:
-                    Text('バーコードを読み取り添付文書を検索する', style: TextStyle(fontSize: 18)),
-              ),
+            Container(
+              margin: const EdgeInsets.all(8),
+              child: const Text('バーコードを読み取り添付文書を検索する',
+                  style: TextStyle(fontSize: 14)),
             ),
           ],
         ),
@@ -107,29 +135,69 @@ class _TopState extends State<Top> {
         Navigator.pushNamed(context, '/search_conditional');
       },
       child: Card(
-        margin: EdgeInsets.all(16.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        margin: const EdgeInsets.all(8),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Expanded(
-              flex: 1,
-              child: Container(
-                margin: EdgeInsets.all(16.0),
-                child: Icon(
-                  Icons.find_in_page,
-//                  color: Colors.pink,
-                  size: 38.0,
-                  semanticLabel: 'Text to announce in accessibility modes',
-                ),
+            Container(
+              margin: const EdgeInsets.all(8),
+              child: Icon(
+                Icons.find_in_page,
+                size: 42,
+                semanticLabel: 'Text to announce in accessibility modes',
               ),
             ),
-            Expanded(
-              flex: 5,
-              child: Container(
-                margin: EdgeInsets.all(8.0),
-                child:
-                    Text('検索パラメータを設定して文書を検索する', style: TextStyle(fontSize: 18)),
+            Container(
+              margin: const EdgeInsets.all(8),
+              child: const Text('検索パラメータを設定して文書を検索する',
+                  style: TextStyle(fontSize: 14)),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _mainDummyBody() {
+    return Container(
+      padding: const EdgeInsets.all(8),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+          Expanded(
+            flex: 1,
+            child: _dummyCard(),
+          ),
+          Expanded(
+            flex: 1,
+            child: _dummyCard(),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _dummyCard() {
+    return InkWell(
+//      onTap: () {
+//        Navigator.pushNamed(context, '/search_conditional');
+//      },
+      child: Card(
+        margin: const EdgeInsets.all(8),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Container(
+              margin: const EdgeInsets.all(8),
+              child: Icon(
+                Icons.device_unknown,
+                size: 42,
+                semanticLabel: 'Text to announce in accessibility modes',
               ),
+            ),
+            Container(
+              margin: const EdgeInsets.all(8),
+              child: const Text('ダミー', style: TextStyle(fontSize: 14)),
             ),
           ],
         ),

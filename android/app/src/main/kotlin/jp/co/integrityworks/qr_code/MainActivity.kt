@@ -27,13 +27,13 @@ class MainActivity : FlutterActivity() {
 
         Log.d(QRView.TAG, "2debbb::configureFlutterEngine: ")
         initBarcodeReader()
-        MethodChannel(flutterEngine.dartExecutor, "com.tasogarei.test/web").setMethodCallHandler { call, result ->
+        MethodChannel(flutterEngine.dartExecutor, "com.tasogarei.test/camera").setMethodCallHandler { call, result ->
             when (call.method) {
 //                "lib_init" -> {
 //                    Log.d(QRView.TAG, "debbb::lib_init")
 //                    initBarcodeReader()
 //                }
-                "web" -> {
+                "camera" -> {
                     val bytes = call.argument<ByteArray>("bytes")
                     val height = call.argument<Int>("height")
                     val width = call.argument<Int>("width")

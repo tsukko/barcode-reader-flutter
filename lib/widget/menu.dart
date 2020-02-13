@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qr_code/widget/common_divider.dart';
 import 'package:qr_code/widget/common_divider2.dart';
+import 'package:qr_code/widget/common_divider3.dart';
 
 class Menu extends StatelessWidget {
   @override
@@ -15,19 +16,19 @@ class Menu extends StatelessWidget {
               style: Theme.of(context).primaryTextTheme.title,
             ),
             decoration: BoxDecoration(
-              color: Theme.of(context).primaryColor,
-//              color: Theme.of(context).indicatorColor,
+//              color: Theme.of(context).primaryColor,
+              color: Colors.brown[200],
             ),
             margin: EdgeInsets.zero,
           ),
-          CommonDivider2(),
+          CommonDivider3(),
           Container(
             color: Colors.grey[200],
             child: Column(
               children: <Widget>[
                 ListTile(
                   selected: true,
-                  leading: Icon(Icons.favorite, color: Colors.black),
+                  leading: Icon(Icons.info_outline, color: Colors.black),
                   title: Text('お知らせ', style: TextStyle(color: Colors.black)),
                   onTap: () {
                     Navigator.pop(context);
@@ -57,20 +58,20 @@ class Menu extends StatelessWidget {
                 CommonDivider(),
                 ListTile(
                   selected: true,
-                  leading: Icon(Icons.info_outline, color: Colors.black),
+                  leading: Icon(Icons.help_outline, color: Colors.black),
                   title:
                       Text('このアプリについて', style: TextStyle(color: Colors.black)),
                   onTap: () {
                     Navigator.pop(context);
                     showLicensePage(
                       context: context,
-                      applicationName: "applicationName",
-                      applicationVersion: "versionName",
+                      applicationName: 'applicationName',
+                      applicationVersion: 'versionName',
                       applicationIcon: Image.asset(
-                          "assets/medical_medicine.png",
-                          scale: 3.0,
+                          'assets/medical_medicine.png',
+                          scale: 3,
                           height: 100),
-                      applicationLegalese: "applicationLegalese",
+                      applicationLegalese: 'applicationLegalese',
                       // useRootNavigator: true,
                     );
                   },
@@ -78,7 +79,7 @@ class Menu extends StatelessWidget {
                 CommonDivider2(),
                 ListTile(
                   selected: true,
-                  leading: Icon(Icons.settings, color: Colors.black),
+                  leading: Icon(Icons.developer_mode, color: Colors.black),
                   title:
                       Text('debug_db', style: TextStyle(color: Colors.black)),
                   onTap: () {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 // 開発デバッグ用のWidget置き場
+// ペンディングの箇所を表現するWidget
 Widget pendingWidget(String message, double pendingHeight) {
   return SizedBox(
     height: pendingHeight,
@@ -14,6 +15,8 @@ Widget pendingWidget(String message, double pendingHeight) {
   );
 }
 
+// デバッグ用カメラを起動するボタン
+// 各ネイティブ側のカメラビューを起動させる
 Widget debugCamera(BuildContext context) {
   return RaisedButton(
     child: const Text('debug camera'),

@@ -10,7 +10,7 @@ import Flutter
     GeneratedPluginRegistrant.register(with: self)
 
     let controller: FlutterViewController = window?.rootViewController as! FlutterViewController
-    let methodChannel = FlutterMethodChannel(name: "com.tasogarei.test/web", binaryMessenger: controller.binaryMessenger)
+    let methodChannel = FlutterMethodChannel(name: "com.tasogarei.test/camera", binaryMessenger: controller.binaryMessenger)
 
     let reader = KXABarcodeReader.sharedInstance()
     reader?.reset()
@@ -23,7 +23,7 @@ import Flutter
 {
 
             (call: FlutterMethodCall, result: FlutterResult) -> Void in
-            if call.method == "web" {
+            if call.method == "camera" {
 // https://news.mynavi.jp/itsearch/article/devsoft/1218
 // https://github.com/OpenFlutter/fluwx/issues/110
 //if ([StringUtil isBlank:imagePath]) {
@@ -38,14 +38,16 @@ import Flutter
                 //UIImageをCVPixelBufferに変換
                 //https://developers.cyberagent.co.jp/blog/archives/8803/
                 
-//                let ssss = CameraSmaple()
-                
                 let arguments = call.arguments as? [String: Any]
                 let buf = arguments?["bytes"] as! FlutterStandardTypedData
                 let height = arguments?["height"] as? Int
                 let width = arguments?["width"] as? Int
                 let bytesPerRow = arguments?["bytesPerRow"] as? Int
-                
+                let height0 = arguments?["height0"] as? Int
+                let width0 = arguments?["width0"] as? Int
+                print("arguments. bytesPerRow: \(bytesPerRow), height0: \(height0), width0, \(width0)")
+                print("arguments. height: \(height), width, \(width)")
+
                 var byte = [UInt8](buf.data)
                 var byteaaa = buf.data as NSData
                 var bbbb: UnsafeRawPointer = byteaaa.bytes

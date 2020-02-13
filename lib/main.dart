@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:qr_code/debug/camera_app.dart';
-import 'package:qr_code/util/view_const.dart';
 import 'package:qr_code/views/barcode_scan.dart';
 import 'package:qr_code/views/favorite.dart';
 import 'package:qr_code/views/pdf.dart';
@@ -13,6 +12,8 @@ import 'package:qr_code/views/update_list.dart';
 import 'package:splashscreen/splashscreen.dart';
 
 import 'debug/debug_db.dart';
+import 'util/custom_theme.dart';
+import 'util/view_const.dart';
 
 void main() => runApp(MyApp());
 
@@ -20,77 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-//        brightness: Brightness.dark,
-        primaryColor: Colors.grey[200],
-        accentColor: Colors.black,
-        indicatorColor: Colors.cyan[600],
-        bottomAppBarColor: Colors.orange,
-        backgroundColor: Colors.blue,
-        // メニューのDrawerHeader以外の背景色
-        canvasColor: Colors.orange[200],
-        // 画面の背景色（未設定ならcanvasColorの色が使用される）
-        scaffoldBackgroundColor: Colors.grey[100],
-        //Colors.lime[50],
-        toggleableActiveColor: Colors.pink[400],
-        cardColor: Colors.white,
-        hoverColor: Colors.blue[400],
-        primaryTextTheme: TextTheme(
-            headline: TextStyle(
-          color: Colors.green,
-          fontWeight: FontWeight.w400,
-          fontStyle: FontStyle.normal,
-        ).merge(ViewConst.font_size_18)),
-        accentTextTheme: TextTheme(
-            headline: TextStyle(
-          color: Colors.green,
-          fontWeight: FontWeight.w400,
-          fontStyle: FontStyle.normal,
-        ).merge(ViewConst.font_size_18)),
-        textTheme: TextTheme(
-          headline: TextStyle(
-            color: Colors.red,
-            fontWeight: FontWeight.w400,
-            fontStyle: FontStyle.normal,
-          ).merge(ViewConst.font_size_18),
-          body2: TextStyle(color: Colors.grey, height: 1.0)
-              .merge(ViewConst.font_normal)
-              .merge(ViewConst.font_size_15),
-          body1: TextStyle(
-            color: Colors.black54,
-          ).merge(ViewConst.font_normal).merge(ViewConst.font_size_15),
-          button: TextStyle(
-            color: Colors.orange,
-          ).merge(ViewConst.font_medium).merge(ViewConst.font_size_18),
-//          title: TextStyle(
-//            color: Colors.teal,
-//          ).merge(ViewConst.font_medium).merge(ViewConst.font_size_17),
-//          subtitle: TextStyle(
-//            color: Colors.amberAccent,
-//          ).merge(ViewConst.font_medium).merge(ViewConst.font_size_16),
-//          display4: TextStyle(
-//            color: Colors.amberAccent,
-//          ).merge(ViewConst.font_medium).merge(ViewConst.font_size_16),
-//          display3: TextStyle(
-//            color: Colors.amberAccent,
-//          ).merge(ViewConst.font_medium).merge(ViewConst.font_size_16),
-//          display2: TextStyle(
-//            color: Colors.amberAccent,
-//          ).merge(ViewConst.font_medium).merge(ViewConst.font_size_16),
-//          display1: TextStyle(
-//            color: Colors.amberAccent,
-//          ).merge(ViewConst.font_medium).merge(ViewConst.font_size_16),
-//          subhead: TextStyle(
-//            color: Colors.amberAccent,
-//          ).merge(ViewConst.font_medium).merge(ViewConst.font_size_16),
-//          caption: TextStyle(
-//            color: Colors.amberAccent,
-//          ).merge(ViewConst.font_medium).merge(ViewConst.font_size_16),
-//          overline: TextStyle(
-//            color: Colors.amberAccent,
-//          ).merge(ViewConst.font_medium).merge(ViewConst.font_size_16),
-        ),
-      ),
+      theme: CustomTheme.themeData,
       home: _MyApp(),
       routes: <String, WidgetBuilder>{
         '/top': (context) => Top(),

@@ -9,10 +9,12 @@ class SearchConditional extends StatefulWidget {
 
 class _SearchConditionalState extends State<SearchConditional> {
   String _type = '';
-  String _type1 = '';
-  String _type2 = '';
+
+//  String _type1 = '';
+//  String _type2 = '';
   bool isCode = true;
-  String _text = '';
+
+//  String _text = '';
 
   final TextEditingController _textEditingController = TextEditingController();
 
@@ -27,9 +29,9 @@ class _SearchConditionalState extends State<SearchConditional> {
     _textEditingController.addListener(_printLatestValue);
 
     setState(() {
-      _type = "thumb_up";
-      _type1 = "0";
-      _type2 = "0";
+      _type = 'thumb_up';
+//      _type1 = '0';
+//      _type2 = '0';
     });
   }
 
@@ -39,16 +41,17 @@ class _SearchConditionalState extends State<SearchConditional> {
     super.dispose();
   }
 
-  void _handleText(String e) {
-    setState(() {
-      _text = e;
-    });
-  }
+//  void _handleText(String e) {
+//    setState(() {
+//      _text = e;
+//    });
+//  }
 
   void _printLatestValue() {
     print('入力状況: ${_textEditingController.text}');
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -77,57 +80,55 @@ class _SearchConditionalState extends State<SearchConditional> {
           ),
         ],
       ),
-      body: Stack(
-        children: <Widget>[
-          Container(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                RadioListTile(
-                  secondary: Image.asset('assets/barcode.png', scale: 8),
-                  activeColor: Colors.blue,
-                  controlAffinity: ListTileControlAffinity.leading,
-                  // ignore: prefer_const_constructors
-                  title: const Text('GS1 codeでの検索'),
-                  value: 'thumb_up',
-                  groupValue: _type,
-                  onChanged: _handleRadio,
-                ),
-                isCode ? cardGs1Code() : Container(),
-                RadioListTile(
-                  secondary: Image.asset('assets/medicine1.png', scale: 8),
-                  activeColor: Colors.blue,
-                  controlAffinity: ListTileControlAffinity.leading,
-                  // ignore: prefer_const_constructors
-                  title: const Text('医薬品名での検索'),
-                  value: 'favorite',
-                  groupValue: _type,
-                  onChanged: _handleRadio,
-                ),
-                isCode ? Container() : cardName(),
-              ],
-            ),
-          ),
-          Container(
-            alignment: Alignment.bottomCenter,
-            margin: const EdgeInsets.all(16),
-            child: SizedBox(
-              width: double.infinity, // match_parent
-              child: RaisedButton(
-                child: const Text('検索',
-                    style: TextStyle(fontSize: 18, color: Colors.white)),
-                color: Colors.blue,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                onPressed: () {
-                  Navigator.pushNamed(context, '/search_conditional_detail');
-                },
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Container(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  RadioListTile(
+                    secondary: Image.asset('assets/barcode.png', scale: 8),
+                    controlAffinity: ListTileControlAffinity.leading,
+                    title: const Text('GS1 codeでの検索'),
+                    value: 'thumb_up',
+                    groupValue: _type,
+                    onChanged: _handleRadio,
+                  ),
+                  isCode ? cardGs1Code() : Container(),
+                  RadioListTile(
+                    secondary: Image.asset('assets/medicine1.png', scale: 8),
+                    controlAffinity: ListTileControlAffinity.leading,
+                    title: const Text('医薬品名での検索'),
+                    value: 'favorite',
+                    groupValue: _type,
+                    onChanged: _handleRadio,
+                  ),
+                  isCode ? Container() : cardName(),
+                ],
               ),
             ),
-          ),
-        ],
+            Container(
+              alignment: Alignment.bottomCenter,
+              margin: const EdgeInsets.all(16),
+              child: SizedBox(
+                width: double.infinity, // match_parent
+                child: RaisedButton(
+                  child: const Text('検索',
+                      style: TextStyle(fontSize: 18, color: Colors.white)),
+                  color: Colors.blue,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/search_conditional_detail');
+                  },
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -135,31 +136,15 @@ class _SearchConditionalState extends State<SearchConditional> {
   Widget cardGs1Code() {
     return Card(
       margin: const EdgeInsets.all(8),
-      child: Row(
-        children: <Widget>[
-          Expanded(
-            flex: 1,
-            child: Container(
-              margin: const EdgeInsets.all(8),
-              child: const Text('GS Code:', style: TextStyle(fontSize: 16)),
-            ),
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+        child: const TextField(
+          maxLines: 1,
+          decoration: InputDecoration(
+            hintText: 'GS1 コードを入力ください',
+            labelText: 'GS1 Code',
           ),
-          Expanded(
-            flex: 3,
-            child: Container(
-              margin: const EdgeInsets.all(8),
-              child: TextField(
-                enabled: true,
-                // 入力数
-                maxLength: 14,
-//                maxLengthEnforced: false,
-//                obscureText: false,
-                maxLines: 1,
-                onChanged: _handleText,
-              ),
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
@@ -169,73 +154,16 @@ class _SearchConditionalState extends State<SearchConditional> {
       margin: const EdgeInsets.all(8),
       child: Column(
         children: <Widget>[
-          Row(
-            children: <Widget>[
-              Expanded(
-                flex: 1,
-                child: Container(
-                  margin: const EdgeInsets.all(8),
-                  child: const Text('医薬品名:', style: TextStyle(fontSize: 16)),
-                ),
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+            child: const TextField(
+              maxLines: 1,
+              decoration: InputDecoration(
+                hintText: '医薬品名を入力ください',
+                labelText: '医薬品名',
               ),
-              Expanded(
-                flex: 3,
-                child: Container(
-                  margin: const EdgeInsets.all(8),
-                  child: TextField(
-                    enabled: true,
-//                    maxLengthEnforced: false,
-//                    obscureText: false,
-                    maxLines: 1,
-                    onChanged: _handleText,
-                  ),
-                ),
-              ),
-            ],
+            ),
           ),
-//          Row(
-//            children: <Widget>[
-//              Radio(
-//                activeColor: Colors.blue,
-//                value: '0',
-//                groupValue: _type1,
-//                onChanged: _handleRadio,
-//              ),
-//              const Text('一般名及び販売名', style: TextStyle(fontSize: 12)),
-//              Radio(
-//                activeColor: Colors.blue,
-//                value: '1',
-//                groupValue: _type1,
-//                onChanged: _handleRadio,
-//              ),
-//              const Text('一般名のみ', style: TextStyle(fontSize: 12)),
-//              Radio(
-//                activeColor: Colors.blue,
-//                value: '2',
-//                groupValue: _type1,
-//                onChanged: _handleRadio,
-//              ),
-//              const Text('販売名のみ', style: TextStyle(fontSize: 12)),
-//            ],
-//          ),
-//          Row(
-//            children: <Widget>[
-//              Radio(
-//                activeColor: Colors.blue,
-//                value: '0',
-//                groupValue: _type2,
-//                onChanged: _handleRadio,
-//              ),
-//              const Text('部分一致', style: TextStyle(fontSize: 12)),
-//              Radio(
-//                activeColor: Colors.blue,
-//                value: '1',
-//                groupValue: _type2,
-//                onChanged: _handleRadio,
-//              ),
-//              const Text('前方一致', style: TextStyle(fontSize: 12)),
-//            ],
-//          ),
           DebugCondition(),
         ],
       ),

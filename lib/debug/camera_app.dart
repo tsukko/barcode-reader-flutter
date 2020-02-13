@@ -101,7 +101,7 @@ class _CameraAppState extends State<CameraApp> {
     }
   }
 
-  static const platform = MethodChannel('com.tasogarei.test/web');
+  static const platform = MethodChannel('com.tasogarei.test/camera');
 
   Future<void> _scanText(CameraImage availableImage) async {
 //    print("start _scanText. height:${availableImage.height}, "

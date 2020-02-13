@@ -26,7 +26,7 @@ class _BarcodeScanState extends State<BarcodeScan> {
 //  final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
 
   CameraController controller;
-  static const platform = MethodChannel('com.tasogarei.test/web');
+  static const platform = MethodChannel('com.tasogarei.test/camera');
 
   Future<void> getCameras() async {
     List<CameraDescription> cameras;
@@ -59,10 +59,16 @@ class _BarcodeScanState extends State<BarcodeScan> {
   Future<void> _scanText(CameraImage availableImage) async {
 //    print("deb::_scanText: start. "
 //        "height:${availableImage.height}, width:${availableImage.width}.");
-    final String barcode = await platform.invokeMethod('web', {
+    final String barcode = await platform.invokeMethod('camera', {
+      // iOS、Android共通
       'bytes': availableImage.planes[0].bytes,
+      // Android用
       'height': availableImage.height,
-      'width': availableImage.width
+      'width': availableImage.width,
+      // iOS用
+      'bytesPerRow': availableImage.planes[0].bytesPerRow,
+      'height0': availableImage.planes[0].height,
+      'width0': availableImage.planes[0].width,
     });
 
     if (!mounted) {

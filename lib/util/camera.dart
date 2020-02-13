@@ -1,3 +1,4 @@
+// 削除予定？
 class Camera {
   static const String flashOn = 'FLASH ON';
   static const String flashOff = 'FLASH OFF';
