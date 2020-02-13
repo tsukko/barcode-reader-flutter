@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:qr_code/debug/debug_data.dart';
 import 'package:qr_code/models/medicine.dart';
 import 'package:qr_code/models/search_parameter.dart';
 import 'package:qr_code/repository/basic_api.dart';
-import 'package:qr_code/util/api_parameter.dart';
+import 'package:qr_code/widget/common_divider.dart';
+import 'package:qr_code/widget/overlay_loading_molecules.dart';
 
 class SearchResult extends StatefulWidget {
-  SearchResult({@required this.arguments});
+  SearchResult({this.arguments});
 
   final SearchParameter arguments;
 
@@ -16,24 +16,23 @@ class SearchResult extends StatefulWidget {
 
 class _SearchResultState extends State<SearchResult> {
   // TODO DBからデータ取得
-  List<Medicine> localData = searchSampleData;
-  SearchParameter args;
+  String count = '読込中';
+  List<Medicine> medicineList;
 
   @override
   void initState() {
     super.initState();
-    print("SearchResult1, ");
-//    aaa = ModalRoute.of(context).settings.arguments as SearchParameter;
-    Future.delayed(Duration.zero, () {
-      setState(() {
-        args = ModalRoute.of(context).settings.arguments as SearchParameter;
-      });
-    });
-    BasicApi().postWordSearch(widget.arguments).then((_) {
+
+    print('_SearchResultState initState');
+    BasicApi().postWordSearch(widget.arguments).then((list) {
       if (!mounted) {
         return;
       }
-      setState(() {});
+      setState(() {
+        medicineList = list;
+        count = '件数：${medicineList.length} 件';
+        print('_SearchResultState initState2');
+      });
     });
   }
 
@@ -42,32 +41,13 @@ class _SearchResultState extends State<SearchResult> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('検索結果'),
-//        actions: [
-//          Container(
-//            padding: const EdgeInsets.fromLTRB(0, 0, 8, 0),
-//            margin: const EdgeInsets.all(8),
-//            child: IconButton(
-//              icon: Icon(Icons.refresh),
-//              onPressed: () {
-//                //TODO 更新確認処理
-//                showBasicDialog(context, 'D0000');
-//              },
-//            ),
-//          ),
-//        ],
       ),
       body: Column(
         children: <Widget>[
           Align(
-            child: Card(
-              margin: const EdgeInsets.all(16),
-              child: Container(
-                margin: const EdgeInsets.all(16),
-                child: Text('検索ワード：${widget.arguments.medicineWord}',
-                    style: const TextStyle(fontSize: 18)),
-              ),
-            ),
+            child: _header(),
           ),
+          CommonDivider(),
           Expanded(
             child: _docList(),
           ),
@@ -76,39 +56,69 @@ class _SearchResultState extends State<SearchResult> {
     );
   }
 
-  Widget _docList() {
-    return ListView.builder(
-      itemCount: localData.length,
-      itemBuilder: (context, index) {
-        final item = localData[index];
-//          fav_flag = item.favorite;
-        return Dismissible(
-          key: Key(item.gs1code),
-          onDismissed: (direction) {
-            setState(() {
-              localData.removeAt(index);
-            });
-            Scaffold.of(context)
-                .showSnackBar(SnackBar(content: Text('$item dismissed')));
-          },
-          // Show a red background as the item is swiped away.
-          background: Container(color: Colors.red[200]),
-          child: Column(
-            children: <Widget>[
-              ListTile(
-//                leading: favIcon(index),
-//              leading:Material(child: const Icon(Icons.favorite)),
-//                trailing: editIcon(index),
-                title: Text(localData[index].medicineName),
-                subtitle: Text(item.docType),
-                onTap: () {
-                  Navigator.pushNamed(context, '/showpdf',
-                      arguments: addBaseUrl(item.url));
-                },
-              ),
-              const Divider(),
-            ],
+  Widget _header() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: <Widget>[
+        Expanded(
+          flex: 3,
+          child: Card(
+            margin: const EdgeInsets.all(8),
+            child: Container(
+              margin: const EdgeInsets.all(12),
+              child: Text('検索ワード：${widget.arguments.medicineWord}',
+                  style: const TextStyle(fontSize: 16)),
+            ),
           ),
+        ),
+        Expanded(
+          flex: 1,
+          child: Card(
+            margin: const EdgeInsets.all(8),
+            child: Container(
+              margin: const EdgeInsets.all(12),
+              child: Text('$count', style: const TextStyle(fontSize: 16)),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _docList() {
+    return medicineList == null
+        ? _loading()
+        : medicineList.isEmpty ? _noData() : _resultList();
+  }
+
+  Widget _loading() {
+    return OverlayLoadingMolecules(visible: medicineList == null);
+  }
+
+  Widget _noData() {
+    return Container(
+      alignment: Alignment.center,
+      child: Text('検索結果0件'),
+    );
+  }
+
+  Widget _resultList() {
+    return ListView.builder(
+      itemCount: medicineList.length,
+      itemBuilder: (context, index) {
+        final item = medicineList[index];
+        return Column(
+          children: <Widget>[
+            ListTile(
+              enabled: item.url.isNotEmpty,
+              title: Text(item.medicineName),
+              subtitle: Text(item.docType),
+              onTap: () {
+                Navigator.pushNamed(context, '/showpdf', arguments: item.url);
+              },
+            ),
+            const Divider(),
+          ],
         );
       },
     );

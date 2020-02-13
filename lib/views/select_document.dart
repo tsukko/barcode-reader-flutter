@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qr_code/debug/debug_data.dart';
+import 'package:qr_code/widget/common_divider.dart';
 
 class SelectDocument extends StatefulWidget {
   @override
@@ -28,6 +29,7 @@ class _SelectDocumentState extends State<SelectDocument> {
               ),
             ),
           ),
+          CommonDivider(),
           Expanded(
             child: list(),
           )

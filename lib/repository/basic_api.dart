@@ -1,6 +1,5 @@
 import 'package:http/http.dart' as http;
 import 'package:qr_code/models/medicine.dart';
-import 'package:qr_code/models/search_medicine_result.dart';
 import 'package:qr_code/models/search_parameter.dart';
 import 'package:qr_code/util/api_parameter.dart';
 
@@ -43,7 +42,7 @@ class BasicApi {
     }
   }
 
-  Future<SearchMedicineResult> postWordSearch(SearchParameter param) async {
+  Future<List<Medicine>> postWordSearch(SearchParameter param) async {
     final url = baseUrl + searchDir;
     final client = http.Client();
     Map<String, String> bodyParam;
@@ -59,26 +58,40 @@ class BasicApi {
 
     if (response.statusCode == 200) {
       final resBody = response.body.toString();
-      // パース処理
-      SearchMedicineResult aaa = parse(resBody);
 
-      return aaa;
+      return parse(resBody);
     } else {
       print('Request failed with status: ${response.statusCode}.');
       return null;
     }
   }
 
-  SearchMedicineResult parse(String resBody) {
-    final Iterable<Match> matches =
-        RegExp('<td><div>.*?</div></td>').allMatches(resBody);
-    List<Medicine> aaa;
-    for (final m in matches) {
-      print("SearchMedicineResult parse : $m");
-      if (m.group(0).contains('/PmdaSearch/iyakuDetail/GeneralList')) {
-        print("OKKKKK");
+  // パース処理
+  List<Medicine> parse(String resBody) {
+    final List<Match> matches =
+        RegExp('<td><div>.*?</div></td>').allMatches(resBody).toList();
+    List<Medicine> medicineList = [];
+
+    for (int i = 0; i < matches.length; i++) {
+//      print("SearchMedicineResult parse :${matches[i].group(0)}");
+      if (matches[i].group(0).contains('/PmdaSearch/iyakuDetail/GeneralList')) {
+        String medicineName = matches[i + 1]
+            .group(0)
+            .replaceAll('<td><div>', '')
+            .replaceAll('</div></td>', '');
+        List<Match> matchesUrl =
+            RegExp('/PmdaSearch/iyakuDetail/ResultDataSetPDF/.*?>')
+                .allMatches(matches[i + 3].group(0))
+                .toList();
+        String url = "";
+        if (matchesUrl.isNotEmpty) {
+          url = baseUrl + matchesUrl.first.group(0).replaceAll("'>", '');
+        }
+
+        print("medicineName:$medicineName, url:$url");
+        medicineList.add(Medicine('', medicineName, '添付文書', url, false));
       }
     }
-    return SearchMedicineResult(aaa.length, aaa);
+    return medicineList;
   }
 }

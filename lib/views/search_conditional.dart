@@ -134,7 +134,7 @@ class _SearchConditionalState extends State<SearchConditional> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   onPressed: () {
-                    var searchParam = SearchParameter(_gsText, _prText, 0, 0);
+                    var searchParam = SearchParameter(_gsText, _prText, 1, 1);
                     Navigator.pushNamed(context, '/search_conditional_detail',
                         arguments: searchParam);
                   },

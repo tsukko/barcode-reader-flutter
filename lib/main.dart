@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qr_code/debug/camera_app.dart';
+import 'package:qr_code/models/search_parameter.dart';
 import 'package:qr_code/views/barcode_scan.dart';
 import 'package:qr_code/views/favorite.dart';
 import 'package:qr_code/views/pdf.dart';
@@ -31,7 +32,9 @@ class MyApp extends StatelessWidget {
         '/update_list': (context) => UpdateList(),
         '/search_conditional': (context) => SearchConditional(),
         '/search_conditional_detail': (context) => SearchConditionalDetail(),
-        '/search_result': (context) => SearchResult(),
+        '/search_result': (context) => SearchResult(
+            arguments:
+                ModalRoute.of(context).settings.arguments as SearchParameter),
         // 以降は、debug用。削除予定
         '/showpdf': (context) => Pdf(),
         '/debug_camera': (context) => CameraApp(),
