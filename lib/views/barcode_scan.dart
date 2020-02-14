@@ -1,6 +1,8 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:qr_code/models/medicine.dart';
+import 'package:qr_code/models/search_parameter.dart';
 import 'package:qr_code/repository/basic_api.dart';
 import 'package:qr_code/util/camera.dart';
 import 'package:qr_code/widget/camera_view.dart';
@@ -89,9 +91,12 @@ class _BarcodeScanState extends State<BarcodeScan> {
   }
 
   Future<void> _showPdf(String barcode) async {
-    final resUrl = await BasicApi().postSearch(barcode);
+    var searchParam = SearchParameter(barcode, '', 1, 1);
+    List<Medicine> medicines = await BasicApi().postWordSearch(searchParam);
+    // TODO エラー処理
+//    final resUrl = await BasicApi().postSearch(barcode);
     setState(() {
-      Navigator.pushNamed(context, '/showpdf', arguments: resUrl);
+      Navigator.pushNamed(context, '/showpdf', arguments: medicines[0]);
     });
   }
 
@@ -220,10 +225,16 @@ class _BarcodeScanState extends State<BarcodeScan> {
           margin: const EdgeInsets.all(8),
           child: RaisedButton(
             onPressed: () async {
-              final resUrl = await BasicApi().postSearch('');
-//              final resUrl = await BasicApi().postMultiple('');
-              print('QRView url: $resUrl');
-              await Navigator.pushNamed(context, '/showpdf', arguments: resUrl);
+              // ダミーボタン
+              var searchParam = SearchParameter('(01)14987080100314', '', 1, 1);
+              List<Medicine> medicines =
+                  await BasicApi().postWordSearch(searchParam);
+              // TODO エラー処理
+//              final resUrl = await BasicApi().postSearch('');
+////              final resUrl = await BasicApi().postMultiple('');
+//              print('QRView url: $resUrl');
+              await Navigator.pushNamed(context, '/showpdf',
+                  arguments: medicines);
             },
             child: const Text('test', style: TextStyle(fontSize: 20)),
           ),

@@ -44,13 +44,9 @@ class _SearchResultState extends State<SearchResult> {
       ),
       body: Column(
         children: <Widget>[
-          Align(
-            child: _header(),
-          ),
+          Align(child: _header()),
           CommonDivider(),
-          Expanded(
-            child: _docList(),
-          ),
+          Expanded(child: _docList()),
         ],
       ),
     );
@@ -114,7 +110,7 @@ class _SearchResultState extends State<SearchResult> {
               title: Text(item.medicineName),
               subtitle: Text(item.docType),
               onTap: () {
-                Navigator.pushNamed(context, '/showpdf', arguments: item.url);
+                Navigator.pushNamed(context, '/showpdf', arguments: item);
               },
             ),
             const Divider(),

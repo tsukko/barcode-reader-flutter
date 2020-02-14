@@ -33,7 +33,6 @@ dependencies:
   webview_flutter: ^0.3.19+5
   camera: ^0.5.7+3
 
-  flutter_plugin_pdf_viewer: ^1.0.7
   shared_preferences: ^0.5.6+1
 
   # Date周り

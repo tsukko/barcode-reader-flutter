@@ -3,16 +3,17 @@ import 'package:qr_code/debug/camera_app.dart';
 import 'package:qr_code/models/search_parameter.dart';
 import 'package:qr_code/views/barcode_scan.dart';
 import 'package:qr_code/views/favorite.dart';
-import 'package:qr_code/views/pdf.dart';
 import 'package:qr_code/views/search_conditional.dart';
 import 'package:qr_code/views/search_conditional_detail.dart';
 import 'package:qr_code/views/search_result.dart';
 import 'package:qr_code/views/select_document.dart';
 import 'package:qr_code/views/top.dart';
 import 'package:qr_code/views/update_list.dart';
+import 'package:qr_code/views/view_pdf.dart';
 import 'package:splashscreen/splashscreen.dart';
 
 import 'debug/debug_db.dart';
+import 'models/medicine.dart';
 import 'util/custom_theme.dart';
 import 'util/view_const.dart';
 
@@ -35,8 +36,9 @@ class MyApp extends StatelessWidget {
         '/search_result': (context) => SearchResult(
             arguments:
                 ModalRoute.of(context).settings.arguments as SearchParameter),
+        '/showpdf': (context) => ViewPdf(
+            medicine: ModalRoute.of(context).settings.arguments as Medicine),
         // 以降は、debug用。削除予定
-        '/showpdf': (context) => Pdf(),
         '/debug_camera': (context) => CameraApp(),
         '/debug_db': (context) => DebugDb(),
 //        '/license': (BuildContext context) => new LicenseScreen(),
