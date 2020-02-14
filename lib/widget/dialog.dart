@@ -19,7 +19,9 @@ Widget _buildSignOutDialogAndroid(BuildContext context, List<String> data) {
         ),
         FlatButton(
           child: Text(data[2]),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
         )
       ]);
 }
@@ -39,7 +41,9 @@ Widget _buildSignOutDialogiOS(BuildContext context, List<String> data) {
         CupertinoDialogAction(
           child: Text(data[2]),
           isDestructiveAction: true,
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
         )
       ]);
 }

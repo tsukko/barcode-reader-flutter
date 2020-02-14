@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qr_code/debug/debug_data.dart';
+import 'package:qr_code/models/db/medicine_database_provider.dart';
 import 'package:qr_code/models/medicine.dart';
 import 'package:qr_code/util/api_parameter.dart';
 import 'package:qr_code/widget/dialog.dart';
@@ -14,6 +15,20 @@ class _FavoriteState extends State<Favorite> {
 
   // TODO DBからデータ取得
   List<Medicine> localData = sampleData;
+
+  @override
+  void initState() {
+    super.initState();
+
+    MedicineDatabaseProvider().getMedicineAll().then((medicineList) {
+      if (!mounted) {
+        return;
+      }
+      setState(() {
+        localData = medicineList;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

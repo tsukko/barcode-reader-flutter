@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:qr_code/models/db/medicine_database_provider.dart';
 import 'package:qr_code/models/medicine.dart';
 import 'package:qr_code/util/api_parameter.dart';
+import 'package:qr_code/widget/dialog.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class ViewPdf extends StatefulWidget {
@@ -53,28 +54,38 @@ class _ViewPdfState extends State<ViewPdf> {
           ),
         ],
       ),
-      body:
-//      Opacity(
-//        opacity: isInitialLoaded ? 1 : 0,
-//        child:
-          WebView(
+      body: WebView(
         initialUrl: pdfUrl,
         javascriptMode: JavascriptMode.unrestricted,
         onWebViewCreated: (controller) {
           _controller = controller;
         },
-//        onPageFinished: (url) {
-//          if (!isInitialLoaded) {
-//            setState(() => isInitialLoaded = true);
-//          }
-//        },
-//        ),
       ),
+//
+//      Opacity(
+//        opacity: isInitialLoaded ? 1 : 0,
+//        child: WebView(
+//          initialUrl: pdfUrl,
+//          javascriptMode: JavascriptMode.unrestricted,
+//          onWebViewCreated: (controller) {
+//            _controller = controller;
+//          },
+//          onPageFinished: (url) {
+//            if (!isInitialLoaded) {
+//              setState(() => isInitialLoaded = true);
+//            }
+//          },
+//        ),
+//      ),
     );
   }
 
   Future<void> saveToDb() async {
     final MedicineDatabaseProvider provider = MedicineDatabaseProvider();
-    await provider.insertMedicine(widget.medicine);
+    final a = await provider.insertMedicine(widget.medicine);
+    setState(() {
+      showBasicDialog(context, 'D0003');
+      print('db count: $a');
+    });
   }
 }

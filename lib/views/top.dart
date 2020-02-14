@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:qr_code/debug/debug_widget.dart';
 import 'package:qr_code/util/shared_preferences_util.dart';
-import 'package:qr_code/widget/debug_widget.dart';
 import 'package:qr_code/widget/menu.dart';
 
 class Top extends StatefulWidget {
