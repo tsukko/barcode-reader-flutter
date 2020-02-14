@@ -2,6 +2,6 @@
 #include "Generated.xcconfig"
 TRACK_WIDGET_CREATION=
 
-FLUTTER_FLAVOR=Develop
+FLUTTER_FLAVOR=Development
 PRODUCT_BUNDLE_IDENTIFIER=jp.co.integrityworks.qrcode.dev
-DISPLAY_NAME=SAMPLE-dev
+DISPLAY_NAME=$(PRODUCT_NAME)-dev
