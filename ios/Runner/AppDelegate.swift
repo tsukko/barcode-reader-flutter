@@ -35,9 +35,14 @@ import Flutter
         //planeBuffer[@"bytes"] = [FlutterStandardTypedData typedDataWithBytes:bytes];
               //https://gist.github.com/kazz12211/3c8b7aa4c05260298130ba89dde2b22a
                 //https://dev.classmethod.jp/smartphone/ios-11-code-ml/
+
+                // Flutter camera image to swift UIimage
+                // https://stackoverflow.com/questions/57828792/flutter-camera-image-to-swift-uiimage
                 //UIImageをCVPixelBufferに変換
                 //https://developers.cyberagent.co.jp/blog/archives/8803/
-                
+                // UIImageをCVImageBufferRefに変換します
+                // http://ja.voidcc.com/question/p-srmplxkn-be.html
+
                 let arguments = call.arguments as? [String: Any]
                 let buf = arguments?["bytes"] as! FlutterStandardTypedData
                 let height = arguments?["height"] as? Int
@@ -48,13 +53,17 @@ import Flutter
                 print("arguments. bytesPerRow: \(bytesPerRow), height0: \(height0), width0, \(width0)")
                 print("arguments. height: \(height), width, \(width)")
 
-                var byte = [UInt8](buf.data)
-                var byteaaa = buf.data as NSData
-                var bbbb: UnsafeRawPointer = byteaaa.bytes
-                print("buf: ", buf)
-                print("buf.data: ", buf.data)
-                print("byteaaa: ",byteaaa)
-                print("bbbb: ",bbbb)
+                let rgbaUint8 = [UInt8](buf.data)
+                let data = NSData(bytes: rgbaUint8, length: rgbaUint8.count)
+                let uiimage = UIImage(data: data as Data)
+
+//                var byte = [UInt8](buf.data)
+//                var byteaaa = buf.data as NSData
+//                var bbbb: UnsafeRawPointer = byteaaa.bytes
+//                print("buf: ", buf)
+//                print("buf.data: ", buf.data)
+//                print("byteaaa: ",byteaaa)
+//                print("bbbb: ",bbbb)
 
                 // ビットマップコンテキスト作成
                 let colorSpace = CGColorSpaceCreateDeviceRGB()

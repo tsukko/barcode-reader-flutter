@@ -64,6 +64,7 @@ class _CameraAppState extends State<CameraApp> {
       });
     } on CameraException catch (e) {
       // エラー時の処理
+      print('CameraException. e: ${e.toString()}');
       return null;
     }
     return filePath;
@@ -90,7 +91,7 @@ class _CameraAppState extends State<CameraApp> {
                   size: 30,
                 ),
                 onPressed: () async {
-                  var filePath = await takePicture();
+//                  var filePath = await takePicture();
                 },
               ),
             ],

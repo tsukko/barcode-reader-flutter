@@ -79,11 +79,12 @@ class BasicApi {
             .group(0)
             .replaceAll('<td><div>', '')
             .replaceAll('</div></td>', '');
+        // urlは1件のみある
         List<Match> matchesUrl =
             RegExp('/PmdaSearch/iyakuDetail/ResultDataSetPDF/.*?>')
                 .allMatches(matches[i + 3].group(0))
                 .toList();
-        String url = "";
+        String url = '';
         if (matchesUrl.isNotEmpty) {
           url = baseUrl + matchesUrl.first.group(0).replaceAll("'>", '');
         }
