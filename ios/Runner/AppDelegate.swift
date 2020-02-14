@@ -56,7 +56,7 @@ import Flutter
                 let rgbaUint8 = [UInt8](buf.data)
                 let data = NSData(bytes: rgbaUint8, length: rgbaUint8.count)
                 let uiimage = UIImage(data: data as Data)
-
+//                uiimage.
 //                var byte = [UInt8](buf.data)
 //                var byteaaa = buf.data as NSData
 //                var bbbb: UnsafeRawPointer = byteaaa.bytes

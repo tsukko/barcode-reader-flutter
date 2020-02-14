@@ -18,6 +18,7 @@
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
 		A43FD7631D71F16E388B2418 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66E0E6F8F1FC6ABDC304C43F /* Pods_Runner.framework */; };
+		B85C0E3F23F701BF0043D47D /* Development.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B85C0E3E23F701BF0043D47D /* Development.xcconfig */; };
 		B86650E223E84EB40004FE04 /* CameraSample.m in Sources */ = {isa = PBXBuildFile; fileRef = B86650E123E84EB40004FE04 /* CameraSample.m */; };
 		B8931A7A23E4759300A16281 /* libkxabarcodereader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8931A7923E4759300A16281 /* libkxabarcodereader.a */; };
 		B8931A7C23E475A500A16281 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B8931A7B23E475A500A16281 /* libiconv.tbd */; };
@@ -60,12 +61,12 @@
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9CDB0FC1B541AABEC276749E /* Pods-Runner.release-staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-staging.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-staging.xcconfig"; sourceTree = "<group>"; };
 		A24BFF20A93A6A80E24C95F5 /* Pods-Runner.debug-staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-staging.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-staging.xcconfig"; sourceTree = "<group>"; };
+		B85C0E3E23F701BF0043D47D /* Development.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Development.xcconfig; path = Flutter/Development.xcconfig; sourceTree = "<group>"; };
 		B86650E123E84EB40004FE04 /* CameraSample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CameraSample.m; path = /Users/tsukko/work/flutter_barcode/ios/Runner/CameraSample.m; sourceTree = "<absolute>"; };
 		B86650E623E8517B0004FE04 /* CameraSample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraSample.h; sourceTree = "<group>"; };
 		B8931A7923E4759300A16281 /* libkxabarcodereader.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libkxabarcodereader.a; path = KXABarcodeReaderLibrary/libkxabarcodereader.a; sourceTree = "<group>"; };
 		B8931A7B23E475A500A16281 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/lib/libiconv.tbd; sourceTree = DEVELOPER_DIR; };
 		B8931A7D23E475BD00A16281 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
-		B8B11D2A23F05566006A9BBE /* Develop.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Develop.xcconfig; path = Flutter/Develop.xcconfig; sourceTree = "<group>"; };
 		B8B11D3C23F0573B006A9BBE /* Production.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Production.xcconfig; path = Flutter/Production.xcconfig; sourceTree = "<group>"; };
 		B8B11D4023F069FF006A9BBE /* Staging.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Staging.xcconfig; path = Flutter/Staging.xcconfig; sourceTree = "<group>"; };
 		B8D4D6A123E477170023B717 /* KXABarcodeReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KXABarcodeReader.h; path = KXABarcodeReaderLibrary/include/KXABarcodeReader.h; sourceTree = SOURCE_ROOT; };
@@ -95,7 +96,7 @@
 		9740EEB11CF90186004384FC /* Flutter */ = {
 			isa = PBXGroup;
 			children = (
-				B8B11D2A23F05566006A9BBE /* Develop.xcconfig */,
+				B85C0E3E23F701BF0043D47D /* Development.xcconfig */,
 				B8B11D4023F069FF006A9BBE /* Staging.xcconfig */,
 				B8B11D3C23F0573B006A9BBE /* Production.xcconfig */,
 				3B80C3931E831B6300D905FE /* App.framework */,
@@ -242,6 +243,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B85C0E3F23F701BF0043D47D /* Development.xcconfig in Resources */,
 				97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */,
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
@@ -353,9 +355,8 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		B8B11D1E23F0545F006A9BBE /* Debug-Develop */ = {
+		B8B11D1E23F0545F006A9BBE /* Debug-Development */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B8B11D2A23F05566006A9BBE /* Develop.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -418,11 +419,10 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USE_RECURSIVE_SCRIPT_INPUTS_IN_SCRIPT_PHASES = YES;
 			};
-			name = "Debug-Develop";
+			name = "Debug-Development";
 		};
-		B8B11D1F23F0545F006A9BBE /* Debug-Develop */ = {
+		B8B11D1F23F0545F006A9BBE /* Debug-Development */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B8B11D2A23F05566006A9BBE /* Develop.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -454,7 +454,7 @@
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
-			name = "Debug-Develop";
+			name = "Debug-Development";
 		};
 		B8B11D2023F05471006A9BBE /* Release-Staging */ = {
 			isa = XCBuildConfiguration;
@@ -776,7 +776,6 @@
 		};
 		B8B11D3E23F05F81006A9BBE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B8B11D2A23F05566006A9BBE /* Develop.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -843,7 +842,6 @@
 		};
 		B8B11D3F23F05F81006A9BBE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B8B11D2A23F05566006A9BBE /* Develop.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -883,26 +881,26 @@
 		97C146E91CF9000F007C117D /* Build configuration list for PBXProject "Runner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B8B11D1E23F0545F006A9BBE /* Debug-Develop */,
+				B8B11D1E23F0545F006A9BBE /* Debug-Development */,
 				B8B11D3E23F05F81006A9BBE /* Debug */,
 				B8B11D2423F05493006A9BBE /* Debug-Staging */,
 				B8B11D2223F05482006A9BBE /* Release-Production */,
 				B8B11D2023F05471006A9BBE /* Release-Staging */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = "Debug-Develop";
+			defaultConfigurationName = "Debug-Development";
 		};
 		97C147051CF9000F007C117D /* Build configuration list for PBXNativeTarget "Runner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B8B11D1F23F0545F006A9BBE /* Debug-Develop */,
+				B8B11D1F23F0545F006A9BBE /* Debug-Development */,
 				B8B11D3F23F05F81006A9BBE /* Debug */,
 				B8B11D2523F05493006A9BBE /* Debug-Staging */,
 				B8B11D2323F05482006A9BBE /* Release-Production */,
 				B8B11D2123F05471006A9BBE /* Release-Staging */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = "Debug-Develop";
+			defaultConfigurationName = "Debug-Development";
 		};
 /* End XCConfigurationList section */
 	};
