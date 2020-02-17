@@ -100,6 +100,17 @@ class Menu extends StatelessWidget {
                   },
                 ),
                 CommonDivider(),
+                ListTile(
+                  selected: true,
+                  leading: Icon(Icons.developer_mode, color: Colors.brown),
+                  title: Text('debug_firebase_fcm',
+                      style: TextStyle(color: Colors.black)),
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.pushNamed(context, '/debug_fb_fcm');
+                  },
+                ),
+                CommonDivider(),
               ],
             ),
           ),

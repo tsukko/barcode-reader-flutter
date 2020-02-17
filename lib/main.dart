@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qr_code/debug/camera_app.dart';
 import 'package:qr_code/debug/debug_farebase.dart';
+import 'package:qr_code/debug/debug_farebase_fcm.dart';
 import 'package:qr_code/models/search_parameter.dart';
 import 'package:qr_code/views/barcode_scan.dart';
 import 'package:qr_code/views/favorite.dart';
@@ -43,6 +44,7 @@ class MyApp extends StatelessWidget {
         '/debug_camera': (context) => CameraApp(),
         '/debug_db': (context) => DebugDb(),
         '/debug_fb': (context) => DebugFireBase(),
+        '/debug_fb_fcm': (context) => DebugFireBaseFcm(),
 //        '/license': (BuildContext context) => new LicenseScreen(),
       },
     );
