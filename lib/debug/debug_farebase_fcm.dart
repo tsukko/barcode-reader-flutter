@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
@@ -12,12 +14,9 @@ class _DebugFireBaseFcmState extends State<DebugFireBaseFcm> {
   @override
   void initState() {
     super.initState();
-    // ここで通知許可の設定を行う
-    _firebaseMessaging.requestNotificationPermissions(
-        const IosNotificationSettings(sound: true, badge: true, alert: true));
-    _firebaseMessaging.onIosSettingsRegistered
-        .listen((IosNotificationSettings settings) {
-      print("Settings registered: $settings");
+    if (Platform.isIOS) iOS_Permission();
+    _firebaseMessaging.getToken().then((token) {
+      print("tokentoken: $token");
     });
     // ここで通知受信時の挙動を設定しています。
     _firebaseMessaging.configure(
@@ -34,6 +33,15 @@ class _DebugFireBaseFcmState extends State<DebugFireBaseFcm> {
         sampleDialog(context, "onResume");
       },
     );
+  }
+
+  void iOS_Permission() {
+    _firebaseMessaging.requestNotificationPermissions(
+        IosNotificationSettings(sound: true, badge: true, alert: true));
+    _firebaseMessaging.onIosSettingsRegistered
+        .listen((IosNotificationSettings settings) {
+      print("Settings registered: $settings");
+    });
   }
 
   @override
