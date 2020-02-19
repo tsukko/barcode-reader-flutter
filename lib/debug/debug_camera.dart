@@ -3,16 +3,17 @@ import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:path_provider/path_provider.dart';
 
 List<CameraDescription> cameras;
 
-class CameraApp extends StatefulWidget {
+class DebugCamera extends StatefulWidget {
   @override
-  _CameraAppState createState() => _CameraAppState();
+  _DebugCameraState createState() => _DebugCameraState();
 }
 
-class _CameraAppState extends State<CameraApp> {
+class _DebugCameraState extends State<DebugCamera> {
   var qrText = "";
   CameraController controller;
 
@@ -41,7 +42,9 @@ class _CameraAppState extends State<CameraApp> {
 
   @override
   void dispose() {
-    controller.stopImageStream();
+    if (controller != null && controller.value.isStreamingImages) {
+      controller.stopImageStream();
+    }
     super.dispose();
   }
 
@@ -120,17 +123,22 @@ class _CameraAppState extends State<CameraApp> {
 //    var bytesList = availableImage.planes.map((plane) {
 //      return plane.bytes;
 //    }).toList();
-    String dateString = await platform.invokeMethod('camera', {
+
+    String barcode = await platform.invokeMethod('camera', {
       "bytes": availableImage.planes[0].bytes,
       "height": availableImage.height,
       "width": availableImage.width
     });
+    if (!mounted) {
+      return;
+    }
     setState(() {
-      qrText = dateString;
-      print('qrText: $qrText');
-      if (dateString.isNotEmpty) {
-        print('qrText: $qrText');
-        controller.stopImageStream();
+      if (barcode.isNotEmpty) {
+        if (controller != null && controller.value.isStreamingImages) {
+          controller.stopImageStream();
+        }
+        qrText = barcode;
+        Fluttertoast.showToast(msg: "barcode: $barcode");
       }
     });
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:qr_code/debug/camera_app.dart';
-import 'package:qr_code/debug/debug_farebase.dart';
+import 'package:qr_code/debug/debug_camera.dart';
+import 'package:qr_code/debug/debug_farebase_db.dart';
 import 'package:qr_code/debug/debug_farebase_fcm.dart';
 import 'package:qr_code/models/search_parameter.dart';
 import 'package:qr_code/views/barcode_scan.dart';
@@ -41,9 +41,9 @@ class MyApp extends StatelessWidget {
         '/showpdf': (context) => ViewPdf(
             medicine: ModalRoute.of(context).settings.arguments as Medicine),
         // 以降は、debug用。削除予定
-        '/debug_camera': (context) => CameraApp(),
+        '/debug_camera': (context) => DebugCamera(),
         '/debug_db': (context) => DebugDb(),
-        '/debug_fb': (context) => DebugFireBase(),
+        '/debug_fb_db': (context) => DebugFireBaseDb(),
         '/debug_fb_fcm': (context) => DebugFireBaseFcm(),
 //        '/license': (BuildContext context) => new LicenseScreen(),
       },

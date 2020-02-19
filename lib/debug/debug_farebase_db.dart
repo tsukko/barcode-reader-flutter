@@ -1,17 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class DebugFireBase extends StatefulWidget {
+class DebugFireBaseDb extends StatefulWidget {
   @override
-  _DebugFireBaseState createState() => _DebugFireBaseState();
+  _DebugFireBaseDbState createState() => _DebugFireBaseDbState();
 }
 
-class _DebugFireBaseState extends State<DebugFireBase> {
+class _DebugFireBaseDbState extends State<DebugFireBaseDb> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("debug_firebase"),
+        title: Text("debug_firebase_db"),
       ),
       body: _buildBody(context),
     );

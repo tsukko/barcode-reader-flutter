@@ -1,4 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="jp.co.integrityworks.qr_code">
 
     <!-- Declare features -->
@@ -9,7 +10,8 @@
     <application
         android:name=".Application"
         android:icon="@mipmap/ic_launcher"
-        android:label="qr_code">
+        android:label="qr_code"
+        tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"

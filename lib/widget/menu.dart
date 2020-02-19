@@ -92,11 +92,11 @@ class Menu extends StatelessWidget {
                 ListTile(
                   selected: true,
                   leading: Icon(Icons.developer_mode, color: Colors.brown),
-                  title: Text('debug_firebase',
+                  title: Text('debug_firebase_db',
                       style: TextStyle(color: Colors.black)),
                   onTap: () {
                     Navigator.pop(context);
-                    Navigator.pushNamed(context, '/debug_fb');
+                    Navigator.pushNamed(context, '/debug_fb_db');
                   },
                 ),
                 CommonDivider(),
@@ -108,6 +108,17 @@ class Menu extends StatelessWidget {
                   onTap: () {
                     Navigator.pop(context);
                     Navigator.pushNamed(context, '/debug_fb_fcm');
+                  },
+                ),
+                CommonDivider(),
+                ListTile(
+                  selected: true,
+                  leading: Icon(Icons.developer_mode, color: Colors.brown),
+                  title: Text('debug_camera',
+                      style: TextStyle(color: Colors.black)),
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.pushNamed(context, '/debug_camera');
                   },
                 ),
                 CommonDivider(),

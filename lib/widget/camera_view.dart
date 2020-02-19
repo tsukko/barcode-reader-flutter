@@ -27,8 +27,8 @@ class _CameraViewState extends State<CameraView> {
             ? CameraPreview(widget.cameraController)
             : Container(),
 //        AspectRatio(
-//            aspectRatio: controller.value.aspectRatio,
-//            child: CameraPreview(controller)),
+//            aspectRatio: widget.cameraController.value.aspectRatio,
+//            child: CameraPreview(widget.cameraController)),
         widget.overlay != null
             ? Container(
                 decoration: ShapeDecoration(

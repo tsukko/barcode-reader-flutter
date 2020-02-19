@@ -72,7 +72,7 @@ class _BarcodeScanState extends State<BarcodeScan> {
       'height0': availableImage.planes[0].height,
       'width0': availableImage.planes[0].width,
     });
-    await _showPdf(barcode);
+    // await _showPdf(barcode);
 
     if (!mounted) {
       return;
@@ -80,12 +80,15 @@ class _BarcodeScanState extends State<BarcodeScan> {
     setState(() {
 //      print("deb::_scanText: setState");
       if (barcode.isNotEmpty) {
-        controller.stopImageStream();
+        if (controller != null && controller.value.isStreamingImages) {
+          controller.stopImageStream();
+        }
         qrText = barcode;
 //        Fluttertoast.showToast(msg: "barcode: $barcode");
 
 //        final resUrl = await BasicApi().debugPost(barcode);
 //        Navigator.pushNamed(context, '/showpdf', arguments: resUrl);
+
       }
     });
   }
@@ -224,17 +227,11 @@ class _BarcodeScanState extends State<BarcodeScan> {
         Container(
           margin: const EdgeInsets.all(8),
           child: RaisedButton(
-            onPressed: () async {
-              // ダミーボタン
-              var searchParam = SearchParameter('(01)14987080100314', '', 1, 1);
-              List<Medicine> medicines =
-                  await BasicApi().postWordSearch(searchParam);
-              // TODO エラー処理
-//              final resUrl = await BasicApi().postSearch('');
-////              final resUrl = await BasicApi().postMultiple('');
-//              print('QRView url: $resUrl');
-              await Navigator.pushNamed(context, '/showpdf',
-                  arguments: medicines);
+            onPressed: () {
+              if (controller != null && controller.value.isStreamingImages) {
+                controller.stopImageStream();
+              }
+              _showPdf('(01)14987080100314');
             },
             child: const Text('test', style: TextStyle(fontSize: 20)),
           ),
