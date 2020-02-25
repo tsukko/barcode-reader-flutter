@@ -140,7 +140,6 @@ class _BarcodeScanState extends State<BarcodeScan> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
 //                  Text('This is the result of scan: $qrText'),
-//                  _row1(),
                   _row2(),
                 ],
               ),
@@ -152,78 +151,11 @@ class _BarcodeScanState extends State<BarcodeScan> {
     );
   }
 
-//  Widget _row1() {
-//    return Row(
-//      mainAxisAlignment: MainAxisAlignment.center,
-//      crossAxisAlignment: CrossAxisAlignment.center,
-//      children: <Widget>[
-//        Container(
-//          margin: const EdgeInsets.all(8),
-//          child: RaisedButton(
-//            onPressed: () {
-////              if (controller != null) {
-////                controller.toggleFlash();
-////                if (Camera.isFlashOn(flashState)) {
-////                  setState(() {
-////                    flashState = Camera.flash_off;
-////                  });
-////                } else {
-////                  setState(() {
-////                    flashState = Camera.flash_on;
-////                  });
-////                }
-////              }
-//            },
-//            child: Text(flashState, style: const TextStyle(fontSize: 20)),
-//          ),
-//        ),
-//        Container(
-//          margin: const EdgeInsets.all(8),
-//          child: RaisedButton(
-//            onPressed: () {
-////              if (controller != null) {
-////                controller.flipCamera();
-////                if (Camera.isBackCamera(cameraState)) {
-////                  setState(() {
-////                    cameraState = Camera.front_camera;
-////                  });
-////                } else {
-////                  setState(() {
-////                    cameraState = Camera.back_camera;
-////                  });
-////                }
-////              }
-//            },
-//            child: Text(cameraState, style: const TextStyle(fontSize: 20)),
-//          ),
-//        )
-//      ],
-//    );
-//  }
-//
   Widget _row2() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-//        Container(
-//          margin: const EdgeInsets.all(8),
-//          child: RaisedButton(
-//            onPressed: () {
-////              controller?.pauseCamera();
-//            },
-//            child: const Text('pause', style: TextStyle(fontSize: 20)),
-//          ),
-//        ),
-//        Container(
-//          margin: const EdgeInsets.all(8),
-//          child: RaisedButton(
-//            onPressed: () {
-////              controller?.resumeCamera();
-//            },
-//            child: const Text('resume', style: TextStyle(fontSize: 20)),
-//          ),
-//        ),
         Container(
           margin: const EdgeInsets.all(8),
           child: RaisedButton(
