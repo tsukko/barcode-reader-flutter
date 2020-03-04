@@ -7,3 +7,5 @@ ML KitやZXingなどのライブラリでは読取ることのできないバー
   
 別リポジトリで、解決できたので取り込みたい。
 
+あと、以下あたり、試してみたい。
+https://flutterawesome.com/a-flutter-plugin-created-to-filter-data-from-list/

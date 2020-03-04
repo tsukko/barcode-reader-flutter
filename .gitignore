@@ -39,3 +39,5 @@ android/.idea/
 !.idea/runConfigurations/
 pubspec.lock
 android/app/google-services.json
+.metadata
+*.iml
